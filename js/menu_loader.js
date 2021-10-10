@@ -38,7 +38,7 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
 
         var updateMenuFromCookie = function(accountInfo) {
             var path = window.location.pathname;
-            if (wgsdk.vars.KR_ENABLED && wgsdk.vars.KR_AGREEMENTS_ENABLED) {
+            if (wgsdk.vars.KR_ENABLED) {
                 if (isUserLoggedIn && !accountInfo.is_kr_agreement_accepted()) {
                     if (path !== wgsdk.vars.KR_AGREEMENT_URL && (!wgsdk.vars.AVAILABLE_WITHOUT_AGREEMENTS)) {
                         wgsdk.ajax_info.set_ua_redirect_url(path);
@@ -107,8 +107,6 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
                         $fallbackTemplate.addClass($fallbackTemplate.data('visibleClass'));
                     }
                     $('#common_menu').remove();
-                } else {
-                    updateCommonMenu();
                 }
             }, WG.vars.COMMON_MENU_LOADER_TIMEOUT || 3000);
         }
@@ -123,8 +121,8 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
 
 }
 /*
-     FILE ARCHIVED ON 06:49:08 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:26 Jun 01, 2021.
+     FILE ARCHIVED ON 19:41:22 Nov 03, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:44 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -132,14 +130,14 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
 */
 /*
 playback timings (ms):
-  exclusion.robots.policy: 0.337
-  PetaboxLoader3.resolve: 392.341 (3)
-  RedisCDXSource: 5.834
-  esindex: 0.015
-  CDXLines.iter: 23.856 (3)
-  load_resource: 415.325 (2)
-  captures_list: 233.907
-  PetaboxLoader3.datanode: 215.009 (5)
-  exclusion.robots: 0.353
-  LoadShardBlock: 198.916 (3)
+  captures_list: 100.807
+  exclusion.robots: 0.116
+  exclusion.robots.policy: 0.107
+  RedisCDXSource: 3.143
+  esindex: 0.007
+  LoadShardBlock: 73.914 (3)
+  PetaboxLoader3.datanode: 549.484 (5)
+  CDXLines.iter: 20.951 (3)
+  load_resource: 582.322 (2)
+  PetaboxLoader3.resolve: 86.4 (2)
 */

@@ -36,8 +36,8 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
 
 }
 /*
-     FILE ARCHIVED ON 06:49:07 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:21 Jun 01, 2021.
+     FILE ARCHIVED ON 18:31:26 Nov 03, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:44 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -45,14 +45,14 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
 */
 /*
 playback timings (ms):
-  captures_list: 157.692
-  exclusion.robots: 0.212
-  exclusion.robots.policy: 0.201
-  RedisCDXSource: 2.07
-  esindex: 0.012
-  LoadShardBlock: 124.267 (3)
-  PetaboxLoader3.datanode: 145.635 (5)
-  CDXLines.iter: 26.361 (3)
-  load_resource: 297.376 (2)
-  PetaboxLoader3.resolve: 223.284 (2)
+  esindex: 0.03
+  CDXLines.iter: 42.306 (3)
+  load_resource: 294.378 (2)
+  exclusion.robots: 0.418
+  exclusion.robots.policy: 0.39
+  captures_list: 246.444
+  PetaboxLoader3.resolve: 118.274 (2)
+  RedisCDXSource: 14.762
+  PetaboxLoader3.datanode: 245.548 (5)
+  LoadShardBlock: 181.335 (3)
 */

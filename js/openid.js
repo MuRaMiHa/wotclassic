@@ -393,21 +393,17 @@ var getOpenIdProcessStatusUrl = function(processToken) {
     var statusUrlTemplate = _.template(settings.OpenIdProcessStatusUrlTemplate);
     return statusUrlTemplate({'token': processToken});
 };
-var onOpenIdProcessSuccess = function(data) {
+var onOpenIdProcessSuccess = function() {
     console.log('auth:openid:onOpenIdProcessSuccess: deleting SSO attempt immediate cookie (if any)');
     deleteOpenIdSSOAttemptImmediateCookie();
 
     // Identify if a webpage is being loaded inside an iframe or directly into the browser window.
     if (window.top !== window.self) {
-        // if userdata returned into iframe - trigger 'authentication-end' event on window.top
-        // to update page state without reload
-        if (_.isObject(data) && data.userdata && window.top.Application) {
-            window.top.Application.trigger('authenticationoid:authentication-ended', data);
-        } else {
-            window.parent.location.href = window.location.href;
-        }
+        window.parent.location.href = window.location.href;
     }
-    EventDispatcher.trigger('authenticationoid:authentication-ended', data);
+    EventDispatcher.trigger('authenticationoid:authentication-ended', {
+        'status': 'ok'
+    });
     resetOpenIdRequestProcessStatus();
     console.log('auth:openid:onOpenIdProcessSuccess');
     console.log(arguments);
@@ -475,8 +471,8 @@ var popLocationQueryParameter = function(processParameter) {
 
 }
 /*
-     FILE ARCHIVED ON 06:48:44 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:22 Jun 01, 2021.
+     FILE ARCHIVED ON 09:36:10 Nov 02, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:41 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -484,14 +480,14 @@ var popLocationQueryParameter = function(processParameter) {
 */
 /*
 playback timings (ms):
-  LoadShardBlock: 586.546 (3)
-  exclusion.robots.policy: 0.212
-  PetaboxLoader3.datanode: 688.269 (5)
-  captures_list: 613.693
-  load_resource: 421.483 (2)
-  esindex: 0.015
-  PetaboxLoader3.resolve: 136.374 (2)
-  RedisCDXSource: 1.973
-  CDXLines.iter: 20.521 (3)
-  exclusion.robots: 0.227
+  captures_list: 258.075
+  exclusion.robots: 0.083
+  exclusion.robots.policy: 0.077
+  RedisCDXSource: 4.148
+  esindex: 0.005
+  LoadShardBlock: 230.526 (3)
+  PetaboxLoader3.datanode: 186.118 (5)
+  CDXLines.iter: 16.61 (3)
+  PetaboxLoader3.resolve: 123.543 (2)
+  load_resource: 191.192 (2)
 */

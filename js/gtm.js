@@ -165,7 +165,7 @@ e=1;d[be]?e=2:d[nf]&&(e=0);Bb[c]={firingOption:e,state:void 0};Cb[c]=[]}mg();Eg(
 }
 /*
      FILE ARCHIVED ON 07:37:03 Aug 30, 2017 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:44 Jun 01, 2021.
+     INTERNET ARCHIVE ON 20:40:51 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -173,14 +173,14 @@ e=1;d[be]?e=2:d[nf]&&(e=0);Bb[c]={firingOption:e,state:void 0};Cb[c]=[]}mg();Eg(
 */
 /*
 playback timings (ms):
-  PetaboxLoader3.datanode: 405.661 (4)
-  captures_list: 693.809
-  PetaboxLoader3.resolve: 312.875 (2)
-  CDXLines.iter: 23.99 (3)
-  load_resource: 259.413
-  exclusion.robots: 0.222
-  exclusion.robots.policy: 0.207
-  LoadShardBlock: 606.341 (3)
-  esindex: 0.017
-  RedisCDXSource: 44.346
+  captures_list: 147.666
+  exclusion.robots: 0.079
+  exclusion.robots.policy: 0.073
+  RedisCDXSource: 7.067
+  esindex: 0.007
+  LoadShardBlock: 122.846 (3)
+  PetaboxLoader3.datanode: 221.207 (4)
+  CDXLines.iter: 15.387 (3)
+  load_resource: 176.741
+  PetaboxLoader3.resolve: 58.276
 */

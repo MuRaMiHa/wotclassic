@@ -10,218 +10,243 @@ if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; re
   let frames = _____WB$wombat$assign$function_____("frames");
   let opener = _____WB$wombat$assign$function_____("opener");
 
-(function($, amplify, ResolutionManager) {
+/* jshint -W065 */
 
-'use strict';
+if (!window.wgsdk) {
+    alert('Please include the module "wgsdk"');
+    var wgsdk = {};
+}
 
-var STATE_UNKNOWN = 0,
-    STATE_HIDDEN = 1,
-    STATE_SHOWN = 2,
-    STATE_TOP = 3,
-    DIRECTION_UNKNOWN = 0,
-    DIRECTION_TOP = 1,
-    DIRECTION_BOTTOM = 2,
-    SUBMENU_STATE_HIDDEN = 0,
-    SUBMENU_STATE_SHOWN = 1;
+wgsdk.set_focus = (function ($, document) {
+    "use strict";
+    // Set focus on correct field in selector content
+    var obj = function (selector) {
+        var block,
+            focusedInsideBlock,
+            focus_element,
+            sub_selectors = ['input:visible',
+                             'textarea:visible',
+                             '.js-confirm-button:visible',
+                             '.js-cancel-button:visible'],
+            query;
 
-$(function() {
-    var currentState = STATE_UNKNOWN,
-        submenuState = SUBMENU_STATE_HIDDEN,
-        $menuWrapper = $('.js-mainmenu-wrapper'),
-        $commonMenuHolder = $('.js-commonmenu-holder'),
-        $commonMenuLink = $('.js-mobile-commonmenu-link'),
-        $htmlBodyNodes = $('html, body'),
-        commonMenuOpenedClass = $commonMenuHolder.data('mobileOpenedClass'),
-        mobileMenuOpenedClass = $menuWrapper.data('mobileMenuOpenedClass'),
-        scrollBottomClass = $menuWrapper.data('scrollBottomClass'),
-        scrollBottomInitialClass = $menuWrapper.data('scrollBottomInitialClass'),
-        scrollTopClass = $menuWrapper.data('scrollTopClass'),
-        scrollTopInitialClass = $menuWrapper.data('scrollTopInitialClass'),
-        mobileCropClass = $htmlBodyNodes.data('mobileMenuCropClass'),
-        oldScrollTop = $(window).scrollTop(),
-        oldState = STATE_UNKNOWN,
-        oldDirection = DIRECTION_UNKNOWN;
+        // Prevent focus being changed if user has already focused on any element inside the block obtained by selector.
+        // document.activeElement property is supported by IE6+, FF3+, Safari 4+, Opera 9+, Chrome 9+
+        // http://stackoverflow.com/questions/5318415/which-browsers-support-document-activeelement
+        if (document.activeElement) {
+            block = $(selector);
+            try {
+                focusedInsideBlock = block.has(document.activeElement).length > 0;
+                if (focusedInsideBlock) {
+                    return;
+                }
+            } catch (e) {
+                // this code may crash inside the $ (on the input[type="file"]):
+                // >>> Permission denied to access property 'nodeType'
+            }
+        }
 
-    function toggleMobileCropClass() {
-        var isMenuOpened = $menuWrapper.hasClass(mobileMenuOpenedClass),
-            isMobileResolution = (ResolutionManager.getCurrentState() !== ResolutionManager.RESOLUTION_DESKTOP);
-
-        if (isMobileResolution && isMenuOpened) {
-            $htmlBodyNodes.addClass(mobileCropClass);
+        focus_element = $(selector).find('.js-focus-element');
+        if (focus_element.length) {
+            focus_element[0].focus();
         } else {
-            $htmlBodyNodes.removeClass(mobileCropClass);
+            query = $(sub_selectors.join(", "), selector).not('.js-disable-autofocus');
+            if (query.length) {
+                query.eq(0).focus();
+            }
         }
     };
 
-    amplify.subscribe('resolution:statechanged', function() {
-        toggleMobileCropClass();
-    });
+    return obj;
+}(jQuery, document));
 
-    function closeCommonMenu() {
-        $commonMenuHolder.removeClass(commonMenuOpenedClass);
-        $commonMenuLink
-            .addClass($commonMenuLink.data('mobileOpenClass'))
-            .removeClass($commonMenuLink.data('mobileCloseClass'));
 
-        toggleMobileCropClass();
-    }
+wgsdk.expandable_window = (function ($, document, set_focus, uniqueid) {
+    "use strict";
 
-    $commonMenuLink.on('click', function(e) {
-        e.preventDefault();
+    var obj = function (selector_or_object) {
+        var instance = {},
+            opened = false,
+            eventTriggered = false,
+            widget,
+            unique_class,
+            selector,
+            KEY_IS_ACTIVATED = 'expandable_window_is_activated',
+            expandableWndItem,
+            ON_MENU_WND_SHOW_EVENT = 'on_menu_wnd_show_event';
 
-        if ($commonMenuHolder.hasClass(commonMenuOpenedClass)) {
-            closeCommonMenu();
+        if (typeof selector_or_object === 'string') {
+            widget = $(selector_or_object);
+            selector = selector_or_object;
         } else {
-            $commonMenuHolder.addClass(commonMenuOpenedClass);
-            $(this)
-                .removeClass($(this).data('mobileOpenClass'))
-                .addClass($(this).data('mobileCloseClass'));
+            widget = selector_or_object;
         }
-    });
 
-    $('.js-mobile-mainmenu-link').on('click', function(e) {
-        e.preventDefault();
-
-        closeCommonMenu();
-        $menuWrapper.addClass(mobileMenuOpenedClass);
-
-        toggleMobileCropClass();
-    });
-
-    $('.js-mobile-mainmenu-close-link, .js-mainmenu-wrapper').on('click', function(e) {
-        if (e.target === e.currentTarget) {
-            e.preventDefault();
-
-            $menuWrapper.removeClass(mobileMenuOpenedClass);
-
-            toggleMobileCropClass();
-        }
-    });
-
-    function closeMainSubMenus($currentItem) {
-        $('.js-mainmenu-item').each(function() {
-            var $item = $(this);
-
-            if ($currentItem === undefined || ($currentItem !== undefined && !$item.is($currentItem))) {
-                $item.removeClass($item.data('openedClass'));
-            }
-        });
-    }
-
-    /* Submenus */
-    $('.js-mainmenu-arrow').on('click.mainmenu', function(e) {
-        var $menuItem = $(this).parents('.js-mainmenu-item');
-
-        e.preventDefault();
-
-        closeMainSubMenus($menuItem);
-        $menuItem.toggleClass($menuItem.data('openedClass'));
-
-        if ($menuItem.hasClass($menuItem.data('openedClass'))) {
-            $('body').off('.mainsubmenuclick').on('click.mainmenu', function(e) {
-                if ($(e.target).parents('.js-mainmenu-wrapper').length === 0) {
-                    submenuState = SUBMENU_STATE_HIDDEN;
-                    closeMainSubMenus();
-                    $('body').off('.mainsubmenuclick');
-                }
-            });
-            submenuState = SUBMENU_STATE_SHOWN;
-        } else {
-            $('body').off('.mainsubmenuclick');
-            submenuState = SUBMENU_STATE_HIDDEN;
-        }
-    });
-
-    $('.js-region-submenu-link').on('click.mainmenu', function(e) {
-        var $menuItem = $(this).parents('.js-region-submenu-item');
-
-        e.preventDefault();
-
-        $('.js-region-submenu-item').each(function() {
-            var $item = $(this);
-
-            if (!$item.is($menuItem)) {
-                $item.removeClass($item.data('openedClass'));
-            }
-        });
-
-        $menuItem.toggleClass($menuItem.data('openedClass'));
-    });
-
-    $(window).on('scroll.mainmenu', function() {
-        var scrollTop = $(window).scrollTop(),
-            cmHeight = $commonMenuHolder.height(),
-            totalHeight = cmHeight + $menuWrapper.height(),
-            direction;
-
-        /* If admin toolbar is present - do nothing */
-        if (window.isDraftActualVersion !== undefined) {
+        if (!widget.length) {
             return;
         }
 
-        if (scrollTop < oldScrollTop) {
-            direction = DIRECTION_TOP;
-        } else if (scrollTop > oldScrollTop || oldDirection === DIRECTION_UNKNOWN) {
-            direction = DIRECTION_BOTTOM;
+        if (widget.data(KEY_IS_ACTIVATED)) {
+            return null;
         }
 
-        if (currentState !== STATE_TOP && scrollTop < cmHeight) {
-
-            $menuWrapper
-                .removeClass(scrollBottomClass)
-                .removeClass(scrollBottomInitialClass)
-                .removeClass(scrollTopClass)
-                .removeClass(scrollTopInitialClass);
-
-            oldState = currentState;
-            currentState = STATE_TOP;
-
-        } else if (currentState !== STATE_HIDDEN
-                   && direction === DIRECTION_BOTTOM
-                   && scrollTop > totalHeight
-                   && submenuState !== SUBMENU_STATE_SHOWN) {
-
-            $menuWrapper
-                .addClass((oldState !== STATE_HIDDEN ? scrollBottomInitialClass : scrollBottomClass))
-                .removeClass(scrollTopInitialClass)
-                .removeClass(scrollTopClass);
-
-            oldState = currentState;
-            currentState = STATE_HIDDEN;
-            amplify.publish('mainmenu:hidefixed');
-
-        } else if (currentState !== STATE_SHOWN &&
-                   (
-                    (direction === DIRECTION_TOP && oldDirection === DIRECTION_TOP && scrollTop > totalHeight)
-                    ||
-                    (submenuState === SUBMENU_STATE_SHOWN && scrollTop >= cmHeight)
-                   )
-                  ) {
-
-            $menuWrapper
-                .addClass((submenuState === SUBMENU_STATE_SHOWN ? scrollTopInitialClass : scrollTopClass))
-                .removeClass(scrollBottomInitialClass)
-                .removeClass(scrollBottomClass);
-
-            oldState = currentState;
-            currentState = STATE_SHOWN;
-            amplify.publish('mainmenu:showfixed');
-
+        if (typeof selector_or_object !== 'string') {
+            unique_class = uniqueid();
+            selector = '.' + unique_class;
+            widget.addClass(unique_class);
         }
 
-        oldScrollTop = scrollTop;
-        oldDirection = direction;
-    });
+        expandableWndItem = $('.js-expand-wnd-item', widget);
 
+        instance.Show = function () {
+            var expandableWnd = $('.js-expand-wnd', widget);
+            expandableWnd.toggleClass('js-hidden', false);
+            widget.toggleClass('opened', true);
+            set_focus(expandableWnd);
+            opened = true;
+
+            eventTriggered = true;
+            $(document).trigger(ON_MENU_WND_SHOW_EVENT);
+
+            expandableWnd.css("width", expandableWnd.width()).css("min-width", expandableWnd.width()).css("max-width", expandableWnd.width());
+        };
+
+        instance.Hide = function () {
+            $('.js-expand-wnd', widget).toggleClass('js-hidden', true);
+            widget.toggleClass('opened', false);
+            opened = false;
+            $('.js-expand-wnd-item', widget).removeClass("hover");
+        };
+
+        expandableWndItem.hover(function () {
+            expandableWndItem.removeClass("hover");
+        });
+
+        $(document).delegate('body', 'click', function () {
+            instance.Hide();
+        });
+
+        $(document).delegate(selector + ' .js-expand-wnd', "click", function (e) {
+            e.stopPropagation();
+        });
+
+        $(document).delegate(selector + ' .js-visible-wnd', "click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (opened) {
+                instance.Hide();
+            } else {
+                instance.Show();
+            }
+        });
+
+        $(document).bind(ON_MENU_WND_SHOW_EVENT, function () {
+            if (eventTriggered) {
+                eventTriggered = false;
+            } else {
+                instance.Hide();
+            }
+        });
+
+        $(document).bind('dialogopen', function () {
+            eventTriggered = false;
+            instance.Hide();
+        });
+
+        widget.data(KEY_IS_ACTIVATED, 1);
+        return instance;
+    };
+    return obj;
+}(jQuery, document, wgsdk.set_focus, wgsdk.uniqueid));
+
+
+wgsdk.mainMenu = (function ($, expandable_window) {
+    "use strict";
+
+    var obj = function (selector) {
+        var main_menu = {},
+            m = null;
+
+        if ($(selector).length) {
+            m = $(selector);
+        }
+
+        main_menu.update_padding = function () {
+            if (!m) { return; }
+
+            var itemsMenu = m.find(".js-portal-menu-item"),
+                itemsMenuLast = m.find(".js-portal-menu-item:last"),
+                numItemsMenu = itemsMenu.length,
+                allItemsMenuWidth = 0,
+                menuWidth = m.width(), /* максимальная ширина меню */
+                itemsMenuInner = itemsMenu.find(".js-portal-menu-item-link-inner"),
+                itemsMenuInnerLast = itemsMenuLast.find(".js-portal-menu-item-link-inner"),
+                newWidthItemRound = 0,
+                differenceWidth,
+                curPaddingL,
+                curPaddingR,
+                newPaddingL,
+                newPaddingR,
+                allItemsMenuWidthControl = 0;
+
+            itemsMenuLast.addClass("last");
+            itemsMenuInner.each(function () {
+                newWidthItemRound = $(this).width();
+                $(this).css("width", newWidthItemRound);
+            });
+
+            itemsMenu.each(function () {
+                allItemsMenuWidth = allItemsMenuWidth + $(this).width(); /* ширина всех li в сумме */
+            });
+
+            if (allItemsMenuWidth < menuWidth) {
+                differenceWidth = Math.floor((menuWidth - allItemsMenuWidth) / numItemsMenu / 2);
+                itemsMenuInner.each(function () {
+                    curPaddingL = parseInt($(this).css("padding-left").replace("px", ""));
+                    curPaddingR = parseInt($(this).css("padding-right").replace("px", ""));
+                    newPaddingL = curPaddingL + differenceWidth;
+                    newPaddingR = curPaddingR + differenceWidth;
+                    $(this).css("padding-left", newPaddingL + "px").css("padding-right", newPaddingR + "px");
+                });
+                /* проверка остатка */
+                itemsMenu.each(function () {
+                    allItemsMenuWidthControl = allItemsMenuWidthControl + $(this).width();
+                });
+                curPaddingL = itemsMenuInnerLast.css("padding-left").replace("px", "");
+                newPaddingL = parseInt(curPaddingL) + (menuWidth - allItemsMenuWidthControl);
+                itemsMenuInnerLast.css("padding-left", newPaddingL + "px");
+            }
+            itemsMenu.css("visibility", "visible");
+        };
+
+        main_menu.activate_expand = function () {
+            if (!m) { return; }
+            m.find('.js-has_children').each(function () {
+                expandable_window($(this));
+            });
+            expandable_window($('#js-region-wrapper'));
+        };
+
+        main_menu.update_padding();
+        main_menu.activate_expand();
+
+        return main_menu;
+    };
+
+    return obj;
+}(jQuery, wgsdk.expandable_window));
+
+
+jQuery(document).ready(function () {
+    "use strict";
+    wgsdk.mainMenu(".js-portal-menu");
 });
-
-})(jQuery, amplify, ResolutionManager);
 
 
 }
 /*
-     FILE ARCHIVED ON 06:48:36 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:22 Jun 01, 2021.
+     FILE ARCHIVED ON 21:57:06 Oct 29, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:42 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -229,14 +254,14 @@ $(function() {
 */
 /*
 playback timings (ms):
-  captures_list: 89.686
-  exclusion.robots: 0.153
-  exclusion.robots.policy: 0.143
-  RedisCDXSource: 2.147
-  esindex: 0.01
-  LoadShardBlock: 57.868 (3)
-  PetaboxLoader3.datanode: 76.732 (5)
-  CDXLines.iter: 25.884 (3)
-  load_resource: 172.31 (2)
-  PetaboxLoader3.resolve: 104.34 (2)
+  captures_list: 81.861
+  exclusion.robots: 0.122
+  exclusion.robots.policy: 0.111
+  RedisCDXSource: 1.266
+  esindex: 0.009
+  LoadShardBlock: 54.625 (3)
+  PetaboxLoader3.datanode: 66.811 (5)
+  CDXLines.iter: 21.681 (3)
+  load_resource: 97.661 (2)
+  PetaboxLoader3.resolve: 61.803 (2)
 */

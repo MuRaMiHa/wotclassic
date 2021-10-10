@@ -95,8 +95,8 @@ wgsdk.regionWidget = (function($,  region_widget_helper){
 
 }
 /*
-     FILE ARCHIVED ON 06:48:46 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:24 Jun 01, 2021.
+     FILE ARCHIVED ON 18:31:27 Nov 03, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:44 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -104,14 +104,14 @@ wgsdk.regionWidget = (function($,  region_widget_helper){
 */
 /*
 playback timings (ms):
-  captures_list: 268.501
-  exclusion.robots: 0.119
-  exclusion.robots.policy: 0.109
-  RedisCDXSource: 1.968
-  esindex: 0.011
-  LoadShardBlock: 235.193 (3)
-  PetaboxLoader3.datanode: 267.758 (5)
-  CDXLines.iter: 26.975 (3)
-  load_resource: 368.772 (2)
-  PetaboxLoader3.resolve: 274.001 (2)
+  captures_list: 112.485
+  exclusion.robots: 0.083
+  exclusion.robots.policy: 0.076
+  RedisCDXSource: 1.661
+  esindex: 0.007
+  LoadShardBlock: 90.784 (3)
+  PetaboxLoader3.datanode: 133.653 (5)
+  CDXLines.iter: 17.3 (3)
+  load_resource: 125.748 (2)
+  PetaboxLoader3.resolve: 77.463 (2)
 */

@@ -257,8 +257,8 @@ var TRANSLATIONS = {
 
 }
 /*
-     FILE ARCHIVED ON 06:48:31 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:19 Jun 01, 2021.
+     FILE ARCHIVED ON 21:57:14 Oct 29, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:45 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -266,14 +266,14 @@ var TRANSLATIONS = {
 */
 /*
 playback timings (ms):
-  captures_list: 73.209
-  exclusion.robots: 0.186
-  exclusion.robots.policy: 0.174
-  RedisCDXSource: 0.836
-  esindex: 0.012
-  LoadShardBlock: 44.198 (3)
-  PetaboxLoader3.datanode: 98.631 (5)
-  CDXLines.iter: 25.211 (3)
-  load_resource: 99.711 (2)
-  PetaboxLoader3.resolve: 36.687
+  esindex: 0.023
+  CDXLines.iter: 34.876 (3)
+  load_resource: 251.338 (2)
+  exclusion.robots: 0.443
+  exclusion.robots.policy: 0.42
+  captures_list: 239.312
+  PetaboxLoader3.resolve: 233.706 (3)
+  RedisCDXSource: 11.738
+  PetaboxLoader3.datanode: 173.306 (5)
+  LoadShardBlock: 186.449 (3)
 */

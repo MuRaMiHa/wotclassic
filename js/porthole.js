@@ -447,8 +447,8 @@ Porthole.WindowProxyDispatcher = {
 
 }
 /*
-     FILE ARCHIVED ON 06:48:42 Sep 16, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 12:31:20 Jun 01, 2021.
+     FILE ARCHIVED ON 18:31:26 Nov 03, 2015 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:40:44 Sep 22, 2021.
      JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
 
      ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
@@ -456,14 +456,14 @@ Porthole.WindowProxyDispatcher = {
 */
 /*
 playback timings (ms):
-  LoadShardBlock: 240.307 (3)
-  esindex: 0.016
-  exclusion.robots.policy: 0.209
-  cdx.remote: 0.15
-  PetaboxLoader3.resolve: 74.533 (2)
-  captures_list: 316.812
-  exclusion.robots: 0.242
-  load_resource: 152.122 (2)
-  CDXLines.iter: 26.279 (3)
-  PetaboxLoader3.datanode: 285.27 (5)
+  PetaboxLoader3.datanode: 1737.321 (5)
+  cdx.remote: 0.119
+  load_resource: 130.832 (2)
+  PetaboxLoader3.resolve: 589.714 (4)
+  exclusion.robots.policy: 0.225
+  captures_list: 2529.644
+  esindex: 0.017
+  LoadShardBlock: 2393.893 (3)
+  CDXLines.iter: 20.459 (3)
+  exclusion.robots: 0.241
 */
