@@ -6341,7 +6341,7 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/img/core/frontend/scss/common/blocks/sparkles/img/sparkles.png) 50% 0;
+	background: url(../img/sparkles.png) 50% 0;
 	z-index: -1
 }
 
@@ -13197,7 +13197,7 @@ a:hover {
 @font-face {
 	font-family: "robotocondensedbold";
 	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/./robotocondensed-bold-webfont.eot);
-	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-bold-webfont.eot#iefix) format("embedded-opentype"), url(./robotoCondensed-bold-webfont.woff) format("woff");
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-bold-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/robotoCondensed-bold-webfont.woff) format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal
@@ -13206,7 +13206,7 @@ a:hover {
 @font-face {
 	font-family: "robotocondensedregular";
 	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot);
-	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot#iefix) format("embedded-opentype"), url(./robotoCondensed-regular-webfont.woff) format("woff");
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/robotoCondensed-regular-webfont.woff) format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal
@@ -13215,7 +13215,7 @@ a:hover {
 @font-face {
 	font-family: "robotoregular";
 	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/roboto-regular-webfont.eot);
-	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/roboto-regular-webfont.eot#iefix) format("embedded-opentype"), url(./roboto-regular-webfont.woff) format("woff");
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/roboto-regular-webfont.eot#iefix) format("embedded-opentype"), url(roboto-regular-webfont.woff) format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal
@@ -13226,7 +13226,7 @@ a:hover {
 @font-face {
     font-family: 'WarHeliosCondC';
     src: url("./warhelioscondc-webfont.eot");
-    src: url("./warhelioscondc-webfont.eot#iefix") format("embedded-opentype"),url("./warhelioscondc-webfont.woff") format("woff");
+    src: url("./warhelioscondc-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelioscondc-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal
 }
@@ -13234,7 +13234,7 @@ a:hover {
 @font-face {
     font-family: 'WarHeliosCondCBold';
     src: url("./warhelioscondcbold-webfont.eot");
-    src: url("./warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"),url("./warhelioscondcbold-webfont.woff") format("woff");
+    src: url("./warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelioscondcbold-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal
 }
