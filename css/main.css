@@ -13197,7 +13197,7 @@ a:hover {
 @font-face {
 	font-family: "robotocondensedbold";
 	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/./robotocondensed-bold-webfont.eot);
-	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-bold-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/robotoCondensed-bold-webfont.woff) format("woff");
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-bold-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/roboto/robotoCondensed-bold-webfont.woff) format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal
@@ -13206,7 +13206,7 @@ a:hover {
 @font-face {
 	font-family: "robotocondensedregular";
 	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot);
-	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/robotoCondensed-regular-webfont.woff) format("woff");
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/robotocondensed-regular-webfont.eot#iefix) format("embedded-opentype"), url(../fonts/roboto/robotoCondensed-regular-webfont.woff) format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal
