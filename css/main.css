@@ -13226,7 +13226,7 @@ a:hover {
 @font-face {
     font-family: 'WarHeliosCondC';
     src: url("./warhelioscondc-webfont.eot");
-    src: url("./warhelioscondc-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelioscondc-webfont.woff") format("woff");
+    src: url("./warhelioscondc-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelios/warhelioscondc-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal
 }
@@ -13234,7 +13234,7 @@ a:hover {
 @font-face {
     font-family: 'WarHeliosCondCBold';
     src: url("./warhelioscondcbold-webfont.eot");
-    src: url("./warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelioscondcbold-webfont.woff") format("woff");
+    src: url("./warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"),url("../fonts/warhelios/warhelioscondcbold-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal
 }
