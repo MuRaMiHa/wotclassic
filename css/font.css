@@ -1,0 +1,44 @@
+@font-face {
+	font-family: "robotocondensedbold";
+	src: url(../font/roboto/RobotoCondensed-Bold.eot);
+	src: url(../font/roboto/RobotoCondensed-Bold.eot#iefix) format("embedded-opentype"), url(../font/roboto/robotoCondensed-bold-webfont.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal
+}
+
+@font-face {
+	font-family: "robotocondensedregular";
+	src: url(../font/roboto/RobotoCondensed-Regular.eot);
+	src: url(../font/roboto/RobotoCondensed-Regular.eot#iefix) format("embedded-opentype"), url(../fonts/roboto/robotoCondensed-regular-webfont.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal
+}
+
+@font-face {
+	font-family: "robotoregular";
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/roboto-regular-webfont.eot);
+	src: url(http://static-ptl-ru.gcdn.co/static/4.3.3/wotp_static/fonts/roboto-regular-webfont.eot#iefix) format("embedded-opentype"), url(roboto-regular-webfont.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal
+}
+
+}
+
+@font-face {
+    font-family: 'WarHeliosCondC';
+    src: url("./warhelioscondc-webfont.eot");
+    src: url("./warhelioscondc-webfont.eot#iefix") format("embedded-opentype"),url("../font/warhelios/warhelioscondc-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'WarHeliosCondCBold';
+    src: url("./warhelioscondcbold-webfont.eot");
+    src: url("./warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"),url("../font/warhelios/warhelioscondcbold-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
