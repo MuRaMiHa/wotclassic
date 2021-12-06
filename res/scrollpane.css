@@ -1,0 +1,237 @@
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 20px;
+	height: 100%;
+}
+.js-combobox-dropdown .jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 3px;
+	width: 17px;
+	height: 100%;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: #404040;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/track-bg.gif) repeat-y #101115;
+    position: relative;
+    border-left: 1px #08090a solid;
+    border-right: 1px #08090a solid;
+}
+
+.js-combobox-dropdown .jspTrack
+{
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/track-bg.png) repeat-y;
+    position: relative;
+    border-bottom: 1px solid #e2e2e2;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #e2e2e2;
+    margin: 1px 3px 1px 0;
+    width: 17px;
+}
+
+.jspDrag
+{
+    border: 1px solid #555659;
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/drag-bg.gif) repeat-y 0 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+.js-combobox-dropdown .jspDrag
+{
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/pat.jpg) repeat 0 0;/*url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/drag-bg.gif) repeat-y 0 0;*/
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px -1px 0px 0px rgba(255, 255, 255, 0.3);
+	position: relative;
+	top: 0;
+    width: 15px;
+	cursor: pointer;
+}
+   /*.js-combobox-dropdown .jspDragTop {
+       background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/drag-bg.png) no-repeat 7px center;
+       height: 8px;
+       position: absolute;
+       top:50%;
+       left: 0;
+       margin-top: -4px;
+       width: 22px;
+   }*/
+
+.jspDrag.jspHover {
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/drag-bg.gif) repeat-y -18px 0;
+    border: 1px solid #6a6c70;
+}
+.js-combobox-dropdown .jspDrag.jspHover {
+    background: url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/pat_hover.jpg) repeat 0 0;/*url(/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/drag-bg.gif) repeat-y -18px 0;*/
+    border: 1px solid #c1c1c1;
+}
+.jspArrow
+{
+	background: #080808;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrowDown {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -80px -102px;
+}
+.jspArrowDown:hover {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -80px -121px;
+}
+.jspArrowDown.jspActive {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -59px -230px;
+}
+.jspArrowDown.jspDisabled {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -80px -140px;
+}
+.jspArrowUp {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -60px -102px;
+}
+.jspArrowUp:hover {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -60px -121px;
+}
+.jspArrowUp.jspActive {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -20px -230px;
+}
+.jspArrowUp.jspDisabled {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png") no-repeat -60px -140px;
+}
+
+.js-combobox-dropdown .jspArrow.jspArrowUp {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 0;
+    margin: 3px 0 1px;
+}
+.js-combobox-dropdown .jspArrow.jspArrowUp:hover {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 0;
+}
+.js-combobox-dropdown .jspArrow.jspArrowUp.jspActive {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 0;
+}
+.js-combobox-dropdown .jspArrow.jspArrowDown {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 -11px;
+    margin: 1px 0 0;
+}
+.js-combobox-dropdown .jspArrow.jspArrowDown:hover {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 -11px;
+}
+.js-combobox-dropdown .jspArrow.jspArrowDown.jspActive {
+    background: url("/web/20121212105151im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/scrollpane/img/arr-up-down.png") no-repeat 0 -11px;
+}
+
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 19px;
+}
+.js-combobox-dropdown .jspVerticalBar .jspArrow
+{
+	height: 11px;
+    width: 17px;
+    position: relative;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+    border: 1px solid #B0B0B0;
+	background: #303030;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
+/*
+     FILE ARCHIVED ON 10:51:51 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:16 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  RedisCDXSource: 2.501
+  LoadShardBlock: 34.585 (3)
+  PetaboxLoader3.resolve: 1344.013
+  load_resource: 1989.795
+  exclusion.robots: 0.289
+  CDXLines.iter: 27.897 (3)
+  captures_list: 70.52
+  esindex: 0.048
+  exclusion.robots.policy: 0.268
+  PetaboxLoader3.datanode: 675.631 (4)
+*/

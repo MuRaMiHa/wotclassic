@@ -1,0 +1,103 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+(function($){
+    var cookiePrefix = 'csw_';
+    var partnerSystemParameterName = 'sid';
+
+    var getTemplateCookie = function(template) {
+        return getCookie(cookiePrefix+template);
+    };
+    var setTemplateCookie = function(template) {
+        setCookie(cookiePrefix+template, true, { expires: 31536000, path: '/', domain: getDomainForCookie() });
+    };
+
+    window.regionWidget = function(calling, url, template) {
+        if (navigator.cookieEnabled && !getTemplateCookie(template) && url && template) {
+            var params = {
+                'tpl': template,
+                'calling': calling,
+                'sid': getParameterByName(partnerSystemParameterName)
+            };
+
+            var onData = function(data){
+                try {
+                    templateHandlers[template.toLowerCase()](template.toLowerCase(), data);
+                } catch(e) {}
+            };
+
+            $.getJSON(url+'?jsoncallback=?', params, onData);
+        }
+    };
+
+    var templateHandler_popup = function(template, data) {
+        setTemplateCookie(template);
+
+        if (data.msg) {
+            $("BODY").append('<div class="cluster-change-overlay" id="cluster-change-overlay"></div>');
+            $('.cluster-change-overlay').html(data.msg).show();
+            $('.cluster-change-content').center({vertical:true});
+            $("HTML").addClass("scrolllock");
+            var $body = $(this.ie6 ? document.body : document);
+            var $heightpage = $body.height() + 200;
+            $('.cluster-change-overlay-bg').css({height: $heightpage});
+        }
+    };
+
+    var templateHandler_top = function(template, data) {
+        if (data.msg) {
+            $(".b-header").before(data.msg);
+            $('#top-widget-button-close').click(function(){
+                setTemplateCookie(template);
+                $('#top-widget-wrapper').remove();
+            })
+        } else {
+            setTemplateCookie(template);
+        }
+    };
+
+    var templateHandler_registration = function(template, data) {
+        if (data.msg) {
+            $("#registration-region-widget").html(data.msg).show();
+        }
+    };
+
+    var templateHandlers = {
+        'popup': templateHandler_popup,
+        'top': templateHandler_top,
+        'registration': templateHandler_registration
+    };
+})(jQuery);
+
+
+}
+/*
+     FILE ARCHIVED ON 10:51:59 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:30 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 364.397
+  exclusion.robots: 0.088
+  exclusion.robots.policy: 0.081
+  RedisCDXSource: 1.081
+  esindex: 0.007
+  LoadShardBlock: 343.885 (3)
+  PetaboxLoader3.datanode: 350.861 (4)
+  CDXLines.iter: 16.401 (3)
+  load_resource: 72.649
+  PetaboxLoader3.resolve: 26.489
+*/

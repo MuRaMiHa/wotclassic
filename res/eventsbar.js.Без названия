@@ -1,0 +1,889 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+// we use FormatEvents/EventsJSON2Storage from index page to format "last events" block
+// add_fn(html, islast)
+function FormatEvents(data, lastdate, add_fn)
+{
+    var ld = lastdate;
+
+    for (var i in data)
+    {
+        var date1 = new Date();
+        var date2 = new Date();
+        var action  = data[i];
+        var begin_time = date1.wotFormatTimeHM(date1.wotTimeFromUTC(parseInt(action.turn.begin_time) * 1000));
+        var end_time = date2.wotFormatTimeHM(date2.wotTimeFromUTC(parseInt(action.turn.end_time)  * 1000));
+
+        var time = new Date( parseInt( action.turn.begin_time ) * 1000 );
+        var time_str = time.getDate() + "." + time.getMonth() + "." + time.getFullYear();
+
+        if( ld != time_str)
+        {
+            var html = '<li class="js-event-scroll-content-li" style="margin-left:-20px"><span style="font-weight:bold; font-size:larger;"><span style="color:white;">' + time.wotToLocaleDateString() + ' ' + time.wotToLocaleDayOfWeek() + '</span></span></li>';
+            add_fn(html, false);
+            ld = time_str;
+        }
+
+        var html = '<li><i class="js-event-scroll-content-li ico-type ico-' + action.color + '"></i><span style="font-weight:bold;">' + begin_time + ' - ' + end_time + '</span> ' + action.action + '</li>';
+        add_fn(html, i == data.length - 1);
+    }
+    return ld;
+}
+
+function EventsJSON2Storage(data)
+{
+    var out = { 'storage': [],
+                'last_action': null};
+
+    for (var i in data)
+    {
+        var turn = data[i];
+        for (var a in turn.actions)
+        {
+            out.is_added = true;
+            var action = turn.actions[a];
+
+            out.storage.push({
+                'turn': turn.turn,
+                'action': action.text,
+                'color': action.color
+            });
+
+            if (!out.last_action)
+                out.last_action = action.id;
+            else if ( out.last_action > action.id )
+                out.last_action = action.id;
+        }
+    }
+    return out;
+}
+
+var getparam = function(params, name, def)
+{
+    if (params[name])
+        return params[name];
+    return def;
+};
+
+//Events bar functions.
+var NewsLine = function(widget, params){
+    var bar = this;
+    this.widget = widget;
+    var g_el = {};
+
+    this.initialize = function()
+    {
+        if (this._is_init != null)
+            return;
+
+        this._is_init = true;
+
+        this._height = getparam(params, 'bar-height', 30);
+        this._timeout = getparam(params, 'animation_timeout', 5000);
+        this._play_mode = getparam(params, 'animation_type', 'up');
+        this._animation_mode = getparam(params, 'animation_speed', 'fast');
+        this._caption = getparam(params, 'caption', 'News: ');
+
+        this._auto_play_counter = 0;
+        this._is_animation_begin = false;
+        this._context = jQuery(this.widget.selector);
+        this._auto_play_counter = 1;
+        this._animate_counter = 0;
+        this._animate_is_first = true;
+
+        // do not spam with selectors
+        g_el.bar = jQuery(".js-events-bar", this._context);
+        g_el.bar_left = jQuery('.js-events-bar-left', this._context);
+        g_el.bar_right = jQuery('.js-events-bar-right', this._context);
+        g_el.navigate_prev = jQuery('.js-events-navigate-prev', this._context);
+        g_el.navigate_next = jQuery('.js-events-navigate-next', this._context);
+        g_el.scroll_content = jQuery('.js-events-scroll-content', this._context);
+
+        g_el.bar_right.mouseenter(function(){
+            bar.stop();
+            return false;
+        });
+
+        g_el.bar_right.mouseleave(function(){
+            bar.play();
+            return false;
+        });
+
+        g_el.navigate_prev.click(function(){
+            bar.prev();
+            return false;
+        });
+
+        g_el.navigate_next.click(function(){
+            bar.next();
+            return false;
+        });
+
+        return this;
+    };
+
+    this.content = function(html, data)
+    {
+        html = '<div class="b-text-overflow" style="height:' + this._height + 'px;">' + html + '</div>';
+
+        var list = g_el.scroll_content.children();
+        var direction = '';
+
+        if (data.direction == 'prev') direction = 'down';
+        if (data.direction == 'next') direction = 'up';
+        if (data.direction == '*') direction = this._play_mode;
+
+        if (direction == 'up')
+        {
+            g_el.scroll_content.append(html);
+
+            if (list.length > 0){
+                bar._is_animation_begin = true;
+
+                g_el.scroll_content.animate({'top': '-=' + this._height + 'px'}, this._animation_mode, function(){
+                    g_el.scroll_content.css('top', '0px');
+                    jQuery(list[0]).remove();
+                    bar._is_animation_begin = false;
+                });
+            }
+        }
+        else if (direction == 'down')
+        {
+            if (list.length == 0){
+                g_el.scroll_content.append(html);
+                return;
+            }
+
+            g_el.scroll_content.prepend(html);
+            g_el.scroll_content.css('top', -this._height + 'px');
+
+            bar._is_animation_begin = true;
+
+            g_el.scroll_content.animate({'top': '+=' + this._height + 'px'}, this._animation_mode, function(){
+                bar._is_animation_begin = false;
+                jQuery(list[list.length - 1]).remove();
+                g_el.scroll_content.css('top', '0px');
+            });
+        }
+    };
+
+    this.next = function(){
+        if (bar._is_animation_begin)
+            return;
+
+        bar.widget.loader({'type':'bar', 'widget':bar, 'direction':'next'});
+    };
+
+    this.prev = function(){
+        if (bar._is_animation_begin)
+            return;
+
+        bar.widget.loader({'type':'bar', 'widget':bar, 'direction':'prev'});
+    };
+
+    this.stop = function(){
+        bar._auto_play_counter = bar._auto_play_counter + 1;
+    };
+
+    this.play = function(){
+        bar._auto_play_counter = bar._auto_play_counter - 1;
+
+        if (bar._auto_play_counter == 0)
+            bar._animate();
+    };
+
+    this.is_play = function(){
+        return bar._auto_play_counter == 0;
+    };
+
+    this._animate = function()
+    {
+        bar._animate_counter = bar._animate_counter + 1;
+
+        var counter = bar._animate_counter;
+        var fn_animate = function()
+        {
+            if (counter == bar._animate_counter && bar._auto_play_counter == 0)
+            {
+                if (bar._play_mode == 'up')
+                    bar.next();
+                else if (bar._play_mode == 'down')
+                    bar.prev();
+            }
+
+            if (counter == bar._animate_counter)
+                bar._animate();
+        };
+
+        if (bar._animate_is_first)
+        {
+            bar._animate_is_first = false;
+
+            if (bar._play_mode == 'up')
+                bar.next();
+            else if (bar._play_mode == 'down')
+                bar.prev();
+        }
+
+        setTimeout(fn_animate, bar._timeout);
+    };
+
+    this.caption = function(text){
+        if (text)
+        {
+            this._caption = text;
+            g_el.bar_left.html(text);
+            var widthNews = g_el.bar.width() - (g_el.bar_left.width() + g_el.bar_right.width());
+        }
+        return this._caption;
+    };
+
+    return this.initialize();
+};
+
+var NewsPopup = function(widget, params){
+
+    var popup = this;
+    var g_el = {};
+
+    this.initialize = function(widget){
+        this.widget = widget;
+
+        this._is_opened = false;
+        this._context = jQuery(this.widget.selector);
+        this._animation_speed = 'fast';
+        this._is_first_added = false;
+        this._full_height = 0;
+        this._is_auto_scroll = true;
+        this._scrol_notice_html = '<li class="js-events-scroll-notice" style="font-weight:bold;">' + translate('EVENTS_LOADING') +  '</li>';
+
+        // do not spam with selectors
+        g_el.bar = jQuery(".js-events-bar", this._context);
+        g_el.list_news = jQuery(".js-events-list-news", this._context);
+        g_el.navigate_open = jQuery('.js-events-navigate-open', this._context);
+        g_el.navigate_close = jQuery('.js-events-navigate-close', this._context);
+        g_el.list_toolbar = jQuery('.js-event-list-toolbar', this._context);
+        g_el.list_scroll_content_ul = jQuery('.js-events-list-scroll-content-ul', this._context);
+        g_el.list_scroll_content = jQuery('.js-events-list-scroll-content', this._context);
+
+        g_el.scroll_settings = {
+            'showArrows'				: true,
+            'verticalDragMinHeight'		: 7,
+            'horizontalDragMinWidth'	: 7
+	    };
+
+        var scrollPane = g_el.list_scroll_content.jScrollPane(g_el.scroll_settings);
+        g_el.scroll_api = scrollPane.data('jsp');
+
+        this._real_top = g_el.list_news.position().top;
+        this._full_height = g_el.list_news.height();
+
+        g_el.list_news.hide();
+        g_el.list_news.css({'top': this._real_top,
+                            'height': 0});
+
+        g_el.navigate_open.click(function(){
+            if (!popup._is_opened)
+                popup.open();
+            else
+                popup.close();
+
+            return false;
+        });
+
+        g_el.navigate_close.click(this.close);
+
+        return this;
+    };
+
+    this.open = function(){
+        if (popup._is_opened)
+            return;
+
+        popup.widget.bar.stop();
+
+        if (!popup._is_first_added || jQuery('.js-event-scroll-content-li', popup.elem()).length == 0)
+        {
+            popup._is_first_added = true;
+
+            popup.widget.loader({
+                'type':'popup',
+                'widget':popup
+            });
+        }
+
+        popup._is_opened = true;
+
+        g_el.list_news.show();
+        g_el.list_news.animate(
+            {'top': '-=' + popup._full_height, 'height': '+=' + popup._full_height},
+            popup._animation_speed, '',
+            function()
+            {
+                if (popup._is_auto_scroll && popup.is_appear(jQuery('.js-events-navigate-next-content', popup._context)))
+                {
+                    jQuery('.js-events-navigate-next-content', popup._context).remove();
+                    popup.widget.loader({
+                        'type':'popup',
+                        'widget':popup
+                    });
+                }
+
+                popup.scrollReinit();
+            }
+        );
+    };
+
+    this.close = function(){
+        if (!popup._is_opened)
+            return;
+
+        popup.widget.bar.play();
+        popup._is_opened = false;
+        g_el.list_news.animate({'top': '+=' + popup._full_height, 'height': '-=' + popup._full_height}, popup._animation_speed, function(){
+            g_el.list_news.hide();
+        });
+
+        return false;
+    };
+
+    this.content = function(stream, html, is_write_next)
+    {
+        jQuery(stream).append(html);
+
+        if (is_write_next)
+        {
+            if (!popup._is_auto_scroll)
+            {
+                // Next button ...
+                jQuery(stream).append('<a class="js-events-navigate-next-content" href="#">' + translate('EVENTS_CONTINUE') + '</a>');
+
+                jQuery('.js-events-navigate-next-content', stream).unbind();
+                jQuery('.js-events-navigate-next-content', stream).click(function(){
+                    jQuery('.js-events-navigate-next-content', stream).remove();
+                    popup.widget.loader({'type':'popup', 'widget':popup});
+                    return false;
+                });
+            }
+            else
+            {
+                jQuery(stream).append('<div class="js-events-navigate-next-content" style="height:25px; width:25px;"></div>');
+
+                // Autoscroll functional ...
+                if (popup.is_appear(jQuery('.js-events-navigate-next-content', stream)))
+                {
+                    jQuery('.js-events-navigate-next-content', stream).remove();
+                    // jQuery(stream).append(popup._scrol_notice_html);
+
+                    popup.widget.loader({
+                        'type':'popup',
+                        'widget':popup
+                    });
+                }
+                else
+                {
+                    //jQuery(g_el.list_scroll_content).unbind();
+                    //jQuery(g_el.list_scroll_content).scroll(function()
+
+                    g_el.list_scroll_content.unbind('jsp-scroll-y.eventbar');
+                    g_el.list_scroll_content.bind('jsp-scroll-y.eventbar', function(event, isAtTop, isAtBottom, isAtLeft, isAtRight)
+                    {
+                        if (popup.is_appear(jQuery('.js-events-navigate-next-content', stream)))
+                        {
+                            jQuery('.js-events-navigate-next-content', stream).remove();
+
+                            popup.widget.loader({
+                                'type':'popup',
+                                'widget':popup
+                            });
+                        }
+
+                        return false;
+                    });
+                }
+            }
+        }
+    };
+
+    this.isOpen = function(){
+        return popup._is_opened;
+    };
+
+    this.elem = function(){
+        return g_el.list_scroll_content_ul;
+    };
+
+    this.scrollReinit = function(){
+        return g_el.scroll_api.reinitialise(g_el.scroll_settings);
+    };
+
+    this.toolbar = function(){
+        return g_el.list_toolbar;
+    };
+
+    this.is_appear = function(elem)
+    {
+        if (!elem.is(':visible'))
+            return false;
+
+        var window = g_el.list_scroll_content;
+
+        var window_p = window.offset();
+        var window_x = window_p.left;
+        var window_y = window_p.top;
+
+        var elem_of = elem.offset();
+        var elem_x  = elem_of.left;
+        var elem_y  = elem_of.top;
+
+        return (window_y + window.height() >= elem_y && window_y <= elem_y);
+    };
+
+    return this.initialize(widget);
+};
+
+var NewsPopupBar = function(id, params){
+    this.selector = '#' + id;
+    this.params = params;
+    this.data = {};
+
+    this.bar   = new NewsLine(this, params);
+    this.popup = new NewsPopup(this, params);
+
+    this.loaderObject = getparam(params, 'loader', new EmptyLoader());
+
+    this.loader = function(data){
+        this.loaderObject.load(data, null);
+    };
+
+    this.elem = function(){
+        return jQuery(this.selector);
+    };
+
+    this.reset = function(){
+        this.loaderObject.reset();
+        if (!this.bar.is_play())
+            this.bar.play();
+    };
+
+    if (this.loaderObject.initialize)
+        this.loaderObject.initialize(this);
+
+    return this;
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var EmptyLoader = function()
+{
+    this.load = function(widgetData)
+    {
+        if (widgetData.type == 'bar')
+        {
+            widgetData.widget.caption('No Title: ', widgetData);
+            widgetData.widget.content('This line is presented as an example of a test message ...', widgetData);
+        }
+        else if (widgetData.type == 'popup'){
+            widgetData.widget.content('<p>This line is presented as an example of a test message ...</p>', true);
+        }
+    };
+
+    return this;
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var EventLoader = function(params)
+{
+    var loader = this;
+
+    var DataItem = function(filter, stream){
+        this.storage = [];
+        this.current = 0;
+
+        this.popupCurIdx = 0;
+        this.popupCurActionId = -1;
+        this.popupCurTurnId = -1;
+        this.loadedEnd = false;
+        this.filter = filter;
+        this.stream = stream;
+        this.date = '';
+        this.ajaxCounter = 0;
+        this.ajaxProvince = '';
+        this.scrollTop = 0;
+
+        return this;
+    };
+
+    this.reset = function()
+    {
+        loader.dataStorage = {};
+
+        var cur_stream = loader.widget.popup.elem();
+
+        loader.dataStorage['all'] = new DataItem('all', (loader.filter == 'all') ? cur_stream : jQuery('#' + loader.cachePrefix + 'all') );
+        loader.dataStorage['clan'] = new DataItem('clan', (loader.filter == 'clan') ? cur_stream : jQuery('#' + loader.cachePrefix + 'clan'));
+        loader.dataStorage['province'] = new DataItem('province', (loader.filter == 'province') ? cur_stream : jQuery('#' + loader.cachePrefix + 'province'));
+        loader.dataStorage['spy'] = new DataItem('spy', (loader.filter == 'spy') ? cur_stream : jQuery('#' + loader.cachePrefix + 'spy'));
+
+        loader.data = loader.dataStorage[loader.filter];
+        loader.dataBar = loader.dataStorage['all'];
+
+        jQuery('#' + loader.cachePrefix + 'all').html('');
+        jQuery('#' + loader.cachePrefix + 'clan').html('');
+        jQuery('#' + loader.cachePrefix + 'province').html('');
+        jQuery('#' + loader.cachePrefix + 'spy').html('');
+
+        jQuery(loader.widget.popup.elem()).html('');
+
+        if (loader.widget.popup.isOpen()){
+            loader.data = loader.dataStorage[loader.filter];
+            loader.load({'type': 'popup', 'widget': loader.widget.popup }, loader.data);
+        }
+
+        var el_navigate_clan = jQuery('.js-events-navigate-clan', loader.widget.elem());
+        var el_navigate_spy = jQuery('.js-events-navigate-spy', loader.widget.elem());
+        var user_is_clan = (l_provinces && l_provinces.get_user_clan_info()) ? true : false;
+        var role = cwar_helper.get_role();
+
+        if (!user_is_clan) {
+            el_navigate_clan.css({'display': 'none'});
+            el_navigate_spy.css({'display': 'none'});
+        } else {
+            el_navigate_clan.css({'display': 'block'});
+            if (!role || role == 'recruit') {
+                el_navigate_spy.css({'display': 'none'});
+            } else {
+                el_navigate_spy.css({'display': 'block'});
+            }
+        }
+    };
+
+    this.url = params.url;
+    this.cssClassActiveTab = 'active';
+    this.cachePrefix = 'js-cache-';
+    this.currentProvince = '';
+    this.filter = 'all';
+
+    jQuery('<div id="' + this.cachePrefix + 'all" style="display:none"></div>').appendTo('body');
+    jQuery('<div id="' + this.cachePrefix + 'clan" style="display:none"></div>').appendTo('body');
+    jQuery('<div id="' + this.cachePrefix + 'province" style="display:none"></div>').appendTo('body');
+    jQuery('<div id="' + this.cachePrefix + 'spy" style="display:none"></div>').appendTo('body');
+
+    this.initialize = function(widget)
+    {
+        this.widget = widget;
+
+        this.scrollNoticeText = this.widget.popup._scrol_notice_html;
+
+        this.reset();
+
+        var toolbar = this.widget.popup.toolbar();
+
+        var el_navigate_all = jQuery('.js-events-navigate-all', widget.elem());
+        el_navigate_all.click(function(){
+            jQuery('.' + loader.cssClassActiveTab, loader.widget.elem()).removeClass(loader.cssClassActiveTab);
+            el_navigate_all.addClass(loader.cssClassActiveTab);
+
+            loader.changeFilter('all');
+            return false;
+        });
+
+        var el_navigate_clan = jQuery('.js-events-navigate-clan', widget.elem());
+        el_navigate_clan.click(function(){
+            jQuery('.' + loader.cssClassActiveTab, loader.widget.elem()).removeClass(loader.cssClassActiveTab);
+            el_navigate_clan.addClass(loader.cssClassActiveTab);
+
+            loader.changeFilter('clan');
+            return false;
+        });
+
+        var el_navigate_province = jQuery('.js-events-navigate-province', widget.elem());
+        el_navigate_province.click(function(){
+            jQuery('.' + loader.cssClassActiveTab, loader.widget.elem()).removeClass(loader.cssClassActiveTab);
+            el_navigate_province.addClass(loader.cssClassActiveTab);
+
+            loader.changeFilter('province');
+            return false;
+        });
+
+        var el_navigate_spy = jQuery('.js-events-navigate-spy', widget.elem());
+        el_navigate_spy.click(function(){
+            jQuery('.' + loader.cssClassActiveTab, loader.widget.elem()).removeClass(loader.cssClassActiveTab);
+            el_navigate_spy.addClass(loader.cssClassActiveTab);
+
+            loader.changeFilter('spy');
+            return false;
+        });
+
+        return this;
+    };
+
+    this.load = function(widgetData, data)
+    {
+        var stream = null;
+
+        if (data == null)
+            data = loader.data;
+
+        stream = loader.data.stream;
+
+        if (data.storage.length == 0){
+            loader.ajaxLoad(widgetData);
+        }
+
+        else if (widgetData.type == 'bar')
+        {
+            if (data.storage.length > data.current && widgetData.direction == 'next'){
+                data.current = data.current + 1;
+                if (data.current == data.storage.length){
+                    data.current = 0;
+                }
+                loader.formatBarItem(data.storage[data.current], widgetData);
+            }
+            else if (data.current >= 0 && widgetData.direction == 'prev'){
+                data.current = data.current - 1;
+                if (data.current < 0)
+                    data.current = data.storage.length - 1;
+                loader.formatBarItem(data.storage[data.current], widgetData);
+            }
+        }
+        else if (widgetData.type == 'popup')
+        {
+            if (data.popupCurIdx == data.storage.length)
+                loader.ajaxLoad(widgetData);
+            else
+                loader.formatPopupItem(widgetData, data);
+        }
+    };
+
+    this.changeProvince = function()
+    {
+        if (l_provinces)
+        {
+            var province = l_provinces.get_province_info(l_provinces.get_selected_province());
+
+            if (province && province.full_data)
+            {
+                if (loader.currentProvince != province.full_data.name)
+                {
+                    loader.currentProvince = province.full_data.name;
+
+                    if (loader.filter == 'province')
+                    {
+                        loader.dataStorage['province'] = new DataItem('province', loader.widget.popup.elem());
+                        loader.data = loader.dataStorage['province'];
+                        loader.widget.popup.elem().html('');
+
+                        if (loader.widget.popup.isOpen())
+                        {
+                            var filter = loader.filter;
+                            loader.ajaxLoad({
+                                'type':'popup',
+                                'widget': loader.widget.popup
+                            });
+                        }
+                    }
+                    else
+                    {
+                        loader.dataStorage['province'] = new DataItem('province', jQuery('#' + loader.cachePrefix + 'province'));
+                        jQuery('#' + loader.cachePrefix + 'province').html('');
+                    }
+
+                    loader.widget.popup.scrollReinit();
+                }
+            }
+            else
+            {
+                loader.currentProvince = '';
+            }
+        }
+    };
+
+    this.changeFilter = function(filter)
+    {
+        if (loader.filter == filter)
+            return;
+
+        if (filter in loader.dataStorage)
+        {
+            jQuery('#' + loader.cachePrefix + loader.filter).html('');
+
+            // loader.data.scrollTop = jQuery(loader.data.stream).css('top');
+
+            loader.data.stream = jQuery('#' + loader.cachePrefix + loader.filter);
+            loader.widget.popup.elem().contents().detach().appendTo(loader.data.stream);
+
+            loader.filter = filter;
+            loader.data = loader.dataStorage[loader.filter];
+            loader.data.stream = loader.widget.popup.elem();
+
+            jQuery('#' + loader.cachePrefix + loader.filter).contents().detach().appendTo(loader.data.stream);
+
+            // jQuery(loader.data.stream).css('top', loader.data.scrollTop);
+
+            if (loader.data.storage.length == 0)
+            {
+                // First load.
+                loader.ajaxLoad({
+                    'type':'popup',
+                    'widget': loader.widget.popup
+                });
+            }
+            else
+                loader.widget.popup.scrollReinit();
+        }
+    };
+
+    this.ajaxLoad = function(widgetData)
+    {
+        if (loader.data.loadedEnd){
+            if (loader.data.storage.length == 0){
+                jQuery(loader.data.stream).html("");
+                widgetData.widget.content(loader.data.stream, '<li class="js-event-scroll-content-li" style="font-weight:bold;">' + translate('EVENTS_EMPTY') + '</li>', false);
+                if (widgetData.widget.scrollReinit)
+                    widgetData.widget.scrollReinit();
+            }
+
+            return;
+        }
+
+        var params = {};
+        if (loader.data.storage.length > 0)
+        {
+            params = {
+                'action': loader.data.popupCurActionId - 1
+            };
+        }
+
+        if (loader.filter == 'clan' || loader.filter == 'spy')
+            params['clan_id'] = '-1';
+        else if (loader.filter == 'province')
+            params['province_name'] = loader.currentProvince;
+
+        params['action_filter'] = loader.filter;
+
+        var filter = loader.filter;
+
+        if (loader.data.ajaxCounter != 0 && filter == 'province' && loader.data.ajaxProvince == loader.currentProvince){
+            return
+        }
+        else if (loader.data.ajaxCounter != 0 && filter != 'province')
+            return;
+
+        loader.data.ajaxCounter = 1;
+        loader.data.ajaxProvince = loader.currentProvince;
+
+        jQuery(loader.data.stream).append(loader.scrollNoticeText);
+
+        jQuery.ajax({
+            'data': params,
+            'url': this.url,
+            'dataType': 'json',
+            'success': function(data)
+            {
+                var logData = loader.dataStorage[filter];
+                logData.ajaxCounter = 0;
+
+                jQuery('.js-events-scroll-notice', loader.dataStorage[filter].stream).remove();
+
+                if (data && data.length > 0)
+                {
+                    if (filter == 'province' && params.province_name && params.province_name != loader.currentProvince){
+                        return;
+                    }
+
+                    var st = EventsJSON2Storage(data);
+                    logData.popupCurActionId = st.last_action;
+                    logData.storage = logData.storage.concat(st.storage);
+
+                    if (st.storage.length == 0){
+                        logData.loadedEnd = true;
+
+                        if (logData.storage.length == 0){
+                            jQuery(logData.stream).html("");
+                            widgetData.widget.content(logData.stream, '<li class="js-event-scroll-content-li" style="font-weight:bold;">' + translate('EVENTS_EMPTY') +  '</li>', false);
+                            if (widgetData.widget.scrollReinit)
+                                widgetData.widget.scrollReinit();
+                        }
+                    }
+                    else
+                    {
+                        logData.popupCurTurnId = logData.storage[logData.storage.length - 1].turn.id;
+                        loader.load(widgetData, logData);
+                    }
+                }
+                else
+                {
+                    logData.loadedEnd = true;
+                    if (logData.storage.length == 0){
+                        jQuery(logData.stream).html("");
+                        widgetData.widget.content(logData.stream, '<li class="js-event-scroll-content-li" style="font-weight:bold;">' + translate('EVENTS_EMPTY') +  '</li>', false);
+
+                        if (widgetData.widget.scrollReinit)
+                            widgetData.widget.scrollReinit();
+                    }
+                }
+            }
+        });
+    };
+
+    this.formatBarItem = function(data, widgetData)
+    {
+        var date = new Date();
+        var begin_time = date.wotFormatTimeHM(date.wotTimeFromUTC(parseInt(data.turn.begin_time) * 1000));
+        var end_time = date.wotFormatTimeHM(date.wotTimeFromUTC(parseInt(data.turn.end_time) * 1000));
+
+        var caption = '<i class="ico-type ico-' + data.color + '"></i><span style="font-weight:bold;">' + begin_time + ' - ' + end_time + '</span>';
+        var content = data.action;
+
+        widgetData.widget.caption(caption);
+        widgetData.widget.content(content, widgetData);
+    };
+
+    this.formatPopupItem = function(widgetData, data)
+    {
+        var newData = data.storage.slice(data.popupCurIdx, data.storage.length);
+        data.popupCurIdx = data.storage.length;
+
+        data.date = FormatEvents(newData, data.date, function(html, islast){
+            widgetData.widget.content(data.stream, html, islast);
+        });
+
+        widgetData.widget.scrollReinit();
+    };
+
+    return this;
+};
+
+
+}
+/*
+     FILE ARCHIVED ON 17:47:26 Jan 14, 2013 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:30 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 345.296
+  exclusion.robots: 0.11
+  exclusion.robots.policy: 0.102
+  RedisCDXSource: 19.676
+  esindex: 0.007
+  LoadShardBlock: 304.442 (3)
+  PetaboxLoader3.datanode: 195.689 (4)
+  CDXLines.iter: 18.398 (3)
+  load_resource: 97.761
+  PetaboxLoader3.resolve: 34.027
+*/

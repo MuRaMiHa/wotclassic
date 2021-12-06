@@ -1,0 +1,537 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+if (this.jQuery == undefined)
+{
+    alert('Please include the module "jQuery"');
+}
+
+var error_dialog_debug_mode = true;
+if (this.wg == undefined){
+    this.wg = {};
+}
+
+// Tabindex dialog.
+( function ($) {
+
+    $( document ).ready( function () {
+        var focusSelector = '.b-cancel > a, :input';
+        var ignoreSelector = 'a, .ui-corner-all';
+
+        $('.ui-dialog').live('dialogopen', function( elem ){
+            // ensure indexes in dialog won't overlap with indexes on current page (if any)
+            var tabIndex = 1000;
+
+            $(focusSelector + ',' + ignoreSelector, this).each( function(){
+                $(this).attr('tabindex', '-1');
+            });
+
+            $(focusSelector, this).each( function(){
+                if ( $(this).attr('type') == 'hidden' )
+                    return;
+                $(this).attr('tabindex', '' + (++tabIndex));
+            });
+        });
+
+        $('.ui-dialog').live('dialogclose', function( elem ){
+            $(focusSelector, this).each( function(){
+                $(this).attr('tabindex', '');
+            });
+        });
+    });
+
+})(jQuery);
+
+
+// Dialog
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+wg.dialog = function(id, params)
+{
+    var selector = id;
+    if (!selector || selector.length === 0) return;
+    if (selector.charAt(0) !== '#') selector = '#' + id;
+    else id = id.substr(1);
+
+    var isAutoOpen = false;
+
+    params = params || {};
+
+    var OnClose = null;
+    if( params['close'] ){
+        OnClose = params['close'];
+    }
+    var OnDragStart = null;
+    if( params['dragStart'] ){
+        OnDragStart = params['dragStart'];
+    }
+    params['close'] = function(e, ui){
+        if(typeof(OnClose)==='function'){
+            OnClose(e,ui);
+        }
+        jQuery('.js-combobox-dropdown').trigger('combobox-hidden', 'body');
+    };
+    params['dragStart'] = function(e, ui){
+        if(typeof(OnDragStart)==='function'){
+            OnDragStart(e,ui);
+        }
+        jQuery('.js-combobox-dropdown').trigger('combobox-hidden', 'body');
+    }
+    
+
+    var ext_data = params.ext_data || {};
+    var type = params.type || 'get';
+
+    if (!params.dialogClass) {
+        params.dialogClass = '';
+    }
+
+    if (!params.buttons) {
+        params.dialogClass += ' no-jquery-buttons';
+    }
+
+    var repeat = function (refreshed) {
+        refreshed = refreshed || false;
+
+        if (isAutoOpen)
+            wg.waiting('open');
+
+        jQuery.ajax({
+                        'type': type,
+                        'url': params.url,
+                        'dataType': 'html',
+                        'data': ext_data,
+                        'success': function(data, textStatus, request){
+                            if (!wg._validateInsertData(selector, data, repeat, request))
+                                return;
+
+                            var dialog = jQuery(selector);
+
+                            var title = jQuery('.js-dialog-title', dialog);
+                            if (title.length > 0) dialog.dialog('option', 'title', title.text());
+
+                            if (refreshed) return;
+
+                            jQuery(selector).dialog(params);
+
+                            if (isAutoOpen){
+                                dialog.dialog('open');
+                                dialog.dialog('option', 'width', dialog.parent('.ui-dialog').width() );
+                                if (window.wotUpdateDateTimeFields) wotUpdateDateTimeFields();
+                            }
+
+                            //add callback on cancel buttons
+                            jQuery('.js-cancel-button', dialog).click(function(e) {
+                                dialog.dialog('close');
+                                e.preventDefault();
+                            });
+
+                            if (params.OnContentReceived) {
+                                params.OnContentReceived(dialog);
+                            }
+                        },
+
+                        'error': function(request){
+                            wg.error(translate('DIALOG_CAN_NOT_RECEIVE_DATA'), repeat, request);
+                        },
+
+                        'complete': function(){
+                            if (isAutoOpen || refreshed)
+                                wg.waiting('close', {force: true});
+                        }
+                    });
+    };
+
+    if (jQuery(selector).length == 0)
+        jQuery('<div id="' + id + '"></div>').appendTo('body');
+
+    if (typeof(params) == 'string')
+    {
+        if (params == 'destroy')
+        {
+            jQuery(selector).dialog('destroy');
+            jQuery(selector).remove();
+        }
+        else if (params == 'refresh')
+        {
+            jQuery('.ui-dialog-titlebar-refresh', jQuery(selector).parent()).click();
+        }
+        else
+            return jQuery(selector).dialog(params);
+
+        return null;
+    }
+
+    // Ajax dialog
+    if (typeof(params) == 'object' && typeof(params.url) == 'string')
+    {
+        if (params.autoOpen == null)
+            params.autoOpen = true;
+
+        isAutoOpen = params.autoOpen;
+        params.autoOpen = null;
+
+        jQuery(selector).dialog(params);
+
+        if (params.refresh != null && typeof(params.refresh) == 'boolean' && params.refresh)
+        {
+            if (jQuery('.ui-dialog-titlebar .ui-dialog-titlebar-refresh', jQuery(selector).parent()).length == 0)
+            {
+                jQuery('.ui-dialog-titlebar', jQuery(selector).parent()).append('<a href="#" class="ui-dialog-titlebar-refresh ui-corner-all" role="button"><span class="ui-icon ui-icon-refresh">close</span></a>');
+
+                jQuery('.ui-dialog-titlebar-refresh', jQuery(selector).parent()).mouseenter(function(elem){
+                    jQuery(this).addClass('ui-state-hover');
+                });
+
+                jQuery('.ui-dialog-titlebar-refresh', jQuery(selector).parent()).mouseleave(function(){
+                    jQuery(this).removeClass('ui-state-hover');
+                });
+
+                jQuery('.ui-dialog-titlebar-refresh', jQuery(selector).parent()).click(function(){
+                    repeat(true);
+                    return false;
+               });
+            }
+        }
+
+        if (params.height == null)
+            params.height = 'auto';
+
+        if (params.width == null)
+            params.width = 'auto';
+
+        if (jQuery(selector).dialog('isOpen')) return;
+
+        // Cache implement
+        if (jQuery(selector).html() != '' && params.cache != null && params.cache)
+        {
+            if (isAutoOpen) {
+                jQuery(selector).dialog('open');
+                jQuery(selector).dialog('option', 'width', jQuery(selector).width());
+                if (window.wotUpdateDateTimeFields) wotUpdateDateTimeFields();
+            }
+        }
+        else
+            repeat();
+    }
+    else {
+        var dialog = jQuery(selector).dialog(params);
+
+        var title = jQuery('.js-dialog-title', dialog);
+        if (title.length > 0) dialog.dialog('option', 'title', title.text());
+    }
+
+    if (params.title != null && typeof(params.title) == 'boolean') {
+        if (!params.title){
+            jQuery('.ui-dialog-titlebar', jQuery(selector).parent()).css('display', 'none');
+        }
+        params.title = '';
+    }
+};
+
+wg._messageBoxDialogCounter = 0;
+wg.message_box = function(title, text, buttons, params) {
+    params = params || {};
+
+    var id = 'js-message-box-dialog-' + this._messageBoxDialogCounter;
+    var selector = '#' + id;
+
+    title = title || '';
+
+    ++this._messageBoxDialogCounter;
+
+    var html = '<p style="padding-top:10px; padding-bottom:10px;">' + text + '</p>';
+    if (params.warning){
+        // html = '<div class="b-form-message-warning"><div class="wrapper"><p>' + text + '</p></div></div>';
+        html = '<div class="b-message-warning">' + text + '</div>';
+    }
+    else {
+        html = '<div class="b-message-info">' + text + '</div>';
+    }
+
+    var dialog_params = {
+        'autoOpen': true,
+        'resizable': false,
+        'minWidth': 450,
+        'minHeight': 'auto',
+        'modal': true,
+        'dialogClass': 'js-message-box',
+        'buttons': []
+    };
+
+    if (title) dialog_params.title = title;
+    if (typeof(params.autoOpen)) dialog_params.autoOpen = params.autoOpen;
+
+    if (buttons.confirm) {
+        dialog_params.buttons.push({
+            text: typeof(buttons.confirm) === 'string' ? buttons.confirm : buttons.confirm.text,
+            'class': (buttons.confirm['class'] ? buttons.confirm['class'] : 'b-button-confirm'),
+            click: function(e){
+                if (buttons.confirm.click) buttons.confirm.click(e);
+                e.preventDefault();
+                jQuery(selector).dialog('close');
+            }
+        });
+    }
+    if (buttons.cancel) {
+        dialog_params.buttons.push({
+            text: typeof(buttons.cancel) === 'string' ? buttons.cancel : buttons.cancel.text,
+            'class': (buttons.cancel['class'] ? buttons.cancel['class'] : 'b-button-cancel') ,
+            click: function(e){
+                if (buttons.cancel.click) buttons.cancel.click(e);
+                e.preventDefault();
+                jQuery(selector).dialog('close');
+            }
+        });
+    }
+
+    jQuery('<div id="' + id + '"></div>').appendTo('body');
+    jQuery(selector).html(html);
+    this.dialog(id, dialog_params);
+    return id;
+};
+
+// Error Dialog
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+wg._errorDialogCounter = 0;
+wg.error = function(text, repeat, request, params)
+{
+    var id = 'error-dialog-' + this._errorDialogCounter;
+    var selector = '#' + id;
+    var title = translate('DIALOG_ERROR');
+
+    if (params && params.title) {
+        title = params.title;
+    }
+
+    if (typeof(repeat) == 'object')
+    {
+        request = repeat.request;
+        repeat  = repeat.repeat;
+    }
+
+    try
+    {
+        if (wg._debugErrorHandler && request)
+        {
+            text += ((request.statusText != null) ? request.statusText : 'ERROR') + ' (' + request.status + ')';
+        }
+    }
+    catch(er)
+    {
+        request = null;
+    }
+
+    ++this._errorDialogCounter;
+
+    var html = '<div class="b-message-error">' + text + '</div>';
+
+    if (jQuery(selector).length == 0)
+    {
+        jQuery('<div id="' + id + '"></div>').appendTo('body');
+
+        var buttons = [];
+
+        buttons.push({
+            'text': translate('DIALOG_CLOSE_BUTTON'),
+            'class': 'b-button-confirm',
+            'click': function() {
+                jQuery(this).dialog("destroy");
+                jQuery(selector).remove();
+            }
+        });
+
+        if (wg._debugErrorHandler && request) {
+            buttons.push({
+                'text': translate('DIALOG_INFORMATION_BUTTON'),
+                'class': 'b-button-info',
+                'click': function(e){
+                    wg._debugErrorHandler(request);
+                    return false;
+                }
+            });
+        }
+
+        if (repeat != null) {
+            buttons.push({
+                text: translate('DIALOG_REPEATE_BUTTON'),
+                'class': 'b-button-repeat',
+                click: function(e){
+                    repeat();
+                    jQuery(this).dialog("destroy");
+                    jQuery(selector).remove();
+                }
+
+            });
+        }
+
+        this.dialog(id, {
+                        'autoOpen': false,
+                        'title': title,
+                        'resizable': false,
+                        'modal': true,
+                        'minWidth': 400,
+                        'dialogClass': 'alert',
+                        'minHeight': 'auto',
+                        'buttons': buttons
+                    });
+    }
+
+    jQuery(selector).html(html);
+    this.dialog(id, 'open');
+    if (window.wotUpdateDateTimeFields) wotUpdateDateTimeFields();
+};
+
+// Wait dialog
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+wg._waitingDialogCounter = 0;
+wg._waitingDialogLockStartTime = 0;
+wg.waiting = function(mode, params)
+{
+    var id = 'wait-dialog';
+    var selector = '#' + id;
+
+    var MINIMUM_LOCK_DELAY = 750; //to prevent flashing
+
+    if (params == null)
+        params = {};
+
+    var lock_window = jQuery(selector);
+    if (lock_window.length == 0) {
+        lock_window = jQuery('<div id="' + id + '">').appendTo('body');
+        lock_window.html('<div class="b-waiting"></div>');
+
+        this.dialog(id, {
+            modal: true,
+            autoOpen: false,
+            title: false,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            minHeight: 10,
+            closeOnEscape: false,
+            dialogClass: 'b-waiting-dialog'
+            });
+    }
+
+    if (mode == 'close') {
+        --this._waitingDialogCounter;
+
+        if (this._waitingDialogCounter == 0) {
+            var date = new Date();
+            var curTime = date.getTime();
+            var minCloseTime = wg._waitingDialogLockStartTime + MINIMUM_LOCK_DELAY;
+
+            if ( minCloseTime <= curTime || params.force) {
+                this.dialog(id, 'destroy');
+            }
+            else {
+                ++this._waitingDialogCounter;
+                window.setTimeout(function() { wg.waiting('close'); }, minCloseTime - curTime);
+            }
+        }
+        else {
+            if (this._waitingDialogCounter < 0) {
+                this._waitingDialogCounter = 0;
+            }
+        }
+        $('.registration_form input[type=text]:first').focus();
+    }
+
+    if (mode == 'open') {
+        this.dialog(id, 'open');
+
+        if (this._waitingDialogCounter === 0) {
+            var date = new Date();
+            wg._waitingDialogLockStartTime = date.getTime();
+            delete date;
+        }
+        ++this._waitingDialogCounter;
+    }
+};
+
+// Common functions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+wg._validateInsertData = function(selector, data, repeat, request)
+{
+    var result = true;
+
+    var s = jQuery(selector);
+
+    s.hide();
+    s.html(data);
+
+    if (data == '')
+    {
+        this.error(translate('DIALOG_EMPTY_SERVER_RESPONSE'), repeat);
+        result = false;
+    }
+    else if (jQuery('.js-dialog-content', s).length == 0)
+    {
+        s.html('');
+        result = false;
+        var responceType = request.getResponseHeader("content-type");
+        var jsonResponce = responceType.indexOf('application/x-javascript') != -1 || responceType.indexOf('application/json') != -1;
+
+        if (jsonResponce  && window.JSON) {
+            var errorData = JSON.parse(data);
+            if (errorData.status === 'error') {
+                this.error(errorData.error);
+            }
+            else {
+                this.error(translate('DIALOG_WRONG_SERVER_RESPONSE'), repeat, request);
+            }
+        }
+        else {
+            this.error(translate('DIALOG_WRONG_DATA_TYPE'), repeat, request);
+        }
+    }
+    else
+    {
+        var content = jQuery('.js-dialog-content', s).detach();
+
+        if ( jQuery('.ui-dialog-buttonpane', s).length > 0 ) {
+            var buttons = jQuery('.ui-dialog-buttonpane', s).detach();
+            jQuery('.ui-dialog-buttonpane', s.parent()).remove();
+            s.parent().append(buttons);
+        }
+
+        s.html('');
+        s.append(content);
+    }
+
+    s.show();
+    return result;
+};
+
+
+}
+/*
+     FILE ARCHIVED ON 10:51:57 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:29 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 119.921
+  exclusion.robots: 0.085
+  exclusion.robots.policy: 0.078
+  RedisCDXSource: 0.552
+  esindex: 0.009
+  LoadShardBlock: 97.753 (3)
+  PetaboxLoader3.datanode: 109.309 (4)
+  CDXLines.iter: 18.653 (3)
+  load_resource: 78.208
+  PetaboxLoader3.resolve: 53.918
+*/

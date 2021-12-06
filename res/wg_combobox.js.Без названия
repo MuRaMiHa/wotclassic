@@ -1,0 +1,635 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+if (this.jQuery == undefined) {
+    alert('Please include the module "jQuery"');
+}
+
+( function ($) {
+
+    var formElementCounter = 0;
+    // Simple combobox.
+    this.Combobox = function(param) {
+        if (param == undefined) {
+            param = {};
+        }
+
+        var element = $(this);
+        var width  = element.innerWidth();
+        var height = element.height();
+        if(element.attr('class')){
+            var elementClasses = element.attr('class')
+        }
+        else{
+            var elementClasses = '';
+        };
+
+        if (element.hasClass('js-control-clean')) {
+            element
+                .prev()
+                .remove()
+                .removeClass('js-control-clean')
+            ;
+        }
+
+        var selectBoxId   = 'js-selectbox-' + (++formElementCounter);
+        var dropdownBoxId = 'js-dropdown-' + formElementCounter;
+        var arrowHtml     = '<span class="jspVerticalBar"><a class="jspArrow jspArrowDown"></a></span>';
+        var dropdownHtml  = '<div id="'+ dropdownBoxId +'" class="js-combobox-dropdown ' +elementClasses+ '"><div class="js-combobox-dropdown-scroll"><div class="js-combobox-dropdown-content"></div></div></div>';
+        var coreHtml      = '<div id="' + selectBoxId + '" class="js-combobox"><div class="js-combobox-selectbox" style=""><div class="js-selectbox-text"><span class="js-selectbox-text-span"></span></div>' + arrowHtml + '</div></div>';
+
+        // Hide form element.
+        element
+            .addClass('js-control-clean')
+            .blur()
+            .css({ 'position' : 'absolute' })
+            .css({ 'left' : -50000 })
+        ;
+
+        $( coreHtml ).insertBefore( element );
+        $('body').append( dropdownHtml );
+
+        var context   = $('#' + selectBoxId);
+        var selectbox = $(".js-combobox-selectbox", context);
+        var selectboxText = $('.js-selectbox-text-span', selectbox);
+        var dropbox   = $("#" + dropdownBoxId);
+        var dropbox_c = $(".js-combobox-dropdown-content",  dropbox);
+
+        var onElementChange = function() {
+            $('.js-dropbox-item', dropbox).removeClass('js-dropbox-item-selected');
+
+            var value = element.val();
+            var item = $('.js-dropbox-item[data-item-value="'+value+'"]', dropbox);
+
+            selectboxText.text(item.text());
+            item.addClass('js-dropbox-item-selected');
+
+            return false;
+        };
+
+        element.change(onElementChange);
+        element.bind('keypress keyup', function() {
+            element.trigger('change');
+        });
+
+        var items     = [];
+        var idx       = 0;
+
+        var initScrollData = {
+            'showArrows'			 : true,
+            'verticalDragMinHeight'	 : 20,
+            'horizontalDragMinWidth' : 7,
+            'isScrollableH'          : false
+        };
+
+        $('option', element).each(function(){
+            var self = $(this);
+            items.push({
+                'idx'     : idx++,
+                'value'   : self.attr('value'),
+                'text'    : self.text(),
+                'inner_text'    : self.attr('innerHTML'),
+                'selected': self.attr('selected'),
+                'object'  : self
+            });
+        });
+
+        selectbox.css({
+            'width'    : width + 15,
+            // 'height': height, - from css file.
+            'position' : 'relative',
+            'overflow' : 'hidden'
+        });
+
+        var isOpened = false;
+        var isOver   = false;
+
+        var dropboxPosition = function (){
+            var selectBoxExist = $('#' + selectBoxId);
+            if (selectBoxExist && selectBoxExist.offset()) {
+                var selectboxOffset = selectBoxExist.offset();
+                var dropboxPositionTop = selectboxOffset.top + selectbox.outerHeight();
+                var dropboxPositionLeft = selectboxOffset.left;
+
+                dropbox.css({
+                    'top': dropboxPositionTop,
+                    'left': dropboxPositionLeft
+                });
+            }
+        };
+
+        $(window).resize(dropboxPosition);
+
+        selectbox.click(function(e){
+
+            dropboxPosition();
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            element.trigger('focus');
+
+            if (!isOpened){
+                $(selectbox).removeClass('js-combobox-country');
+                $('.js-combobox-dropdown').trigger('combobox-hidden');
+                dropbox.show();
+                $(selectbox).addClass('js-combobox-active');
+                $('.jspArrow', selectbox).addClass('js-arrow-active');
+
+                // Initialize ScrollBar
+                if (countVisible == MAX_ITEM_NOT_SCROLL){
+                    $('.js-combobox-dropdown-scroll', dropbox).jScrollPane(initScrollData);
+                    //$('.jspPane', dropbox).width($('.jspPane', dropbox).width() + 4);
+
+                    var api = $('.js-combobox-dropdown-scroll', dropbox).jScrollPane();
+                    if (api) {
+                        api = api.data('jsp');
+                        api.scrollToY( $('.js-dropbox-item-selected', dropbox).position().top, false, true);
+                    }
+                }
+
+                $('.js-combobox-dropdown-scroll', dropbox).focus();
+            } else {
+                dropbox.hide();
+                $(selectbox).removeClass('js-combobox-active');
+                $(selectbox).addClass('js-combobox-country');
+                $('.jspArrow', selectbox).removeClass('js-arrow-active');
+            }
+            dropboxPosition();
+            isOpened = !isOpened;
+        });
+        
+        selectbox.mouseenter(function(){
+            selectbox
+                .addClass('js-combobox-over')
+            ;
+        });
+
+        selectbox.mouseleave(function(){
+            selectbox
+                .removeClass('js-combobox-over')
+            ;
+        });
+        
+		var MAX_ITEM_NOT_SCROLL = 6;
+		
+		if (param.scrollVisibleItems){
+			MAX_ITEM_NOT_SCROLL = param.scrollVisibleItems;
+		}
+		
+		if (param.noScroll)
+        	MAX_ITEM_NOT_SCROLL = items.length;
+
+        for (idx in items)
+        {
+            var item = items[idx];
+
+            if (item.selected){
+                selectboxText.text(item.text);
+                dropbox_c.append('<div class="js-dropbox-item js-dropbox-item-selected" data-item-value="'+item.value+'"><div class="js-dropbox-item-content">' + item.inner_text + '</div></div>');
+            }
+            else {
+                dropbox_c.append('<div class="js-dropbox-item" data-item-value="'+item.value+'"><div class="js-dropbox-item-content">' + item.inner_text + '</div></div>');
+            }
+        }
+
+        var countVisible = items.length;
+
+        if (items.length > MAX_ITEM_NOT_SCROLL){
+            countVisible = MAX_ITEM_NOT_SCROLL;
+        }
+
+        var outerItems = $(".js-dropbox-item");
+        if( outerItems && outerItems.length > 0 ){
+            var outerItem = parseInt(outerItems.css("margin-top").replace("px",""));
+        }
+        if (items.length == 0){
+            outerItem = 0;
+        }
+        dropbox.css({
+            'width': width + 15,
+            'height': ($('.js-dropbox-item', dropbox).height() + outerItem) * countVisible + outerItem,
+            'display':'none',
+            'position': 'absolute',
+            'z-index': 10000
+        });
+
+        $('.js-combobox-dropdown-scroll' ,dropbox).css({
+            'height': ($('.js-dropbox-item', dropbox).height() + outerItem) * countVisible + outerItem
+        });
+
+        $('.js-dropbox-item', dropbox).mouseenter(function(){
+            $('.js-dropbox-item', dropbox).removeClass('js-dropbox-item-over');
+            $(this).addClass('js-dropbox-item-over');
+        });
+
+        dropbox.mouseleave(function(){
+            $('.js-dropbox-item', dropbox).removeClass('js-dropbox-item-over');
+            isOver = false;
+        });
+
+        dropbox.mouseenter(function(){
+            isOver = true;
+        });
+
+        $('.js-dropbox-item', dropbox).click(function(){
+            dropbox.hide();
+            isOpened = false;
+
+            var self = $(this);
+            selectboxText.text( self.text() );
+            $('.js-dropbox-item', dropbox).removeClass('js-dropbox-item-selected');
+            self.addClass('js-dropbox-item-selected');
+            $(items[self.index()].object).attr('selected', true);
+            element.trigger('change');
+            $(selectbox).removeClass('js-combobox-active');
+            $('.jspArrow', selectbox).removeClass('js-arrow-active');
+            $(selectbox).addClass('js-combobox-country');
+        });
+
+        $('.js-dropbox-item', dropbox).mouseenter(function(){
+            $('.js-dropbox-item', dropbox).removeClass('js-dropbox-item-over');
+            $(this).addClass('js-dropbox-item-over');
+        });
+
+        dropbox.bind('combobox-hidden', function(e){
+            if (isOver)
+                return;
+
+            if (isOpened) {
+                dropbox.hide();
+                isOpened = false;
+                $(selectbox).removeClass('js-combobox-active');
+                $('.jspArrow', selectbox).removeClass('js-arrow-active');
+                $(selectbox).addClass('js-combobox-country');
+            }
+        });
+    };
+
+    function Checkbox(elem, param)
+    {
+
+        var api        = this;
+        var element    = $(elem);
+        var checkBoxId = 'js-checkbox-' + ( ++formElementCounter );
+        var coreHtml   = '<div id="' + checkBoxId + '" class="js-checkbox b-checkbox"><span class="js-checkbox-content"></span></div>';
+
+
+        if (element.hasClass('js-control-clean'))
+        {
+            element
+                .prev()
+                .remove()
+                .removeClass('js-control-clean')
+            ;
+        }
+
+        // Hide form element.
+        element
+            .addClass('js-control-clean')
+            .blur()
+            .css({ 'position' : 'absolute' })
+            .css({ 'left' : -50000 })
+            .bind('change', function(){
+                api.update();
+                return false;
+            })
+        ;
+
+        $(coreHtml).insertBefore(element);
+
+        var checkbox = $('#' + checkBoxId);
+        var name  = element.attr('id');
+        var label = $('label[for="' + name + '"]');
+
+        element
+            .focus(function(){
+                checkbox.addClass('js-control-focus');
+            })
+            .blur(function(){
+                checkbox.removeClass('js-control-focus');
+            })
+        ;
+
+        label.addClass('b-lable-checkbox').bind('click', function(e){
+            //ATTENTION: this code appeared after WOTP-2367 had been fixed, 
+            //           but after this labels behaviour was broken - construction <label><a></a></label> stopped working
+            //           now it seems, that WOTP-2367 fixed in other way, so we can comment this code
+            // checkbox.trigger('click');
+            // e.preventDefault();
+            // return false;
+        });
+
+        checkbox.bind('click', function(e){
+            api.isChecked = !api.isChecked;
+
+            element
+                .attr("checked", api.isChecked)
+                .trigger('change')
+            ;
+        });
+
+        var enterCheckbox = function(){
+            label
+                .addClass('js-label-hover')
+            ;
+
+            checkbox
+                .addClass('js-checkbox-over')
+            ;
+        };
+
+        var leaveCheckbox = function(){
+            label
+                .removeClass('js-label-hover')
+            ;
+
+            checkbox
+                .removeClass('js-checkbox-over')
+            ;
+        };
+
+        checkbox.mouseenter(enterCheckbox);
+        checkbox.mouseleave(leaveCheckbox);
+
+        label.mouseenter(enterCheckbox);
+        label.mouseleave(leaveCheckbox);
+
+        // Public API.
+        this.element = element;
+        this.type = 'checkbox';
+
+        this.update = function(){
+            api.isChecked = element.attr('checked');
+
+            if (api.isChecked)
+            {
+                checkbox
+                    .removeClass('js-checkbox-unchecked')
+                    .addClass('js-checkbox-checked')
+                ;
+            }
+            else
+            {
+                checkbox
+                    .removeClass('js-checkbox-checked')
+                    .addClass('js-checkbox-unchecked')
+                ;
+            }
+        };
+
+        this.update();
+        return this;
+    }
+
+    function Radio(elem, param)
+    {
+        var api      = this;
+        var element  = $(elem);
+        var radioId  = 'js-radio-' + ( ++formElementCounter );
+        var coreHtml = '<div id=' + radioId + ' class="b-radio"><span></span></div>';
+
+        if (element.hasClass('js-control-clean'))
+        {
+            element
+                .prev()
+                .remove()
+                .removeClass('js-control-clean')
+            ;
+        }
+
+        /* Hide form element. */
+        element
+            .addClass('js-control-clean')
+            .css({ 'position' : 'absolute' })
+            .css({ 'display' : 'none' })
+            /* .css({ 'left' : -50000 })  Opera problem */
+           .bind('change', function(){
+                api.update();
+                return false;
+           })
+        ;
+
+        $( coreHtml ).insertBefore( element );
+        
+        var radio    = $('#' + radioId);
+        var name     = element.attr('name');
+        var label    = $('label[for="' + element.attr('id') + '"]');
+
+        radio.addClass('js-radio-name-' + name);
+
+        // Focus events.
+        element
+            .focus(function(){
+                radio.addClass('b-radio-active');
+            })
+            .blur(function(){
+                radio.removeClass('b-radio-active');
+            })
+        ;
+
+        // Mouse events.
+        var elements = [radio, label];
+        for (var id in elements)
+            elements[id]
+                .mouseenter(function(){
+                    radio.addClass('b-radio-active');
+                    label.addClass('js-label-hover');
+                })
+                .mouseleave(function(){
+                    radio.removeClass('b-radio-active');
+                    label.removeClass('js-label-hover');
+                })
+            ;
+        
+
+        label.addClass('b-label-radio').bind('click', function(e){
+            //ATTENTION: this code appeared after WOTP-2367 had been fixed, 
+            //           but after this labels behaviour was broken - construction <label><a></a></label> stopped working
+            //           now it seems, that WOTP-2367 fixed in other way, so we can comment this code
+            radio.trigger('click');
+            e.preventDefault();
+            return false;
+        });
+
+        radio.bind('click', function(e){
+            if (api.isDisabled)
+                return false;
+
+            element
+                .attr("checked", true)
+                .trigger('change')
+            ;
+            return false;
+        });
+
+        // Public API.
+        this.element = element;
+        this.type = 'radio';
+
+        this.update = function(){
+            var inputs = $('input[name="' + name + '"]');
+            inputs.each(function() {
+                $(this).control('update_this_only');
+            });
+        };
+
+        this.update_this_only = function(){
+            api.isDisabled = element.attr('disabled');
+            api.isChecked  = element.attr('checked');
+
+            var hasClass = radio.hasClass('b-radio-checked');
+
+            if (api.isChecked) {
+                if (!hasClass)
+                    radio.addClass('b-radio-checked');
+            } else {
+                if (hasClass)
+                    radio.removeClass('b-radio-checked');
+            }
+        };
+
+        this.disabled = function( is_disabled ){
+            api.isDisabled = is_disabled;
+        };
+
+        var instance = this;
+
+        // wait until full radio box initialization 
+        setTimeout( function(e) {
+            instance.update();
+        }, 10);
+
+        return this;
+    }
+
+    this.InitAllCombobox = function(context) {
+        $('select', context).each(function() {
+            var self = $(this);
+            if (self.hasClass('js-control-clean'))
+                return;
+
+            var param = {};
+            if (self.parent().hasClass('noScrollSelect')) {
+                param['noScroll'] = true;
+            }
+
+            Combobox.call(this, param);
+        });
+    };
+
+    // Init all forms elements.
+    $(document).ready( function () {
+        var body = $('body');
+
+        body.click(function(e){
+            $('.js-combobox-dropdown').trigger('combobox-hidden', 'body');
+        });
+
+        InitAllCombobox(body);
+
+        $('input:checkbox', body).control('checkbox');
+        $('input:radio', body).control('radio');
+
+        $('.ui-dialog').live('dialogopen', function( elem ) {
+            InitAllCombobox(this);
+            $('input:checkbox', this).control('checkbox');
+
+            return false;
+        });
+    });
+
+    $.fn.control = function(method, param){
+
+        var invoker = function(elem, method, param){
+            var api = elem.data('wg_control');
+
+            if (api) {
+                if (typeof(method) == 'string'){
+                    var apiMethod = api[method];
+                    if (apiMethod) {
+                        apiMethod(param);
+                    }
+                }
+            } else {
+                if (typeof(method) == 'string'){
+                    if (method == 'checkbox') {
+                        api = new Checkbox(elem, param);
+                        elem.data('wg_control', api);
+                    }
+                    else if (method == 'radio'){
+                        api = new Radio(elem, param);
+                        elem.data('wg_control', api);
+                    }
+                }
+            }
+        };
+
+        var ret;
+
+        if (this.length == 1 && !method && !param) {
+            return this.data('wg_control');
+        } else {
+            this.each( function() {
+                var elem = $(this);
+                invoker(elem, method, param);
+                ret = ret ? ret.add(elem) : elem;
+            });
+        }
+
+        return ret;
+    };
+
+    var def_attr = $.fn.attr;
+
+    $.fn.attr = function(atribute, param){
+        var ret = def_attr.call(this, atribute, param);
+
+        if ( param != undefined ) {
+            var self = $(this);
+            if (self.hasClass('js-control-clean'))
+                self.control( 'update' );
+        }
+
+        return ret;
+    };
+})(jQuery);
+
+//$(window).resize(function(){alert(3)});
+
+
+
+
+
+
+}
+/*
+     FILE ARCHIVED ON 10:51:45 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:31 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1832.99
+  esindex: 0.024
+  LoadShardBlock: 1755.113 (3)
+  load_resource: 95.814
+  exclusion.robots: 0.324
+  RedisCDXSource: 38.584
+  exclusion.robots.policy: 0.304
+  PetaboxLoader3.datanode: 1630.867 (4)
+  CDXLines.iter: 31.377 (3)
+  PetaboxLoader3.resolve: 41.178
+*/

@@ -1,0 +1,1414 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+var changeTabSidebar = function(){};
+
+var wot_hl = {
+
+    ///////////////////////////////////////////////////////
+    // storage for all page specific variables
+    ///////////////////////////////////////////////////////
+
+    InitCarousel: function(selector) {
+        var IMG_FADE_IN_DELAY = 400;
+        var IMG_FADE_OUT_DELAY = 1500;
+        var TXT_FADE_IN_DELAY = 200;
+        var TXT_FADE_OUT_DELAY = 1000;
+
+        var conainer = jQuery(selector);
+        var elements = jQuery('.js-carousel-element', selector);
+        var pageLinks = jQuery('.js-carousel-link', selector);
+        var texts = jQuery('.js-carousel-text', selector);
+
+        var repeatTimer = undefined;
+
+        var delay = parseInt(conainer.data('delay'));
+        var currentElementNumber = 0;
+
+        function ChangeElement(newElementId) {
+
+            pageLinks.eq(currentElementNumber).removeClass('active js-disabled');
+
+            elements.stop(true, true);
+            texts.stop(true, true);
+
+            elements.eq(currentElementNumber).fadeOut(IMG_FADE_IN_DELAY);
+
+            texts.eq(currentElementNumber).fadeOut(TXT_FADE_IN_DELAY,
+                 function(){
+                     texts.eq(newElementId).fadeIn(TXT_FADE_OUT_DELAY);
+                 });
+
+            elements.eq(newElementId).fadeIn(IMG_FADE_OUT_DELAY);
+            pageLinks.eq(newElementId).addClass('active js-disabled');
+
+            currentElementNumber = newElementId;
+        }
+
+        function StepTo(elementId) {
+            if (elementId == currentElementNumber) return;
+
+            clearInterval(repeatTimer);
+            repeatTimer = undefined;
+            ChangeElement(elementId);
+            Start();
+        }
+
+        function Next() {
+            ChangeElement( (currentElementNumber + 1) % elements.length );
+        }
+
+        function Start() {
+            if (elements.length > 1) {
+                repeatTimer = setInterval(function(e) {
+                    Next();
+                }, delay * 1000);
+            }
+        }
+
+        // hide non active elements
+        jQuery('.js-carousel-element.js-hidden', selector).removeClass('js-hidden').hide();
+
+        pageLinks.each(function(i, v) {
+            var number = i;
+            var el = jQuery(v);
+            jQuery(v).click(function(e) {
+                e.preventDefault();
+                if (!el.hasClass('js-disabled')) {
+                    StepTo(number);
+                }
+            });
+        });
+
+        Start();
+    },
+
+    ///////////////////////////////////////////////////////
+    // tree navigation sidebar
+    ///////////////////////////////////////////////////////
+
+    TreeNavigationSidebar: function() {
+        jQuery('.js-tree-category-collapsable').click(function(){
+            var cat = jQuery(this).parent('li');
+            if (cat.hasClass('open')){
+                cat.removeClass('open');
+                cat.children('ul').hide();
+            }else{
+                cat.addClass('open');
+                cat.children('ul').show();
+            }
+            return false;
+        });
+        jQuery('.js-highlight-on-hover').hover(
+            function(event){jQuery(this).addClass('hover');},
+            function(event){jQuery(this).removeClass('hover');}
+        );
+    },
+
+    ///////////////////////////////////////////////////////
+    // Set focus on correct field in selector content
+    ///////////////////////////////////////////////////////
+    SetFocus: function(selector) {
+        // Prevent focus being changed if user has already focused on any element inside the block obtained by selector.
+        // document.activeElement property is supported by IE6+, FF3+, Safari 4+, Opera 9+, Chrome 9+
+        // http://stackoverflow.com/questions/5318415/which-browsers-support-document-activeelement
+        if (document.activeElement) {
+            var block = $(selector);
+            try {
+                var focusedInsideBlock = block.has(document.activeElement).length > 0;
+                if (focusedInsideBlock)
+                    return;
+            } catch (e) {
+                // this code may crash inside the jQuery (on the input[type="file"]):
+                // >>> Permission denied to access property 'nodeType'
+            }
+        }
+
+        if (jQuery('.js-focus-element', selector).length>0) {
+            jQuery('.js-focus-element', selector)[0].focus();
+        }
+        else {
+            var sub_selectors = ['input:visible',
+                                 'textarea:visible',
+                                 '.js-confirm-button:visible',
+                                 '.js-cancel-button:visible'];
+            var query = jQuery(sub_selectors.join(", "), selector).not('.js-disable-autofocus');
+            if (query.length>0) {
+                query.eq(0).focus();
+            }
+        }
+    },
+
+
+    ///////////////////////////////////////////////////////
+    // expandable widows
+    ///////////////////////////////////////////////////////
+
+    ON_MENU_WND_SHOW_EVENT: 'on_menu_wnd_show_event',
+
+    MenuWnd: function(selector, params) {
+        var widget = jQuery(selector);
+        var expandableWnd = jQuery('.js-expand-wnd', widget);
+        var visibleWnd = jQuery('.js-visible-wnd', widget);
+		var expandableWndItem = jQuery('.js-expand-wnd-item', widget);
+
+        var instance = this;
+
+        var opened = false;
+
+        var eventTriggered = false;
+
+        this.Show = function() {
+            expandableWnd.toggleClass('js-hidden', false);
+            widget.toggleClass('opened', true);
+            wot_hl.SetFocus(expandableWnd);
+            opened = true;
+
+            eventTriggered = true;
+            jQuery(document).trigger(wot_hl.ON_MENU_WND_SHOW_EVENT);
+
+			expandableWnd.css("width", expandableWnd.width()).css("min-width", expandableWnd.width()).css("max-width", expandableWnd.width());
+        };
+
+        this.Hide = function() {
+            expandableWnd.toggleClass('js-hidden', true);
+            widget.toggleClass('opened', false);
+            opened = false;
+			expandableWndItem.removeClass("hover");
+        };
+
+		expandableWndItem.hover(function() {
+			expandableWndItem.removeClass("hover");
+			$(this).addClass("hover");
+		});
+
+        jQuery('body').click(function (e) {
+            instance.Hide();
+        } );
+
+        expandableWnd.click(function(e) {
+            e.stopPropagation();
+        } );
+
+        visibleWnd.click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (opened) instance.Hide();
+            else instance.Show();
+        });
+
+        jQuery(document).bind(wot_hl.ON_MENU_WND_SHOW_EVENT, function(e) {
+            if (eventTriggered) {
+                eventTriggered = false;
+            }
+            else {
+                instance.Hide();
+            }
+        });
+
+        jQuery(document).bind('dialogopen', function(e) {
+            eventTriggered = false;
+            instance.Hide();
+        });
+    },
+
+    Expandable: function(selector, params) {
+
+        var widget = jQuery(selector);
+        var wnd = jQuery('.js-expand-window', widget);
+        var content = wnd.children();
+
+        var timer = undefined;
+        var minimizedHeight = undefined;
+
+        var TIMER_STEP = 10;
+        var H_STEP = 5;
+        var DELAY_BEFORE_OPEN = 200;
+
+        var mouseOnWindow = false;
+        var opened = false;
+
+        var Show = function() {
+
+            opened = true;
+            var wndH = wnd.height();
+            var contH = content.height();
+            if ( wndH < contH) {
+                wndH += H_STEP;
+                if (wndH > contH){
+                    wndH = contH;
+                }
+                wnd.height(wndH);
+                if (params.direction === 'up') {
+                    wnd.css({top: minimizedHeight - wndH});
+                }
+            }
+            else {
+                clearInterval(timer);
+            }
+        };
+        var Hide = function() {
+            var wndH = wnd.height();
+            if ( wndH !== minimizedHeight) {
+                wndH -= H_STEP;
+                if (wndH < minimizedHeight){
+                    wndH = minimizedHeight;
+                }
+                wnd.height(wndH);
+                if (params.direction === 'up') {
+                    wnd.css({top: minimizedHeight - wndH});
+                }
+            }
+            else {
+                opened = false;
+                clearInterval(timer);
+            }
+        };
+
+        var Open = function() {
+            if (minimizedHeight === undefined) {
+                minimizedHeight = wnd.height();
+            }
+
+            setTimeout(function (e) {
+                           if (mouseOnWindow) {
+                               clearInterval(timer);
+                               timer = setInterval(Show, TIMER_STEP);
+                           }
+                       }, DELAY_BEFORE_OPEN);
+        };
+
+        var Close = function() {
+            clearInterval(timer);
+            timer = setInterval(Hide, TIMER_STEP);
+        };
+
+        widget.hover( function(e) {
+                          mouseOnWindow = true;
+                          Open();
+                      },
+                      function(e) {
+                          mouseOnWindow = false;
+                          Close();
+                      });
+
+        this.Close = function() {
+            mouseOnWindow = false;
+            clearInterval(timer);
+            timer = setInterval(Hide, TIMER_STEP);
+        };
+    },
+
+    ///////////////////////////////////////////////////////
+    // formatters
+    ///////////////////////////////////////////////////////
+    Thousands: function(number, reduce, startFrom) {
+
+        if (reduce && startFrom <= number) {
+            var suffix = '';
+
+            if (number > 1000000) {
+                number /= 1000000;
+                suffix = ' M';
+            }
+            if (number > 1000) {
+                number /= 1000;
+                suffix = ' K';
+            }
+            var result = number;
+            if (suffix) {
+                result = number.toFixed(2) + suffix;
+            }
+            return result;
+        }
+
+        var dotted = '';
+        number = number.toString();
+        var dotPosition = number.search(/\./);
+        if (dotPosition > -1) {
+            dotted = number.substr(dotPosition);
+            number = number.substr(0, dotPosition);
+        }
+
+        var result = '';
+
+        var len = number.length;
+        for (var i=0; i<len; ++i) {
+
+            if (i!==0 && len-i!==0 && (len-i)%3===0) {
+                result += ' ';
+            }
+            result += number.charAt(i);
+        }
+        return result + dotted;
+    },
+
+    FormProvinceLink: function(base_url, province_id, province_name, linkElement) {
+
+        var href = base_url+'?province='+province_id;
+        var classes = 'js-map-province-link';
+
+        if (linkElement) {
+            linkElement.attr('href', href);
+            linkElement.toggleClass(classes, true);
+            linkElement.data('province-id', province_id);
+            linkElement.text(province_name);
+        };
+
+        var provincesHtml = '<a class="' + classes + '" '+
+            'href="'+ href + '" ' + 'data-province-id="' + province_id + '">'+province_name+'</a>';
+
+        return provincesHtml;
+    },
+
+    ///////////////////////////////////////////////////////
+    // add functionality for wiki edit widget
+    ///////////////////////////////////////////////////////
+
+    WikiEditWidget: function(selector, params) {
+
+        var widget = jQuery(selector);
+
+        var editField = jQuery('.js-edit-field', widget);
+        var previewField = jQuery('.js-preview-field', widget);
+        var syntaxField = jQuery('.js-syntax-field', widget);
+
+        var editButton = jQuery('.js-edit-button', widget);
+        var previewButton = jQuery('.js-preview-button', widget);
+        var syntaxButton = jQuery('.js-syntax-button', widget);
+
+        var inputFields = jQuery('textarea, input', editField);
+
+        var previewContent = jQuery('.js-preview-content', previewField);
+
+        var ShowField = function(field_name) {
+            editField.toggleClass('js-hidden', field_name!=='edit');
+            previewField.toggleClass('js-hidden', field_name!=='preview');
+            syntaxField.toggleClass('js-hidden', field_name!=='syntax');
+
+            editButton.toggleClass('js-disabled disabled', field_name==='edit');
+            previewButton.toggleClass('js-disabled disabled', field_name==='preview');
+            syntaxButton.toggleClass('js-disabled disabled', field_name==='syntax');
+        };
+
+        ShowField('edit');
+
+        editButton.click( function(e) {
+            e.preventDefault();
+            if (jQuery(this).hasClass('js-disabled') ) return;
+            ShowField('edit');
+        });
+
+        previewButton.click(function(e) {
+            e.preventDefault();
+            if (jQuery(this).hasClass('js-disabled') ) return;
+
+            wg.waiting('open');
+            jQuery.ajax({
+                type: 'post',
+                data: { text: inputFields.val() },
+                url:  params.previewUrl,
+                success: function(data) {
+                    previewContent.html(data);
+                    ShowField('preview');
+                },
+                error: function() {
+                    wg.error(translate('HL_COMMON_UNKNOWN_ERROR'));
+                },
+                complete: function() {
+                    wg.waiting('close');
+                }
+            });
+        });
+
+        syntaxButton.click(function(e) {
+            e.preventDefault();
+            if (jQuery(this).hasClass('js-disabled') ) return;
+            ShowField('syntax');
+        });
+
+        this.Activate = function() {
+            editButton.toggleClass('js-hidden', false);
+            previewButton.toggleClass('js-hidden', false);
+            syntaxButton.toggleClass('js-hidden', false);
+        };
+
+        this.Deactivate = function() {
+            editButton.toggleClass('js-hidden', true);
+            previewButton.toggleClass('js-hidden', true);
+            syntaxButton.toggleClass('js-hidden', true);
+
+            ShowField('edit');
+        };
+
+        if (params.activate) this.Activate();
+        else this.Deactivate();
+    },
+
+
+    ///////////////////////////////////////////////////////
+    // storage for all page specific variables
+    ///////////////////////////////////////////////////////
+
+    data: {
+        },
+
+    ///////////////////////////////////////////////////////
+    // location.hash - ajax deeplinking support
+    //
+    // usage exemple:
+    //
+    // wot_hl.hash.init(function(event, hashManager) {
+    //     var x = hashManager.getHashValuesFor("xxx");
+    //     var newX = { "aaa": x['xxx'],
+    //              "z": "k",
+    //              "p":  true};
+    //     hashManager.setHashValuesFor("xxx", newX, true);
+    // })
+    //
+    // jQuery(window).bind("hashchange", function (event) {
+    //     wot_hl.hash.handleEvent(event)
+    // });
+    ///////////////////////////////////////////////////////
+
+    hash: {
+        _salt: 'wot',
+        _hashValues: {},
+        _insideModification : 0,
+        _callback  : undefined,
+        _lastHash : "",
+
+        _getHash: function () {
+
+            var hashSrc = decodeURI(location.hash);
+            var hash = unescape(hashSrc.replace(/^#/, ""));
+            var args = hash.split('&');
+
+            var result = {};
+
+            for (var i=0; i<args.length; ++i) {
+                var arg = args[i];
+                var matches = arg.match(/^([\w\d_\-]+)=(.*)/);
+                if (matches) {
+                    // TODO: support multiply values
+                    result[matches[1]] = matches[2];
+                }
+                else {
+                    var matches = arg.match(/^([\w\d_-]+)$/);
+                    if (matches) {
+                        result[matches[1]] = true;
+                    }
+                }
+            }
+            if (this._salt in result) {
+                delete result[this._salt];
+            }
+            return result;
+        },
+
+        updateFromHash: function () {
+            this._hashValues = this._getHash();
+        },
+
+        formHash:  function () {
+
+            //check if hash was shanged
+            var changed = false;
+            var oldHash = this._getHash();
+
+            for (var oldKey in oldHash) {
+                if (!(oldKey in this._hashValues) ||
+                    oldHash[oldKey] != this._hashValues[oldKey]) {
+                    changed = true;
+                    break;
+                }
+            }
+
+            for (var key in this._hashValues) {
+                if (!(key in oldHash)) {
+                    changed = true;
+                    break;
+                }
+            }
+
+            if (!changed) {
+                return;
+            }
+
+            var newHash = this._salt+'&';
+            for (key in this._hashValues) {
+                if (this._hashValues[key] === true) {
+                    newHash += key + "&";
+                }
+                else {
+                    // TODO: support multiply values
+                    newHash += key + "=" + this._hashValues[key] + "&";
+                }
+            }
+
+            if (newHash[newHash.length - 1] == '&') {
+                newHash = newHash.substring(0, newHash.length - 1);
+            }
+
+            if (location.hash != newHash) {
+                this._insideModification += 1;
+                this._lastHash = newHash;
+                location.hash = newHash;
+            }
+
+            setTimeout( function (arg) {
+                var hash = arg;
+
+                return function (){
+                    hash._insideModification -= 1;
+                };
+            }(this), 250); //additional restriction for processing events
+        },
+
+        getHash: function(prefix) {
+            return jQuery.extend({}, this._hashValues);
+        },
+
+        getHashValuesFor: function(prefix) {
+            var result = {};
+
+            for (key in this._hashValues)    {
+                var matches = key.match(new RegExp("^"+prefix+"_(.+)"), "");
+                if (matches) {
+                    result[matches[1]] = this._hashValues[key];
+                }
+            }
+            return result;
+        },
+
+        setHashValuesFor: function(prefix, values, replace, defaults) {
+            if (replace) {
+                var to_remove = new Array();
+                for (key in this._hashValues) {
+                    if (key.match(new RegExp("^"+prefix+"_(.+)"))) {
+                        to_remove.push(key);
+                    }
+                }
+                for (var i=0; i<to_remove.length; ++i) {
+                    delete this._hashValues[to_remove[i]];
+                }
+            }
+
+            for (key in values) {
+                // TODO: support multiply values
+                if (defaults[key] != values[key]) {
+                    this._hashValues[prefix+"_"+key] = values[key];
+                }
+            }
+        },
+
+        init: function() {
+            this.updateFromHash();
+        },
+
+        registerCallback: function(hashChangeEventCallback) {
+            this._callback = hashChangeEventCallback;
+        },
+
+        handleEvent: function(event) {
+
+            if (this._insideModification != 0 ||
+                this._lastHash == location.hash) {
+                return;
+            }
+
+            this.updateFromHash();
+
+            this._callback(event, this);
+
+            this.formHash();
+        },
+
+        IsNotDefined: function(prefix) {
+            for (key in this._hashValues) {
+                if (key.match(new RegExp("^"+prefix+"_(.+)")))
+                    return false;
+            }
+
+            return true;
+        }
+    },
+
+    ///////////////////////////////////////////////////////
+    // itemList
+    ///////////////////////////////////////////////////////
+
+    itemList: function(params) {
+
+        // define methods
+
+        this.SetParams =  function(newParams, force) {
+            for (var arg in newParams) {
+                if (newParams[arg] !== this.params[arg]) {
+                    this.params[arg] = newParams[arg];
+
+                    if (!force) {
+                        this.changed = true;
+                    }
+                }
+            }
+        };
+
+        this._Render = function(data, item) {
+            for(var field in data) {
+                var selector = '.'+field;
+                var element = jQuery(selector, item);
+                if (jQuery.inArray(typeof data[field], ['string', 'number']) !== -1) {
+                    element.html(data[field]);
+                    element.addClass('js-rendered-template');
+                }
+            }
+        };
+
+        this._Draw = function() {
+            var container = jQuery('#'+this.params.containerId);
+
+            var scroll = jQuery('body').scrollTop();
+
+            container.children().not('.js-template').not('.js-empty-template').remove();
+
+            var index = 0;
+
+            var count = 0;
+
+            for(var itemNumber in this.items) {
+
+                count += 1;
+                if (count > this.params.limit ) break;
+
+                var itemData = this.items[itemNumber];
+
+                var newItem = jQuery(this.params.template).clone()
+                newItem.removeClass('js-template');
+
+                if(this.params.onInsertCallback){
+                    this.params.onInsertCallback(container, index, newItem)
+                }else{
+                    newItem.appendTo(container);
+                    if (index % 2) {
+                        newItem.addClass('even');
+                    }
+                    else {
+                        newItem.addClass('odd');
+                    }
+                }
+                
+                this._Render(itemData, newItem);
+
+                if (this.params.OnAddCallback) {
+                    this.params.OnAddCallback(index, itemData, newItem, this);
+                }
+                newItem.removeClass('js-hidden');
+                ++index;
+            }
+
+            if (this.params.emptyTemplate && this.params.offset!==0) {
+                for(var itemNumber=this.items.length; itemNumber<this.params.limit; ++itemNumber) {
+
+                    var newItem = jQuery(this.params.emptyTemplate).clone().appendTo(container);
+                    newItem.removeClass('js-hidden js-empty-template');
+
+                    if (index % 2) {
+                        newItem.addClass('even');
+                    }
+                    else {
+                        newItem.addClass('odd');
+                    }
+
+                    ++index;
+                }
+            }
+
+            jQuery('body').scrollTop(scroll);
+        };
+
+        this.WaitingDataStarted = function() {
+            if (this.params.waitingIndicatorId) {
+                jQuery('#'+this.params.waitingIndicatorId).removeClass('js-hidden');
+            }
+            jQuery('#'+this.params.containerId+' .js-rendered-template').css({'opacity': 0.3});
+        };
+
+        this.DataReceived = function() {
+            if (this.params.waitingIndicatorId) {
+                jQuery('#'+this.params.waitingIndicatorId).addClass('js-hidden');
+            }
+            jQuery('#'+this.params.containerId+' .js-rendered-template')/*.css({'opacity': null})*/;
+        };
+
+        this.SyncHash = function () {
+            //TODO: remove last history record on resume if hash changed
+            var params = this.params;
+
+            wot_hl.hash.setHashValuesFor(params.hashPrefix,
+                                         {offset: params.offset,
+                                          limit: params.limit,
+                                          search: params.search,
+                                          order_by: params.order_by},
+                                         true,
+                                         this.defaults);
+            wot_hl.hash.formHash();
+        };
+
+        this.Update = function() {
+
+            var instance = this;
+
+            ++instance.requestNumber;
+
+            var container = jQuery('#'+this.params.containerId);
+
+            this.WaitingDataStarted();
+
+            this.changed = false;
+
+            if (this.params.useHash) {
+                this.SyncHash();
+            }
+
+            var data = {offset: this.params.offset,
+                        limit: this.params.limit,
+                        order_by: this.params.order_by,
+                        search: this.params.search,
+                        echo: this.requestNumber,
+                        id: this.params.id};
+
+            var additional_params = this.params.additional_params;
+            for (var i in additional_params) {
+                data[i] = additional_params[i];
+            }
+
+            if (this.ajaxObject) {
+                this.ajaxObject.abort();
+            }
+
+            var OnSuccess = function(data) {
+
+                //error occured
+                if (! data) {
+                    instance.DataReceived();
+                    return;
+                }
+
+                //sure, that we process last request, skip otherwise
+                if (instance.requestNumber === data.request_data.echo) {
+
+                    var params = instance.params;
+
+                    params.offset = data.request_data.offset;
+                    params.total_count = data.request_data.total_count;
+                    params.filtered_count = data.request_data.filtered_count;
+
+                    if (instance.params.useLocalStorage &&
+                        window.localStorage &&
+                        window.JSON) {
+                        var settings = {offset: instance.params.offset,
+                                        limit: instance.params.limit,
+                                        order_by: instance.params.order_by,
+                                        search: instance.params.search};
+
+                        settings.additional_params = instance.params.additional_params;
+
+                        localStorage[instance.params.id] = JSON.stringify(settings);
+                    }
+
+                    instance.items = data.request_data.items;
+                    instance._Draw();
+                    instance.DataReceived();
+
+                    var pageNumber = Math.floor(params.offset / params.limit);
+                    var pageCount = Math.floor(data.request_data.filtered_count / params.limit);
+                    if (pageCount * params.limit < data.request_data.filtered_count) {
+                        pageCount += 1;
+                    }
+                    if (pageNumber > pageCount) {
+                        pageNumber = pageCount;
+                    }
+
+
+                    instance.pageCount = pageCount;
+
+                    for (var index in instance.paginators) {
+                        instance.paginators[index].Update(pageNumber, pageCount);
+                    }
+                    instance.MarkSorting();
+                }
+                instance.ajaxObject = null;
+
+                if (instance.params.OnUpdateCompleted) {
+                    instance.params.OnUpdateCompleted(instance);
+                }
+
+                instance.params.OnChanged(instance);
+            };
+
+            var OnError = function() {
+                instance.DataReceived();
+                instance.ajaxObject = null;
+            };
+
+            if (this.params.Updater) {
+                this.params.Updater(data, OnSuccess, OnError);
+            }
+            else {
+                this.ajaxObject = jQuery.ajax({
+                    url: this.params.url,
+                    type: 'get',
+                    dataType: 'json',
+                    data: data,
+                    cache: false,
+                    success: OnSuccess,
+                    error: OnError
+                });
+            }
+        };
+
+        this.OnPageChanged = function(pageNumber) {
+
+            var params = this.params;
+
+            this.SetParams({offset: pageNumber * params.limit});
+
+            if (this.changed) {
+                this.Update();
+            }
+        };
+
+        this.Search = function(filter) {
+            if (this.params.search !== filter ||
+                this.params.offset !== 0) {
+                this.SetParams({search: filter,
+                                offset: 0});
+                this.Update();
+            }
+        };
+
+        this.MarkSorting = function() {
+            //set ordering classes
+            jQuery('.'+this.params.id).removeClass('ordered desc asc');
+
+            var order_field = this.params.order_by.replace(/^-/, '');
+            var order_classes = 'ordered asc';
+            if (this.params.order_by.length>1 && this.params.order_by[0] === '-') {
+                order_classes = 'ordered desc';
+            }
+            var selector = '.'+this.params.id+'.'+order_field;
+            jQuery(selector).addClass(order_classes);
+        };
+
+        this.IsAscSorting = function() {
+            return this.params.order_by.length && this.params.order_by[0] !== '-';
+        };
+
+        // sort list by order_by value (values: 'name' or '-name')
+        this.Sort = function(order_by) {
+            if (this.params.order_by !== order_by) {
+                this.params.order_by = order_by;
+                this.params.offset=0;
+                this.Update();
+            }
+
+            this.MarkSorting();
+        };
+
+        //sort by order_by if list sorted by another field; invers sort order in other case
+        this.ChangeSort = function(order_by) {
+            var result_order = this.params.order_by;
+
+            if (result_order !== order_by) {
+                result_order = order_by;
+            }
+            else {
+                if (result_order[0] === '-') {
+                    result_order = result_order.replace(/^-/, '');
+                }
+                else {
+                    result_order = '-'+result_order;
+                }
+            }
+            this.Sort(result_order);
+        };
+
+        // DEPRECATED function
+        // use Sort() and InverseSort()
+        this.SortBy = function(name, direction) {
+
+            var result_order = this.params.order_by;
+
+            if (direction) {
+                result_order = name;
+                if (direction === 'desc') {
+                    result_order = '-' + result_order;
+                }
+            }
+            else {
+                if (result_order !== name) {
+                    result_order = name;
+                }
+                else {
+                    if (result_order[0] !== '-') {
+                        result_order = '-' + name;
+                    }
+                    else {
+                        result_order = name;
+                    }
+                }
+            }
+
+            if (this.params.order_by !== result_order) {
+                this.params.order_by = result_order;
+                this.params.offset=0;
+                this.Update();
+            }
+
+            this.MarkSorting();
+        };
+
+        this.GetItemData = function(index) {
+            return jQuery.extend(true, {}, this.items[index]);
+        };
+
+        // construct object
+
+        var container = $('#'+params.containerId);
+
+        var templateObj = jQuery('.js-template', container);
+        templateObj.addClass('js-hidden');
+
+        var emptyTemplateObj = jQuery('.js-empty-template', container);
+        if (emptyTemplateObj.length>0) {
+            emptyTemplateObj.addClass('js-hidden');
+        }
+        else {
+            emptyTemplateObj = undefined;
+        }
+
+        var useHash = params.hashPrefix ? true: false;
+
+        this.params = {offset: 0,
+                       limit: 10,
+                       initUpdate: true,
+                       order_by: 'default',
+                       search: '',
+                       total_count: 0,
+                       filtered_count: 0,
+                       additional_params: {},
+                       id: 'item_list_default',
+                       template: templateObj,
+                       emptyTemplate: emptyTemplateObj,
+                       waitingIndicatorId: null,
+                       hashPrefix: '',
+                       useHash: useHash,
+                       useLocalStorage: false,
+                       OnUpdateCompleted: function(instance) {},
+                       OnChanged: function (instance) {},
+                       // list of attributes, which should be ignored
+                       // on loading data from localStorage
+                       ignoreOnRestore: []};
+
+        this.requestNumber = 0;
+        this.changed = false;
+        this.pageCount = 0;
+        jQuery.extend(true, this.params, params);
+        this.defaults = { order_by: this.params.order_by,
+                          offset: this.params.offset,
+                          limit: this.params.limit,
+                          search: this.params.search};
+
+        var hashDefined = useHash ? !wot_hl.hash.IsNotDefined(this.params.hashPrefix): false;
+
+        var hashData = useHash ? wot_hl.hash.getHashValuesFor(this.params.hashPrefix): {};
+        this.params = jQuery.extend( {},
+                                     this.params,
+                                     hashData
+                                   );
+
+        //align offset to limit (make correct page order)
+        this.params.offset -= this.params.offset % this.params.limit;
+
+        this.paginators = [];
+
+        if (this.params.paginatorIds) {
+
+            var instance = this;
+
+            for (var index in this.params.paginatorIds) {
+                var callback = function (pageNumber) {
+                    instance.OnPageChanged(pageNumber);
+                };
+                var paginator = new wot_hl.paginator(this.params.paginatorIds[index], -1, 1, callback);
+                this.paginators.push(paginator);
+            }
+        }
+
+        if (this.params.useLocalStorage) {
+            if (window.localStorage && window.JSON) {
+                if (this.params.id in localStorage &&
+                    !hashDefined &&
+                    localStorage[this.params.id]) {
+                    var data = JSON.parse(localStorage[this.params.id]);
+                    for (var i in this.params.ignoreOnRestore) {
+                        delete data[this.params.ignoreOnRestore[i]];
+                    }
+					          this.SetParams(data, true);
+                }
+                else {
+                    localStorage[this.params.id] = JSON.stringify(this.defaults);
+                }
+            }
+        }
+        if(this.params.initUpdate){
+            this.Update();
+        }
+    },
+
+    //////////////////////////////////////////////////////////////////////
+    // paginator
+    //////////////////////////////////////////////////////////////////////
+
+    paginator: function(id, currentPage, pageCount, callback, params) {
+
+        if (!params)
+            params = {};
+
+        this.Init = function() {
+            var KB_LEFT = 37;
+            var KB_RIGHT = 39;
+            var instance = this;
+
+            jQuery(document).keyup(
+                function(e){
+                    if (! e.ctrlKey) return;
+
+                    var disableHotkeys = false;
+
+                    jQuery(':input').not(':button').not(':checkbox').each(
+                        function(i, el) {
+                            if (el === document.activeElement){
+                                disableHotkeys = true;
+                            }
+                        }
+                    );
+
+                    if (params.disableHotkeys || disableHotkeys)
+                         return;
+
+                    switch(e.which) {
+                        case KB_LEFT: jQuery('#'+instance.id+' .js-prev').click();break;
+                        case KB_RIGHT: jQuery('#'+instance.id+' .js-next').click();break;
+                    }
+                });
+        };
+
+        this.Bind = function(callback) {
+
+            this.callback = callback;
+
+            var paginator = jQuery('#'+this.id);
+
+            var currentPage = this.currentPage;
+            var pageCount = this.pageCount;
+
+            var pages = jQuery('.js-page:not(.js-disabled)', paginator);
+            var curPageIndex = pages.index(jQuery('.js-current', paginator));
+
+            jQuery('.js-disabled', paginator).unbind('click').click(function(e) {
+                e.preventDefault();
+            });
+
+            jQuery('.js-home:not(.js-disabled)', paginator).unbind('click').click( function(e) {
+                e.preventDefault();
+                callback(0);
+            });
+            if (pageCount > 0) {
+                jQuery('.js-end:not(.js-disabled)', paginator).unbind('click').click( function(e) {
+                    e.preventDefault();
+                    var pageNumber = pageCount-1;
+                    callback(pageNumber);
+                });
+            }
+            if (currentPage >= 0) {
+                jQuery('.js-next:not(.js-disabled)', paginator).unbind('click').click( function(e) {
+                    e.preventDefault();
+                    var pageNumber = currentPage+1;
+                    callback(pageNumber);
+                });
+                jQuery('.js-prev:not(.js-disabled)', paginator).unbind('click').click( function(e) {
+                    e.preventDefault();
+                    var pageNumber = currentPage-1;
+                    callback(pageNumber);
+                });
+
+                var pageLink = currentPage - curPageIndex;
+                pages.each(function(index, page) {
+                    var pageNumber = pageLink;
+                    jQuery(page).unbind('click').click( function(e){
+                        e.preventDefault();
+                        callback(pageNumber);
+                    });
+                    ++pageLink;
+                });
+            }
+        };
+
+        this.Update = function(currentPage, pageCount) {
+
+            this.currentPage = currentPage;
+            this.pageCount = pageCount;
+
+            var paginator = jQuery('#'+this.id);
+
+            paginator.toggleClass('js-hidden', pageCount <= 1);
+
+            var pages = jQuery('.js-page', paginator);
+            var pagesLen = pages.length;
+
+            var middlePage = Math.floor(pagesLen / 2); //doesn't do +1, since enumerate pages from 0
+
+            if (this.currentPage < 0 || this.pageCount <= 1) {
+                jQuery('.js-ellipsis-l', paginator).addClass('js-disabled disabled');
+                jQuery('.js-ellipsis-r', paginator).addClass('js-disabled disabled');
+                jQuery('.js-page', paginator).addClass('js-disabled disabled').removeClass('js-current current');
+                jQuery('.js-home', paginator).addClass('js-disabled disabled');
+                jQuery('.js-end', paginator).addClass('js-disabled disabled');
+                jQuery('.js-next', paginator).addClass('js-disabled disabled');
+                jQuery('.js-prev', paginator).addClass('js-disabled disabled');
+            }
+            else {
+                jQuery('.js-ellipsis-l', paginator).removeClass('js-disabled disabled');
+                jQuery('.js-ellipsis-r', paginator).removeClass('js-disabled disabled');
+                jQuery('.js-page', paginator).removeClass('js-disabled disabled js-current current');
+                jQuery('.js-home', paginator).removeClass('js-disabled disabled');
+                jQuery('.js-end', paginator).removeClass('js-disabled disabled');
+                jQuery('.js-next', paginator).removeClass('js-disabled disabled');
+                jQuery('.js-prev', paginator).removeClass('js-disabled disabled');
+
+                var enumerationEnd = pagesLen;
+                var enumerationDelta = 0;
+
+                if (currentPage === 0) {
+                    jQuery('.js-home', paginator).addClass('js-disabled disabled');
+                    jQuery('.js-prev', paginator).addClass('js-disabled disabled');
+                }
+
+                if (currentPage === pageCount-1) {
+                    jQuery('.js-end', paginator).addClass('js-disabled disabled');
+                    jQuery('.js-next', paginator).addClass('js-disabled disabled');
+                }
+
+                if (pageCount <= pagesLen) {
+                    jQuery('.js-ellipsis-l', paginator).addClass('js-disabled disabled');
+                    jQuery('.js-ellipsis-r', paginator).addClass('js-disabled disabled');
+
+                    enumerationEnd = pageCount;
+
+                    for (var i=pageCount; i<pagesLen; ++i) {
+                        pages.eq(i).addClass('js-disabled disabled');
+                    }
+
+                    pages.eq(currentPage).addClass('js-current current');
+                }
+                else {
+                    if (currentPage <= middlePage) {
+                        jQuery('.js-ellipsis-l', paginator).addClass('js-disabled disabled');
+
+                        pages.eq(currentPage).addClass('js-current current');
+                    }
+                    else {
+                        if (pageCount - currentPage <= middlePage) {
+                            jQuery('.js-ellipsis-r', paginator).addClass('js-disabled disabled');
+                            enumerationDelta = pageCount - pagesLen;
+                            pages.eq(currentPage - enumerationDelta).addClass('js-current current');
+                        }
+                        else {
+
+                            enumerationDelta = currentPage - middlePage;
+                            pages.eq(middlePage).addClass('js-current current');
+                        }
+                    }
+                }
+
+                jQuery('.js-home', paginator).text(1);
+                jQuery('.js-end', paginator).text(pageCount);
+
+                for (var i=0; i<enumerationEnd; ++i) {
+                    var pageNumber = enumerationDelta+i+1;
+                    if (pageNumber === 1) {
+                        jQuery('.js-home', paginator).toggleClass('js-disabled disabled', true);
+                        jQuery('.js-ellipsis-l', paginator).toggleClass('js-disabled disabled', true);
+                    }
+                    if (pageNumber > 1 && i===0 && !jQuery('.js-home', paginator).hasClass('js-disabled')) {
+                        jQuery('.js-page', paginator).first().toggleClass('js-disabled disabled', true);
+                    }
+                    if (pageNumber < pageCount && i === enumerationEnd-1 && !jQuery('.js-end', paginator).hasClass('js-disabled')) {
+                        jQuery('.js-page', paginator).last().toggleClass('js-disabled disabled', true);
+                    }
+                    if (pageNumber === pageCount) {
+                        jQuery('.js-ellipsis-r', paginator).toggleClass('js-disabled disabled', true);
+                        jQuery('.js-end', paginator).toggleClass('js-disabled disabled', true);
+                    }
+
+                    pages.eq(i).text(enumerationDelta+i+1);
+                }
+
+                this.Bind(this.callback);
+            }
+        };
+
+        this.id = id;
+        this.currentPage = currentPage;
+        this.pageCount = pageCount;
+
+        this.Init();
+
+        this.Bind(callback);
+        this.Update(currentPage, pageCount);
+    },
+
+    BlockSelection: function(selector) {
+        //prevent shift+click brauser behaviour
+        jQuery(selector).live('mousedown',
+            function (e) {
+                e.preventDefault();
+
+                // For IE
+                if ($.browser.msie) {
+                    this.onselectstart = function () { return false; };
+                    var me = this;  // capture in a closure
+                    window.setTimeout(function () { me.onselectstart = null; }, 0);
+                }
+            });
+    },
+
+    formatString: function (str, col) {
+        col = typeof col === 'object' ? col : Array.prototype.slice.call(arguments, 1);
+
+        return str.replace(/\{([^}]+)\}/gm, function () {
+            return col[arguments[1]];
+        });
+    },
+
+    tabs: function( tabsWrap ) {
+
+        $.easing.myEasing = function (x, t, b, c, d) {
+            return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+        };
+
+        var tabsItem = tabsWrap.find('.js-tabs-item');
+        var tabsContent = tabsWrap.find('.js-tabs-content');
+        var anim = false;
+
+        tabsContent.hide();
+        tabsItem.first().parent().addClass('js-tabs__active');
+        tabsContent.first().addClass('js-tabs-content__show').show();
+
+        tabsItem.click(function () {
+
+            if(anim == false) {
+                anim = true;
+
+                var tabLink = $(this);
+                var linkIndex = $(this).parent().index();
+                var tabsContentIndex = tabsContent.eq(linkIndex);
+                var tabsItemIndex = tabsItem.parent().eq(linkIndex);
+                
+                if( !tabsItemIndex.hasClass('js-tabs__active') && !tabsItemIndex.hasClass('js-tabs__disabled') ) {
+
+                    tabsItemIndex.addClass('js-tabs__active').siblings().removeClass('js-tabs__active');
+
+                    tabsWrap.find('.js-tabs-content__show').animate({opacity: 'hide'}, 460, 'myEasing', function() {
+                        changeTabSidebar(tabLink);
+                    }).queue(
+                        function(next){
+                            tabsContentIndex.addClass('js-tabs-content__show').siblings().removeClass('js-tabs-content__show');
+                            tabsContentIndex.animate({opacity: 'show'}, 600, 'myEasing', function(){
+                                anim = false;
+                            });
+                            next();
+                        });
+
+                }
+                else{
+                    anim = false;
+                }
+            }
+
+            return false;
+        });
+
+    },
+
+    step: function( stepWrap ) {
+
+        var content = stepWrap.find('.js-step');
+        var contentItem = content.find('.js-step-item');
+        var contentItemLast = contentItem.last();
+        var contentItemLength = contentItem.length;
+        var allItemsWidth = 0;
+
+        contentItem.each( function() {
+            allItemsWidth = allItemsWidth + $(this).width();
+        });
+
+        var indent = Math.floor((content.width() - allItemsWidth) / (contentItemLength - 1))+'px';
+        contentItem.last().addClass('js-last');
+
+        contentItem.each( function() {
+            if (!$(this).hasClass('js-last')) {
+                $(this).css('padding-right', indent);
+                $(this).children('.js-step-arrow').show().css({
+                    'width': indent
+                });
+            }
+        })
+    }
+};
+
+jQuery(document).ready( function(){
+    wot_hl.BlockSelection('.js-disable-shift-click');
+    wot_hl.BlockSelection('.ui-widget-overlay');
+    if ($('.js-tabs').length) {
+        $('.js-tabs').each(function(){
+            wot_hl.tabs($(this));
+        });
+    }
+});
+
+
+}
+/*
+     FILE ARCHIVED ON 10:52:05 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:30 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 82.037
+  exclusion.robots: 0.113
+  exclusion.robots.policy: 0.104
+  RedisCDXSource: 2.392
+  esindex: 0.009
+  LoadShardBlock: 61.055 (3)
+  PetaboxLoader3.datanode: 52.437 (4)
+  CDXLines.iter: 15.454 (3)
+  load_resource: 56.969
+  PetaboxLoader3.resolve: 21.534
+*/

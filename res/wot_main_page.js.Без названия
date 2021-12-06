@@ -1,0 +1,198 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+
+jQuery(document).ready(function(e) {
+    expandableAuth = new wot_hl.MenuWnd('#js-auth-wrapper',
+                                        {direction: 'down'});
+
+    jQuery('.js-auth-link').click(function() {
+        wot_forms.auth_dialog();
+        return false;
+    });
+
+    expandableLang = new wot_hl.MenuWnd('#js-lang-wrapper',
+                                        {direction: 'down'});
+
+    expandableRegion = new wot_hl.MenuWnd('#js-region-wrapper',
+                                          {direction: 'down'});
+
+    expandableRegion = new wot_hl.MenuWnd('#js-more-wrapper',
+                                          {direction: 'down'});
+
+    expandableNotifications = new wot_hl.MenuWnd('#js-notifications-wrapper',
+                                                {direction: 'down'});
+
+    expandableRegion = new wot_hl.MenuWnd('#js-contr-wrapper', {direction: 'down'});
+
+    // menu search block
+    var searchPaths = {'clans': '/community/clans/?type=fast_search',
+                       'accounts': '/community/accounts/?type=fast_search' };
+
+    var searchForm = jQuery('#js-menu-search-form');
+
+    function InintSearchSwitcher(type) {
+
+        var base = 'js-menu-search-'+type;
+        var switcher = jQuery('#'+base);
+        var postUrl = searchPaths[type];
+
+        jQuery('#js-menu-search-switcher').change(function(e){
+            searchForm.attr('action', postUrl);
+
+            jQuery('.js-menu-search-tooltip').toggleClass('js-hidden', true);
+            jQuery('.'+base+'-tooltip').toggleClass('js-hidden', false);
+        });
+    };
+
+    InintSearchSwitcher('accounts');
+    InintSearchSwitcher('clans');
+
+	/* input[readonly] and Backspace in IE */
+	function stopBackspace(windowEvent)
+	{
+		var code;
+		code = windowEvent.keyCode;
+		if(code==8)
+		{
+			//Backspace
+			windowEvent.stopPropagation();
+			windowEvent.preventDefault();
+		}
+	};
+	$("input[readonly]").live('keydown', function(event) {
+		stopBackspace(event);
+	});
+
+
+    /* main Menu Paddings */
+    if($(".js-portal-menu").length)
+    {
+        mainMenuPadding($(".js-portal-menu"));
+    };
+
+    function mainMenuPadding(m)
+    {
+        var itemsMenu = m.find(".js-portal-menu-item");
+        var itemsMenuLast = m.find(".js-portal-menu-item:last");
+        var numItemsMenu = itemsMenu.length;
+        var allItemsMenuWidth = 0;
+        var menuWidth = m.width(); /* максимальная ширина меню */
+        var itemsMenuInner = itemsMenu.find(".js-portal-menu-item-link-inner");
+        var itemsMenuInnerLast = itemsMenuLast.find(".js-portal-menu-item-link-inner");
+        var newWidthItemRound = 0;
+        var differenceWidth;
+        var curPaddingL;
+        var curPaddingR;
+        var newPaddingL;
+        var newPaddingR;
+        var allItemsMenuWidthControl = 0;
+        var widthPodmenuItem;
+
+        itemsMenuLast.addClass("last");
+        itemsMenuInner.each(function()
+                            {
+                                newWidthItemRound = $(this).width();
+                                $(this).css("width", newWidthItemRound);
+                            });
+
+        itemsMenu.each(function()
+                       {
+                           allItemsMenuWidth = allItemsMenuWidth + $(this).width(); /* ширина всех li в сумме */
+                       });
+
+        if(allItemsMenuWidth < menuWidth)
+        {
+            differenceWidth = Math.floor((menuWidth-allItemsMenuWidth)/numItemsMenu/2);
+            itemsMenuInner.each(function()
+                                {
+                                    curPaddingL = parseInt($(this).css("padding-left").replace("px", ""));
+                                    curPaddingR = parseInt($(this).css("padding-right").replace("px", ""));
+                                    newPaddingL = curPaddingL + differenceWidth;
+                                    newPaddingR = curPaddingR + differenceWidth;
+                                    $(this).css("padding-left",newPaddingL+"px").css("padding-right",newPaddingR+"px");
+                                });
+            /* проверка остатка */
+            itemsMenu.each(function()
+                           {
+                               allItemsMenuWidthControl = allItemsMenuWidthControl + $(this).width();
+                           });
+            curPaddingL = itemsMenuInnerLast.css("padding-left").replace("px", "");
+            newPaddingL = parseInt(curPaddingL) + (menuWidth-allItemsMenuWidthControl);
+            itemsMenuInnerLast.css("padding-left",newPaddingL+"px");
+        };
+        itemsMenu.css("visibility", "visible");
+    };
+
+    jQuery('.js-exit-link').click(function(e){
+        e.preventDefault();
+        var nextUrl = jQuery('#js-next-url-value').text();
+        jQuery.ajax({ type: 'post',
+                      url: "/auth/delete/?next="+nextUrl,
+                      success: function(data) {
+                          if (data && data.data && data.redirect_to) {
+                              location.href = data.redirect_to;
+                          }
+                          else {
+                              location.reload();
+                          }
+                      }
+                    });
+    });
+
+    jQuery(".js-portal-menu-" + active_menu_id).addClass('active');
+
+    var banners = jQuery('.js-b4rs-left,.js-b4rs-right');
+    function UpdateBannersVisibility(){
+        if (jQuery(window).width() < 1440)
+            banners.hide();
+        else
+            banners.show();
+    };
+    UpdateBannersVisibility();
+    jQuery(window).resize(UpdateBannersVisibility);
+});
+
+function ShowSpoiler(obj, id, hide_text, show_text){
+    var spoiler_obj = jQuery('#spoiler_'+id)
+    var link_obj = jQuery(obj);
+    if( spoiler_obj.css('display') == 'none'){    
+        spoiler_obj.show();
+        link_obj.text(hide_text);
+    }else{
+        spoiler_obj.hide();
+        link_obj.text(show_text);
+    }
+}
+
+}
+/*
+     FILE ARCHIVED ON 10:52:05 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:31 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1075.868
+  exclusion.robots: 0.095
+  exclusion.robots.policy: 0.087
+  RedisCDXSource: 6.459
+  esindex: 0.007
+  LoadShardBlock: 1051.102 (3)
+  PetaboxLoader3.datanode: 1044.096 (4)
+  CDXLines.iter: 15.987 (3)
+  load_resource: 76.427
+  PetaboxLoader3.resolve: 46.752
+*/

@@ -1,0 +1,293 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+TOOLTIP_Z_INDEX = 11000;
+TOOLTIP_TIME_DELAY = 300;
+TOOLTIP_FADE_TIME = 100;
+TOOLTIP_OFFSET_X = 15;
+TOOLTIP_OFFSET_Y = 20;
+
+POPUP_OFFSET_X = 10;
+POPUP_OFFSET_Y = 10;
+
+var hl_current_tooltip_id = "";
+
+function getTooltipId(elem, prefix, id){
+	var tooltip_id = '';
+
+    var cls = elem.attr('class');
+    var patt = /js-tooltip-id_([-\w]+)/;
+    var result = patt.exec(cls);
+
+    if (result && result.length > 0) {
+        tooltip_id = result[1];
+        return tooltip_id;
+    }
+
+	if (id != null)
+		tooltip_id = id + prefix;
+	else if (elem.attr('id') != '')
+		tooltip_id = elem.attr('id') + prefix;
+
+	return tooltip_id;
+}
+
+$(document).ready(function(){
+    $('.js-tooltip').live('mouseenter', tooltip);
+    $('.js-popup').live('mouseenter', popup);
+
+    if (!$('#js-tooltip-container').length){
+        $('body').append('<div id="js-tooltip-container"></div>');
+    }
+});
+
+function tooltip(event){
+    tooltipBasic(event, {
+		'popup': false,
+		'target': this
+    });
+}
+
+function popup(event){
+    tooltipBasic(event, {
+		'popup': true,
+		'target': this
+    });
+}
+
+function tooltipBind(target_obj, tooltip_obj)
+{
+    target_obj.live('mouseenter', function(event){
+        tooltipBasic(event, {
+            'popup': false,
+            'tooltip': tooltip_obj,
+            'target': this
+        });
+    });
+    target_obj.live('mouseenter', function(event){
+        tooltipBasic(event, {
+            'popup': true,
+            'tooltip': tooltip_obj,
+            'target': this
+        });
+    });
+}
+
+function tooltipBasic(event, param)
+{
+    var url = param.url;
+	var id = undefined;
+
+    // do not spam with selectors
+	var container = $('#js-tooltip-container');
+	var target = $(param.target);
+
+	if (url != null)
+	{
+		id = '';
+		var strar = url.substring(0, id.lastIndexOf('?')).split('/');
+		for (var idx in strar){
+			if (strar[idx].length > 0)
+				id = id + strar[idx] + '_';
+		}
+
+		id = id.substring(0, id.lastIndexOf('_'));
+		param.id = id;
+	}
+	else if (param.id != null)
+		id = param.id;
+	else
+		id = target.attr('id');
+
+	if (param.popup == null)
+		param.popup = false;
+
+    var tooltip
+    if(param.tooltip)
+    {
+        tooltip = param.tooltip;
+    }else{
+        var tooltip_name = getTooltipId(target, param.popup ? '_popup' : '_tooltip', id);
+        var tooltip_id = '#' + tooltip_name;
+        tooltip = $(tooltip_id);
+    }
+
+	container.append(tooltip.detach());
+
+	tooltip.hide();
+	tooltip.css({'position': 'absolute',
+	             'z-index': TOOLTIP_Z_INDEX});
+
+    if ( typeof(id) == 'string')
+    {
+		if (url == null)
+		{
+			url = "";
+			var strar = id.split('_');
+			for (id in strar)
+				url = url + '/' + strar[id];
+
+			if (param.popup)
+				url = url + "/?info=popup";
+			else
+				url = url + "/?info=tooltip";
+		}
+    }
+    else
+        return;
+
+    var show_tooltip = function(is_loaded)
+    {
+		if (hl_current_tooltip_id != "" && hl_current_tooltip_id != tooltip_id){
+            $(hl_current_tooltip_id).fadeOut(0);
+        }
+
+		hl_current_tooltip_id = tooltip_id;
+
+		if (!is_loaded){
+			tooltip.delay( TOOLTIP_TIME_DELAY ).fadeIn( TOOLTIP_FADE_TIME, function(){tooltip.css('opacity', 1);});
+        }
+		else{
+			tooltip.fadeIn(0, function(){tooltip.css('opacity', 1);});
+        }
+
+		var set_position = function(event)
+		{
+			var offset   = { x: 0, y: 0 };
+			var mouse    = { x: event.pageX, y: event.pageY };
+			var coord    = { x: 0, y: 0 };
+			var win_size = { x: $(window).width(), y: $(window).height() };
+			var tip_size = { x: tooltip.width() + 10, y: tooltip.height() + 10 };
+
+			if (param.popup)
+				offset = { x: POPUP_OFFSET_X, y: POPUP_OFFSET_Y };
+			else
+				offset = { x: TOOLTIP_OFFSET_X, y: TOOLTIP_OFFSET_Y };
+
+			if ( mouse.x + tip_size.x + offset.x > win_size.x )
+				coord.x = mouse.x - offset.x - tip_size.x;
+			else
+				coord.x = mouse.x + offset.x;
+
+			if ( mouse.y + tip_size.y + offset.y > win_size.y )
+				coord.y = mouse.y - offset.y - tip_size.y;
+			else
+				coord.y = mouse.y + offset.y;
+
+			tooltip.css({'left': coord.x, 'top': coord.y});
+		};
+
+		set_position(event);
+
+        target.trigger('tooltipshow', [tooltip]);
+
+		if (!param.popup)
+		{
+			target.bind('mousemove', function(event){
+				set_position(event);
+			});
+		}
+
+		var leave = function(event)
+		{
+			tooltip.clearQueue();
+
+			if (hl_current_tooltip_id == tooltip_id)
+			    hl_current_tooltip_id = "";
+
+			if (param.popup)
+			{
+				tooltip.delay(200).fadeOut(0);
+
+				tooltip.one('mouseenter', function(){
+					tooltip.clearQueue();
+				});
+
+				tooltip.one('mouseleave', function(){
+					tooltip.fadeOut(0);
+				});
+			}
+			else
+				tooltip.fadeOut(0);
+
+			if (!param.popup)
+				target.unbind('mousemove');
+		};
+
+		target.one('mouseleave', leave);
+		$(window).one('unload', leave);
+    };
+
+    if ( tooltip.length == 0 )
+    {
+        var html = "<div class='b-tooltip-main' id='" + tooltip_name + "' style='position:absolute; z-index:" + TOOLTIP_Z_INDEX + ";'></div>";
+        var error_text = '<span style="color:#cd5c5c;font-weight:bold;">' + translate('TOOLTIP_DOES_NOT_FOUND') + '</span>';
+
+        $().add(html).appendTo(container).hide();
+        tooltip.text(translate('TOOLTIP_LOADING'));
+
+        try
+        {
+            $.ajax({
+                'type': 'get',
+                'url': url,
+                'success': function(data) {
+                    if (data && data != '')
+                        tooltip.html(data);
+                    else
+                        tooltip.html(error_text);
+
+                    show_tooltip(true);
+                },
+                'error': function() {
+                    tooltip.html(error_text);
+                    show_tooltip(true);
+                }
+            });
+        }
+        catch(er)
+        {
+            tooltip.html(error_text);
+            show_tooltip(true);
+        }
+    }
+    else
+        show_tooltip(false);
+}
+
+var tooltipReset = function(){
+    $('#js-tooltip-container').html('');
+};
+
+
+}
+/*
+     FILE ARCHIVED ON 10:51:59 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:30 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 86.568
+  exclusion.robots: 0.093
+  exclusion.robots.policy: 0.085
+  RedisCDXSource: 5.981
+  esindex: 0.006
+  LoadShardBlock: 60.106 (3)
+  PetaboxLoader3.datanode: 104.445 (4)
+  CDXLines.iter: 17.932 (3)
+  load_resource: 170.869
+  PetaboxLoader3.resolve: 108.84
+*/

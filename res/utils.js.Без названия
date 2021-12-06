@@ -1,0 +1,131 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+getCookie = function(c_name){
+   if (document.cookie.length>0){
+      c_start=document.cookie.indexOf(c_name + "=");
+      if (c_start!=-1){
+         c_start=c_start + c_name.length+1;
+         c_end=document.cookie.indexOf(";",c_start);
+         if (c_end==-1) c_end=document.cookie.length;
+         return unescape(document.cookie.substring(c_start,c_end));
+      }
+   }
+   return "";
+};
+
+setCookie = function(name, value, props) {
+    props = props || {}
+    var exp = props.expires
+    if (typeof exp == "number" && exp) {
+        var d = new Date()
+        d.setTime(d.getTime() + exp*1000)
+        exp = props.expires = d
+    }
+    if(exp && exp.toUTCString) { props.expires = exp.toUTCString() }
+    value = encodeURIComponent(value)
+    var updatedCookie = name + "=" + value
+    for(var propName in props){
+        updatedCookie += "; " + propName
+        var propValue = props[propName]
+        if(propValue !== true){ updatedCookie += "=" + propValue }
+    }
+    document.cookie = updatedCookie
+}
+
+getDomainForCookie = function(){
+   var ip_format = /^([1-9][0-9]{0,2})+\.([1-9][0-9]{0,2})+\.([1-9][0-9]{0,2})+\.([1-9][0-9]{0,2})+$/;
+   if (ip_format.test(document.domain))
+	  return document.domain
+	  
+   var arr = document.domain.split('.');
+   
+   if (arr.length == 1)
+	  return arr[0];
+   
+   if (arr.length > 2)
+	  arr.splice(0,1);
+   
+   return '.'+arr.join('.');
+}
+
+function getParameterByName(name, url){
+   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+   var regexS = "[\\?&]" + name + "=([^&#]*)";
+   var regex = new RegExp(regexS);
+   
+   if(url) var results = regex.exec(url);
+   else var results = regex.exec(window.location.href);
+   
+   if(results == null) return "";
+   else return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).bind('resize', function() { jQuery('.cluster-change-content').center({vertical:true}); });
+jQuery(document).ready(function(){ jQuery('.cluster-change-content').center(); });
+
+(function(jQuery){
+    jQuery.fn.extend({
+         center: function (options) {
+              var options =  jQuery.extend({ // Default values
+                   inside:window, // element, center into window
+                   transition: 0, // millisecond, transition time
+                   minX:0, // pixel, minimum left element value
+                   minY:0, // pixel, minimum top element value
+                   withScrolling:true, // booleen, take care of the scrollbar (scrollTop)
+                   vertical:true, // booleen, center vertical
+                   horizontal:true // booleen, center horizontal
+              }, options);
+              return this.each(function() {
+                   var props = {position:'absolute'};
+                   if (options.vertical) {
+                        var top = (jQuery(options.inside).height() - jQuery(this).outerHeight()) / 2;
+                        if (options.withScrolling) top += jQuery(options.inside).scrollTop() || 0;
+                        top = (top > options.minY ? top : options.minY);
+                        jQuery.extend(props, {top: top+'px'});
+                   }
+                   if (options.horizontal) {
+                         var left = (jQuery(options.inside).width() - jQuery(this).outerWidth()) / 2;
+                         if (options.withScrolling) left += jQuery(options.inside).scrollLeft() || 0;
+                         left = (left > options.minX ? left : options.minX);
+                         jQuery.extend(props, {left: left+'px'});
+                   }
+                   if (options.transition > 0) jQuery(this).animate(props, options.transition);
+                   else jQuery(this).css(props);
+                   return jQuery(this);
+              });
+         }
+    });
+})(jQuery);
+
+}
+/*
+     FILE ARCHIVED ON 10:51:53 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:30 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  PetaboxLoader3.datanode: 153.436 (4)
+  LoadShardBlock: 146.369 (3)
+  load_resource: 129.857
+  captures_list: 174.923
+  CDXLines.iter: 18.428 (3)
+  exclusion.robots: 0.134
+  esindex: 0.011
+  PetaboxLoader3.resolve: 81.03
+  exclusion.robots.policy: 0.124
+  cdx.remote: 0.11
+*/
