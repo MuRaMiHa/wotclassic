@@ -1,0 +1,96 @@
+.b-sectionmenu {
+	background:#fff;
+	height:93px;
+	background:url(/web/20121212105154im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-sectionmenu/img/bg-sectionmenu.gif) 0 0 repeat-x #fff;
+	}
+.b-sectionmenu table {
+	width:100%;
+    }
+.b-sectionmenu table td {
+	vertical-align:top;
+	height:93px;
+	width:50%;
+	}
+.b-sectionmenu .h-sectionmenu-title {
+	font-family:"WarHeliosCondC",arial,sans-serif;
+	height:93px;
+    width:50%;
+	}
+.b-sectionmenu .sectionmenu-title {
+		font-size:48px;
+		padding:21px 21px 0 138px;
+		color:#0f0f0f;
+		text-transform:uppercase;
+		}
+/*макеев идет нах...(пропагандировать свой ёперный говнобраузер) с ёлочками в css*/
+.b-sectionmenu .t-community {
+	background:url(/web/20121212105154im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-sectionmenu/img/bg-community.jpg) 0 0 no-repeat;
+    }
+.b-sectionmenu .h-sectionmenu-cont {
+	width:50%;
+	line-height:166.6%;
+	}
+.b-sectionmenu .h-sectionmenu-cont {
+	}
+.b-sectionmenu .h-sectionmenu-cont table {
+    width:100%;
+	}
+.b-sectionmenu .h-sectionmenu-cont table td {
+	background:url(/web/20121212105154im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-sectionmenu/img/delimiter-sectionmenu.png) 0 0 no-repeat;
+	height:93px;
+	vertical-align:top;
+	padding:16px 43px 0 12px;
+    }
+.b-sectionmenu .h-sectionmenu-cont a {
+    color:#919191;
+	text-decoration:none;
+	font-size12px;
+	font-weight:700;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	}
+
+.b-sectionmenu .h-sectionmenu-cont .active a, .b-sectionmenu .h-sectionmenu-cont a:hover {
+	color:#F25322;
+	}
+.b-sectionmenu .h-sectionmenu-cont li {
+	white-space:nowrap;
+    }
+
+.b-sectionmenu .h-sectionmenu-cont span {
+    color:#919191;
+	text-decoration:none;
+	font-size12px;
+	font-weight:700;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	}
+
+.b-sectionmenu .h-sectionmenu-cont .active span{
+    color:#F25322;
+	  text-decoration:none;
+	font-size12px;
+	font-weight:700;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	}
+
+
+/*
+     FILE ARCHIVED ON 10:51:54 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:17 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 59.306
+  exclusion.robots: 0.113
+  exclusion.robots.policy: 0.103
+  RedisCDXSource: 2.266
+  esindex: 0.008
+  LoadShardBlock: 36.325 (3)
+  PetaboxLoader3.datanode: 46.141 (4)
+  CDXLines.iter: 17.815 (3)
+  load_resource: 70.553
+  PetaboxLoader3.resolve: 28.232
+*/

@@ -1,0 +1,41 @@
+.b-abv {
+	position:relative;
+    }
+.b-abv .b-left-column {
+	position:absolute;
+	left:-200px;
+	width:200px;
+	text-align:left
+    }
+.b-abv .b-right-column {
+    position:absolute;
+    right:-200px;
+	width:200px;
+	text-align:right
+    }
+.b-abv .b-left-column a,
+.b-abv .b-right-column a {
+	margin:0 0 20px;
+	display:block;
+	}
+/*
+     FILE ARCHIVED ON 10:51:56 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:32:18 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 96.205
+  exclusion.robots: 0.097
+  exclusion.robots.policy: 0.089
+  RedisCDXSource: 38.292
+  esindex: 0.009
+  LoadShardBlock: 33.275 (3)
+  PetaboxLoader3.datanode: 52.459 (4)
+  CDXLines.iter: 21.583 (3)
+  load_resource: 73.344
+  PetaboxLoader3.resolve: 26.121
+*/

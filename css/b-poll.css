@@ -1,0 +1,90 @@
+.b-vote-results {
+    margin: 0 0 13px 0;
+    overflow: hidden;
+}
+.b-vote-choice-text {
+    color: #898a8c;
+    font-size: 13px;
+    word-wrap: break-word;
+    line-height: 16px;
+}
+.b-vote-choice-text-percent {
+    color:#ffffff;
+    font-weight: bold;
+}
+.b-vote-choice-text-votes {
+    color:#b9babb;
+}
+.b-vote-results .progress, .b-vote-results .progress-large {
+    background:url(/web/20121212105158im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-poll/img/poll-bg-small.png) no-repeat 0 0;
+    margin: 5px 0 0 0;
+    padding: 0 5px 2px 3px;
+    height: 9px;
+    width: 208px;
+}
+.b-vote-results .progress-large {
+    float: left;
+    margin-right: 7px;
+}
+.b-vote-choice-percent {
+    float: left;
+}
+.b-vote-results .progress .result, .b-vote-results .progress-large .result {
+    background:url(/web/20121212105158im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-poll/img/poll-bar-small.gif) top left no-repeat;
+    width: 0px;
+    height: 9px;
+    float: left;
+    overflow: hidden;
+}
+.b-poll-list {
+    margin-bottom: -15px;
+}
+.b-poll-question {
+    /*background: url("/web/20121212105158im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-poll/img/b-poll-question-bg.png") repeat-y 50% 0;*/
+    color: #9fa0a1;
+    font-weight: bold;
+    font-size: 13px;
+    margin: -14px -14px 10px;
+    padding: 5px 14px;
+    position: relative;
+}
+.b-poll-result {
+    margin-left: 20px;
+}
+.b-orange-linck.b-poll-result:hover {
+    text-decoration: none;
+}
+.b-poll-result:hover span {
+    border-bottom: 1px #F25322 dashed;
+}
+.b-poll_name {
+    color:#ffffff;
+    font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 19px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0 0 13px 0;
+}
+
+/*
+     FILE ARCHIVED ON 10:51:58 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:01:16 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 94.024
+  exclusion.robots: 0.074
+  exclusion.robots.policy: 0.068
+  RedisCDXSource: 15.616
+  esindex: 0.007
+  LoadShardBlock: 57.853 (3)
+  PetaboxLoader3.datanode: 48.207 (4)
+  CDXLines.iter: 17.797 (3)
+  load_resource: 75.736
+  PetaboxLoader3.resolve: 50.946
+*/

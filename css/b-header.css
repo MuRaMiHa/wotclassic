@@ -1,0 +1,28 @@
+.b-header {
+	height:138px;
+	z-index:1;
+    position: relative;
+    background: url(../img/header_ru.jpg) no-repeat 0 100%;
+}
+.b-header .b-logo {
+	position:absolute;
+	z-index:2;
+    background: url(../img/wot-logo.png) no-repeat 0 0;
+    display: block;
+    width: 310px;
+    height: 138px;
+    bottom: 0;
+    left:0;
+}
+.reg-CN1 .b-header .b-logo, .reg-CN2 .b-header .b-logo {
+    background: url(/web/20130530091940im_/http://worldoftanks.ru/static/3.10.1.5.1/common/css/block/b-header/img/china_logo.png) no-repeat 0 0;
+}
+.reg-RUS .b-header {
+    background: url(/web/20130530091940im_/http://worldoftanks.ru/static/3.10.1.5.1/common/css/block/b-header/img/header_ru.jpg) no-repeat 0 100%;
+}
+.reg-EUR .b-header {
+    background: url(/web/20130530091940im_/http://worldoftanks.ru/static/3.10.1.5.1/common/css/block/b-header/img/header_eu.jpg) no-repeat 0 100%;
+}
+.reg-USA .b-header {
+    background: url(/web/20130530091940im_/http://worldoftanks.ru/static/3.10.1.5.1/common/css/block/b-header/img/header_com.jpg) no-repeat 0 100%;
+}

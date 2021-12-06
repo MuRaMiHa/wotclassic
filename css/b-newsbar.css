@@ -1,0 +1,274 @@
+@charset "utf-8";
+.b-map-control-panel {
+	width:950px;
+	}
+.b-map-control-panel .b-province .b-block-top {
+	/*background:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/bg-province-top.jpg) 0 0 no-repeat;*/
+	height:49px;
+	}
+.b-map-control-panel .b-province .b-block-middle {
+	height:45px;
+	}
+.b-map-control-panel .b-province .b-block-bottom {
+	height:53px;
+	margin:-1px 0 0;
+	}
+.b-newsbar {
+	position: relative;
+	height:34px;
+	background:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/bg-newsbar.png) repeat-x 0 0;
+	margin:8px 0;
+	}
+.b-newsbar .time {
+	float:left;
+	width:90px;
+	position:relative;
+	padding:8px 0 8px 40px;
+	background:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/ico-logo.gif) no-repeat 5px 50%;
+	}
+.b-newsbar .time .ico-type {
+	background-image:url("/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/log_states.png");
+	background-position:0 0;
+	background-repeat:no-repeat;
+	height:10px;
+	position:absolute;
+	width:10px;
+	margin-left:-12px;
+	margin-top:2px; 
+	}
+.b-newsbar .time .ico-blue {
+	background-position:0 0;
+	}
+.b-newsbar .time .ico-orange {
+	background-position:-10px 0;
+	}
+.b-newsbar .time .ico-green {
+	background-position:-20px 0;
+	}
+.b-newsbar .time .ico-cian {
+	background-position:-30px 0;
+	}
+.b-newsbar .time .ico-violet {
+	background-position:-40px 0;
+	}
+
+
+.b-newsbar .events-container {
+	margin:0 95px 0 130px;
+	padding:8px 0 0;
+	height:26px;
+	width:775px;
+	overflow:hidden;
+	position:relative;
+	white-space:nowrap;
+}
+.b-text-overflow {
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.b-newsbar .events-container .fade {
+	position:absolute;
+	right:0;
+	top:0;
+	height:34px;
+	width:30px;
+	}
+.b-newsbar .events-container-scroll {
+
+
+	}
+.b-newsbar .control {
+	float:right;
+	width:93px;
+	}
+.b-newsbar .control ul {
+	padding:7px 0;
+	}
+.b-newsbar .control li {
+	float:left;
+	padding:0 2px;
+	}
+.b-newsbar .control .full {
+	padding:0 9px;
+	margin-left:9px;
+	background:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/delimiter_vert.gif) no-repeat 0 50%;
+	}
+.b-newsbar .control li a {
+	display:block;
+	width:19px;
+	height:19px;
+	background-image:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/log_buttons.png);
+	background-repeat:no-repeat;
+	}
+.b-newsbar .control .prev a {
+	background-position:0 0;
+	}
+
+.b-newsbar .control .next a {
+	background-position:-19px 0;
+	}
+.b-newsbar .control .full a {
+	background-position:-38px 0;
+	}
+.b-newsbar .control .prev a:hover {
+	background-position:0 -19px;
+	}
+
+.b-newsbar .control .next a:hover {
+	background-position:-19px -19px;
+	}
+.b-newsbar .control .full a:hover {
+	background-position:-38px -38px;
+	}
+
+.b-newsbar-list {
+	background:#040404;
+	border:1px solid #252526;
+	width: 100%;
+	overflow: hidden;
+    z-index: 999;
+}
+
+.b-newsbar-list .tabs h3 {
+	margin:7px 17px 8px;
+}
+
+.b-newsbar-list .tabs, .b-newsbar-list .tabs ul {
+	width:100%;
+}
+
+.b-newsbar-list .tabs a {
+	position:relative;
+	display:block;
+	padding:6px 12px 3px 34px;
+	color:#947648;
+	text-decoration:none;
+}
+
+.b-newsbar-list .tabs li {
+	float:left;
+	font-size:18px;
+	font-family:"WarHeliosCondC", arial, sans-serif;
+	background:url(/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/bg-tabs.gif) 0 0;
+	border-top:1px solid #1b1c1e;
+	border-right:1px solid #1b1c1e;
+	border-left:1px solid #000;
+	margin-top:-1px;
+}
+
+.b-newsbar-list .tabs li.all {
+	border-left:0;
+}
+
+.b-newsbar-list .tabs .active {
+	border:1px solid #000;
+	border-width:1px 1px 0 1px;
+	margin-top:-1px;
+	background:#222424;
+}
+
+.b-newsbar-list .tabs li.close {
+	float:right;
+	margin-top:2px;
+	font-size:12px;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	background:none;
+	border:none;
+}
+
+.b-newsbar-list .tabs li.close a {
+	color:#b4b4b4;
+	padding:6px 23px;
+	margin-right:13px;
+	background:url("/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/ico-close.gif") no-repeat 100% 55%;
+}
+
+.b-newsbar-list .tabs i {
+	background-image:url("/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/log_filters.png");
+	background-position:0 0;
+	background-repeat:no-repeat;
+	height:18px;
+	position:absolute;
+	width:18px;
+	margin-left:-22px;
+	margin-top:-2px;
+}
+
+.b-newsbar-list .tabs .all i {
+    background-position:0 0;
+}
+
+.b-newsbar-list .tabs .clan i {
+    background-position:-18px 0;
+}
+
+.b-newsbar-list .tabs .province i {
+    background-position:-36px 0;
+}
+.b-newsbar-list .tabs .spy i {
+    background-position:-54px 0;
+}
+
+.b-newsbar-list .content {
+	padding:20px 10px;
+	clear:both;
+	background:#000 url("/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/bg-grad.jpg") no-repeat 0 0;
+	border-top:1px solid #222424;
+}
+
+.b-newsbar-list .content .x-wrapper {
+	height:250px;
+	overflow-y:auto; 
+	overflow-x:hidden;
+	position:relative;
+}
+
+.b-newsbar-list .content .js-events-list-scroll-content {
+	height: 250px;
+    overflow: auto;
+}
+
+.b-newsbar-list .content ul {
+	padding:0 20px;
+}
+
+.b-newsbar-list .content .x-wrapper  ul {
+	padding:0 20px;
+	/* position:absolute; */
+	top:0;
+	left:0;
+	/* height:250px; */
+}
+
+.b-newsbar-list .content li {
+	padding:0 0 15px 12px;
+	line-height:1.3;
+	position:relative;
+}
+
+.b-newsbar-list .ico-type {
+	background-image:url("/web/20121212105156im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-newsbar/img/log_states.png");
+	background-position:0 0;
+	background-repeat:no-repeat;
+	height:10px;
+	position:absolute;
+	width:10px;
+	margin-left:-12px;
+	margin-top:3px;
+	}
+.b-newsbar-list .ico-blue {
+	background-position:0 0;
+	}
+.b-newsbar-list .ico-orange {
+	background-position:-10px 0;
+	}
+.b-newsbar-list .ico-green {
+	background-position:-20px 0;
+	}
+.b-newsbar-list .ico-cian {
+	background-position:-30px 0;
+	}
+.b-newsbar-list .ico-violet {
+	background-position:-40px 0;
+	}

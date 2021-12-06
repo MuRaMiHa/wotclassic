@@ -1,0 +1,327 @@
+.b-imgblock {
+	overflow: hidden;
+}
+.b-imgblock_ico {
+	display: block;
+	float: left;
+	border: 1px #000000 solid;
+	position: relative;
+	zoom:1;
+}
+.b-imgblock_content {
+	margin-left: 202px;
+}
+.b-imgblock_headerlinck {
+	margin: 0 0 10px;
+    padding: 0;
+    color: #F9D088;
+    font-family: Arial,"Helvetica CY", Helvetica,sans-serif;
+    font-size: 13px;
+	line-height: 16px;
+}
+.b-imgblock_headerlinck a {
+	color: #F9D088;
+    text-decoration: none;
+}
+.b-imgblock_headerlinck a:hover {
+    color: #F9D088;
+    text-decoration: underline;
+}
+.b-imgblock_text {
+    color: #909191;
+    margin: 0 0 10px;
+}
+.b-imgblock_statistic {
+    line-height: 14px;
+    overflow: hidden;
+}
+.b-imgblock_statistic_time {
+    color: #606061;
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+.b-imgblock_statistic_category {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    color: #cacbcc;
+    text-decoration: none;
+}
+.b-imgblock_statistic_category:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.b-imgblock_video {
+    margin: 0 0 20px 0;
+}
+.b-news .b-imgblock_headerlinck {
+    font-size: 17px;
+	font-family:"Arial Narrow", Arial, "Helvetica CY", Helvetica, sans-serif;
+	font-stretch: condensed;
+	font-weight:bold;
+    line-height: 19px;
+    margin: 0 0 4px;
+}
+
+/* Gifts */
+.b-gift-title {
+    float: left;
+}
+.b-gift-country{
+	float:right;
+    color:#fff;
+    display: block;
+    font-size:13px;
+    line-height: 24px;
+    margin: 12px 0;
+}
+    .b-gift-country .js-combobox-country {
+        width: 120px!important;
+    }
+.b-gift-country DL {
+    clear: both;
+    display: block;
+    overflow:hidden;
+    _zoom:1;
+}
+.b-gift-country DL DT {
+    float: left;
+    font-size:12px;
+    font-weight: bold;
+    padding-right: 10px;
+    text-align: right;
+    white-space: nowrap;
+}
+.b-gift-country DL DD {
+    float: left;
+}
+.b-gift-country DL DD p {
+    margin:0;
+}
+
+.b-gift-block{
+	margin:26px 0 0 0;
+	*margin:26px 0;
+	overflow:hidden;
+	*zoom:1;}
+.b-gift{
+	border:1px solid #000;
+	float:left;
+	margin:0 18px 25px 18px;
+	position:relative;
+    overflow: hidden;
+
+}
+.b-form fieldset .b-gift_label, .b-gift_label {
+    margin: 0;
+    padding: 0;
+    width: 185px;
+    height: 133px;
+    color:#d7d9d9;
+    font-family: Arial,"Helvetica CY", Helvetica,sans-serif;
+    font-size: 12px;
+    font-stretch: normal;
+    background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bg.jpg) no-repeat left bottom;
+}
+.b-gift_help {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: help;
+    width: 32px;
+    height: 32px;
+    background: url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/ico_help.png) 6px -3px no-repeat;
+}
+.b-gift_inbox{
+	background:none;
+	height:106px;
+	margin:0;}
+	.b-gift-image{
+		background-position:left top !important;
+		background-repeat:no-repeat !important;
+		display:block;
+		height:106px;
+		width:185px;}
+	.b-gift-price{
+		display:block;
+		height:29px;
+		left:0;
+		overflow:hidden;
+		position:absolute;
+		top:0;
+		width:111px;
+		*zoom:1;}
+		.b-gift-price-bg{
+			background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-price-bg.png) no-repeat right top;
+			color:#fff;
+			float:left;
+			font-style:normal;
+			height:10px;
+			line-height:10px;
+			padding:6px 16px 13px 8px;
+			white-space:nowrap;}
+    .b-gift-price__old {
+        font-weight: bold;
+    }
+    .b-gift-price_old {
+        color: #cacaca;
+        font-size: 11px;
+        text-decoration: line-through;
+        font-weight: normal;
+        margin-right: 3px;
+    }
+	.b-gift-bonus{
+		bottom:27px;
+		display:block;
+		height:44px;
+		overflow:hidden;
+		position:absolute;
+		right:0;
+		width:130px;
+		*zoom:;}
+	.b-gift_inbox .b-gift-bonus{
+		bottom:0;}
+		.b-gift-bonus-bg{
+			background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bonus-bg.png) no-repeat left top;
+			float:right;}
+			.b-gift-bonus-gold{
+				background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bonus-gold.png) no-repeat right 25px;
+				color:#ffeccc;
+				display:block;
+				font:13px/9px "Arial Narrow", Arial, "Helvetica CY", Helvetica, sans-serif;
+				font-stretch: condensed;
+                font-weight: bold;
+				height:9px;
+				padding:29px 17px 6px 70px;
+				text-shadow:0 0 5px rgba(255,156,0,0.8);
+				white-space:nowrap;}
+                .b-gift-bonus-gold span{
+                    font: 12px normal Arial, "Helvetica CY", Helvetica, sans-serif;
+                }
+	.b-gift .radio{
+		padding:7px 0 0 6px;}
+		.b-gift-name{
+			display: inline-block;
+			line-height:1.2;
+			margin:0 0 0 5px;
+			overflow: hidden;
+			white-space:nowrap;
+            width: 155px;
+            *zoom:1;
+        }
+        .b-head-gift-name {
+            font-weight: normal!important;
+        }
+			.b-gift-name-gold{
+				background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bonus-gold.png) no-repeat right -2px;
+				color:#ffd594;
+                font-weight: normal!important;
+				padding:0 18px 0 0;}
+			.b-gift-name-gold_title{
+				background-position:right 3px;
+				margin:0 0 0 5px;
+            }
+.b-gift-recipient{
+	margin:0 0 25px 20px;}
+	.b-gift-recipient td{
+		padding:7px 40px 0 0;}
+		.b-form .b-gift-recipient .b-form-element input{
+			width:130px;
+            font-weight: bold;
+        }
+.b-gift-recipient .b-radio-label {
+    word-wrap:normal!important;
+}
+.b-gift-paymethod{
+	margin:26px 0 0 0;
+	*margin:26px 0;
+	overflow:hidden;
+	*zoom:1;}
+.b-gift-paymetho_1 {
+    width: 175px;
+}
+.b-gift-paymetho_2 {
+    width: 350px;
+}
+.b-gift-paymetho_3 {
+    width: 525px;
+}
+	.b-gift-paymethod .radio{
+        display: inline-block;
+        *display: inline;
+        *zoom:1;
+		margin:0 0 17px 20px;
+		width:145px;
+        vertical-align: top;
+    }
+.b-gift-payment-RUS{
+	display:none;}
+.reg-RUS .b-gift-payment-RUS{
+	display:block;}
+.b-gift-payment, .b-form p.b-gift-payment{
+	font-weight:bold;
+	line-height:1.3;
+	margin:0 0 3px 0;}
+	.b-gift-payment-val{
+		font-weight:normal;
+		margin:0 0 0 5px;}
+	.b-gift-payment-val_gold{
+		background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bonus-gold.png) no-repeat right -1px;
+		padding:0 18px 0 0;}
+.b-gift-payment-total, .b-form p.b-gift-payment-total{
+	color:#ffc363;
+	font-weight:bold;
+	line-height:1.3;
+	margin:0 0 25px 0;}
+	.b-gift-payment-total-val{
+		font-size:14px;
+		margin:0 0 0 5px;}
+.b-gift-addmsg{
+	margin:15px 0 17px 0;
+}
+.b-gift-description{
+	margin:0 0 0 198px;}
+	.b-block-glow .b-gift-description p{
+		margin:0 0 4px 0;}
+	.b-gift-description-date{
+		color:#7e7f80;}
+		.b-gift-description-date-value{
+			font-weight:bold;
+			margin:0 0 0 5px;}
+	.b-gift-description-msg{
+		font-style:italic;}
+		.b-gift-description-msg-title{
+			color:#fff;
+			font-weight:bold;
+			margin:0 5px 0 0;}
+	.b-btn-wpap {
+        padding: 10px 0 0;
+    }
+.b-gift-gold {
+    display: inline-block;
+    *zoom:1;
+    color: #ffd594;
+    background:url(/web/20121229092330im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-imgblock/img/gift-bonus-gold.png) no-repeat right -3px;
+	padding:0 18px 0 0;
+    margin-left: 5px;
+}
+/*
+     FILE ARCHIVED ON 09:23:30 Dec 29, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:01:17 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 117.592
+  exclusion.robots: 0.082
+  exclusion.robots.policy: 0.075
+  RedisCDXSource: 7.923
+  esindex: 0.008
+  LoadShardBlock: 88.873 (3)
+  PetaboxLoader3.datanode: 213.333 (4)
+  CDXLines.iter: 17.984 (3)
+  load_resource: 164.26
+  PetaboxLoader3.resolve: 32.945
+*/

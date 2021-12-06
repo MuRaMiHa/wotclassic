@@ -1,0 +1,250 @@
+/* Context menu
+---------------*/
+.b-context-menu {
+    background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/bg-context-menu.png) 0 0 repeat-y;
+    border-bottom: 1px solid #000;
+    margin-bottom:20px;
+    padding: 0;
+    position: relative;
+    width:244px;
+    z-index: 0;
+}
+
+.b-context-menu_wrapper:before {
+    -webkit-border-radius: 1px 300px 30px 30px/1px 100px 30px 100px;
+    -moz-box-radius: 1px 300px 30px 30px/1px 100px 30px 100px;
+    border-radius: 1px 300px 30px 30px/1px 100px 30px 100px;
+    /*box-shadow: 0 0 20px rgba(214, 57, 33, 0.7);*/
+    -webkit-box-shadow: 0 0 20px rgba(159, 62, 40, 1);
+    -moz-box-shadow: 0 0 20px rgba(159, 62, 40, 1);
+    box-shadow: 0 0 20px rgba(159, 62, 40, 1);
+    content: "";
+    height: 33px;
+    left: 5px;
+    position: absolute;
+    right: 60px;
+    top: 5px;
+    z-index: -1;
+}
+.b-context-menu p {
+	padding:0 9px 3px 0;
+	margin: 8px 0;
+}
+.b-context-menu p:first-child {
+	margin:0 0 8px;
+}
+.b-context-menu_content {
+	padding: 0 6px 0 16px;
+}
+.b-context-menu_wrapper {
+	position:relative;
+	padding:14px 0 13px 0;
+    background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/bg-context-menu-top.png) 0 0 no-repeat;
+}
+
+.b-context-menu_arrow {
+	height:24px;
+	width:7px;
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/bg-arrow.png) 0 0 no-repeat;
+	position:absolute;
+	left:-7px;
+	top:14px;
+}
+
+.b-context-menu_wrapper .intro {
+	color:#babfba;
+	font-size:11px;
+}
+.b-context-menu-list {
+	line-height:140%;
+	text-shadow:1px 1px 2px #010101;
+}
+.b-context-menu-list li {
+	padding:4px 3px 4px 19px;
+	margin: 0 2px;
+}
+.b-context-menu-list .current-page,
+.b-context-menu_active-point {
+	background: url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/active-point.png) repeat-y;
+    font-weight: bold;
+}
+.b-context-menu-list .current-page a {
+	cursor: default;
+	color: #ffffff;
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/arrow-hover.png) 0 3px no-repeat;
+}
+.b-context-menu_active-point .b-arrow-link {
+	cursor: default;
+	color: #ffffff;
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/arrow-hover.png) 0 3px no-repeat;
+	padding: 0 0 0 18px;
+	display: block;
+	word-wrap: break-word;
+}
+.b-context-menu-list .current-page a:hover {
+	text-decoration: none;
+}
+.b-context-menu-list a {
+	color: #cacbcc;
+	font-weight: bold;
+	text-decoration:none;
+	background:url(../img/arrow.png) 0 3px no-repeat;
+	padding: 0 0 0 18px;
+	display: block;
+	word-wrap: break-word;
+}
+.b-context-menu-list a:hover {
+	text-decoration:underline;
+	background:url(../img/arrow_hover.png) 0 3px no-repeat;
+	color: #ffffff;
+}
+
+.b-context-menu-list .disabled,
+.b-context-menu-list .disabled:hover {
+	color: #cacbcc;
+	cursor: auto;
+}
+.b-context-menu-list .b-dased-link-point:hover {
+	text-decoration: none;
+}
+.b-context-menu-list .b-dased-link-point-decoration {
+	color: #cacbcc;/*#cacbcc*/
+	border-bottom: 1px dashed #cacbcc;
+}
+.b-context-menu-list a:hover .b-dased-link-point-decoration {
+	color: #ffffff;
+	border-bottom: none;
+	text-decoration: none;
+}
+/* END Context menu
+--------------------*/
+
+/* Menu tournament
+--------------------*/
+.b-context-menu__tournament .b-context-menu-list li {
+	color:#babfba;
+}
+.b-context-menu__tournament .b-context-menu-list a {
+	color:#bfbfa0;
+}
+.b-context-menu_tournament .b-context-menu-list span {
+	color:#f25322;
+}
+.b-context-menu__tournament .b-content {
+	color:#7e7f80;
+	font-size:11px;
+}
+.b-context-menu__tournament .b-championship-name {
+	font-family: "WarHeliosCondCBold", Arial;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+	margin-bottom: 4px;
+	font-size:21px;
+}
+.b-context-menu__tournament .b-teamname {
+	color:#ffdca4;
+	font-size:12px;
+	font-weight:700;
+	line-height:110%;
+	padding:2px 0 10px;
+}
+.b-context-menu__tournament .championship {
+	padding:0 0 1px;
+}
+.b-admin-li .b-admin-linck,
+.b-admin-li .b-admin-linck:hover {
+    background-image: url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/arrow-admin.png) !important;
+}
+.b-context-menu-img {
+	margin: 0 5px 0 16px;
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+    clear: both;
+}
+/* END Menu tournament
+-----------------------*/
+
+/* Categories
+----------------*/
+/*.b-context-menu_categories_list {
+	color: #88898b;
+	font-size: 17px;
+	font-family: Arial Narrow, Arial, sans-serif;
+}
+.b-context-menu_categories_list li {
+	margin: 0 0 3px 0;
+	padding: 3px 5px 4px 16px;
+}
+.b-context-menu_categories_list a {
+	color: #88898b;
+	font-size: 17px;
+	text-decoration: none;
+	padding: 0 0 0 20px;
+	display: block;
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/arrow-lite.png) no-repeat 0 5px;
+	word-wrap: break-word;
+}
+.b-context-menu_categories_list .b-arrow-linck {
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/arrow-lite.png) no-repeat 0 5px;
+	padding: 0 0 0 20px;
+	display: block;
+	word-wrap: break-word;
+}
+.b-context-menu_active_point {
+	background:url(/web/20121229092325im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-context-menu/img/active-point.png) repeat-y 0 0;
+	color:#ced9d9;
+}
+.b-context-menu_categories_list a span {
+	color: #ced9d9;
+}
+.b-context-menu_categories_list a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+.b-context-menu_categories_list a:hover span {
+	color: #ffffff;	
+	text-decoration: underline;
+}*/
+.b-context-menu__categories {
+    background:url(../img/bg-context-menu_categories.png) 0 0 repeat-y;
+}
+.b-context-menu__categories .b-context-menu_wrapper:before {
+    display: none!important;
+}
+.b-context-menu__categories .b-context-menu_wrapper {
+    background:url(../img/bg-context-menu-top_categories.png) 0 0 no-repeat;
+	padding:0 0 15px 0;
+}
+.b-context-menu__categories .b-context-menu_arrow {
+	background:url(../img/bg-arrow_categories.png) 0 0 no-repeat;
+}
+
+.b-context-menu-list__bottomindent {
+	margin-bottom: 8px;
+}
+/* END Categories
+------------------*/
+/*
+     FILE ARCHIVED ON 09:23:25 Dec 29, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 13:15:17 Dec 06, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 131.563
+  exclusion.robots: 0.115
+  exclusion.robots.policy: 0.106
+  RedisCDXSource: 8.761
+  esindex: 0.011
+  LoadShardBlock: 100.22 (3)
+  PetaboxLoader3.datanode: 124.443 (4)
+  CDXLines.iter: 20.075 (3)
+  load_resource: 221.125
+  PetaboxLoader3.resolve: 162.025
+*/

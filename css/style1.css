@@ -1,0 +1,1472 @@
+@charset "UTF-8";
+/*layout*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0; }
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td {
+  vertical-align: top; }
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  /* */
+  border: none; }
+
+.l-body-content {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  background: url(../img/ui-bg-tile.jpg) center 0 repeat-y;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0 32px rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  box-shadow: none;  }
+
+.l-body-content__autowidth {
+  width: auto; }
+
+.l-content-indent {
+  padding: 28px 0 255px 0; }
+
+.reg-RUS .l-content-indent {
+  padding-bottom: 185px; }
+
+.reg-KR .l-content-indent {
+  padding-bottom: 315px; }
+
+.reg-CN1 .l-content-indent, .reg-CN2 .l-content-indent {
+  padding-bottom: 125px; }
+
+.fix-width {
+  width: 1000px;
+  margin: 0 auto; }
+
+.l-container {
+  clear: both;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 1000px;
+  min-height: 300px; }
+
+.l-container-wrapper {
+  background: url(../img/ui-bg-top.jpg) 0 0 no-repeat;
+  *zoom: 1; }
+
+.l-content {
+  float: left;
+  margin: 25px 0 25px 25px;
+  width: 686px;
+  position: relative;
+  z-index: 0; }
+
+.l-content-one-column {
+  overflow: hidden; }
+
+.l-sidebar {
+  float: left;
+  width: 244px;
+  margin: 25px 0 0 20px; }
+
+.i-wide-page {
+  padding: 25px;
+  position: relative;
+  z-index: 0; }
+  .i-wide-page .b-background-basic {
+    left: 0;
+    top: 0; }
+
+.l-encyclopedia {
+  font-size: 0;
+  letter-spacing: -3px;
+  line-height: 0;
+  word-spacing: -3px; }
+  .l-encyclopedia h2 {
+    letter-spacing: normal;
+    line-height: normal;
+    word-spacing: normal; }
+
+.i-three-coll {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+  width: 33%;
+  letter-spacing: normal;
+  line-height: normal;
+  word-spacing: normal; }
+
+.i-two-coll {
+  width: 45%; }
+  .i-two-coll.b-coll_margin {
+    margin-right: 53px; }
+
+.clr {
+  clear: both;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden; }
+
+.g-line {
+  display: inline-block; }
+  .g-line:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+
+/*end layout*/
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  height: 100%;
+  font-size: 12px;
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  color: #979899;
+  background-color: #000522;
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-attachment: fixed;
+  position: relative; }
+
+@font-face {
+  font-family: 'WarHeliosCondC';
+  src: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondc/warhelioscondc-webfont.eot");
+  src: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondc/warhelioscondc-webfont.eot#iefix") format("embedded-opentype"), url("../fonts/warhelioscondc-webfont.woff") format("woff"), url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondc/warhelioscondc-webfont.ttf") format("truetype"), url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondc/warhelioscondc-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'WarHeliosCondCBold';
+  src: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondcbold/warhelioscondcbold-webfont.eot");
+  src: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondcbold/warhelioscondcbold-webfont.eot#iefix") format("embedded-opentype"), url("../fonts/warhelioscondcbold-webfont.woff") format("woff"), url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondcbold/warhelioscondcbold-webfont.ttf") format("truetype"), url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/files/warhelioscondcbold/warhelioscondcbold-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+a {
+  color: #f25322;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline;
+    color: #ff7432; }
+
+.b-background-basic {
+  background: url(../img/bg-clan-list.png) 0 0 no-repeat;
+  height: 281px;
+  width: 711px;
+  position: absolute;
+  left: -25px;
+  top: -25px;
+  z-index: -1; }
+
+p {
+  line-height: 133%;
+  word-wrap: break-word;
+  margin: 0 0 16px 0; }
+
+.layoutfix {
+  overflow: hidden;
+  zoom: 1; }
+
+.layoutvisible {
+  overflow: visible !important; }
+
+.clearfix {
+  clear: both;
+  zoom: 1; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+.g-nomargin {
+  margin: 0 !important; }
+
+.g-nopadding {
+  padding: 0 !important; }
+
+.g-fl-left {
+  float: left !important; }
+
+.g-fl-right {
+  float: right !important; }
+
+.white {
+  color: #FFFFFF; }
+
+.bold-font {
+  font-weight: bold; }
+
+.h-popup-content {
+  padding: .5em 1em 1em; }
+
+.uppercase {
+  text-transform: uppercase !important; }
+
+.google-conversion {
+  bottom: 0;
+  position: absolute;
+  z-index: -1; }
+
+/*portalmenu*/
+.b-portalmenu {
+  background: #050403;
+  height: 28px;
+  left: 0;
+  min-width: 1000px;
+  /* for iPad */
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 700;
+  /*.b-portalmenu_login {*/
+  /*float:right;*/
+  /*}*/
+  /*.clan-name {*/
+  /*color: $link-color_default;*/
+  /*font-weight: bold;*/
+  /*}*/ }
+  .b-portalmenu .wrapper-dropdown {
+    width: 1000px; }
+  .b-portalmenu a {
+    color: #8b8c8c;
+    /*&.map-link {*/
+    /*color: $link-color_default;*/
+    /*font-weight: bold;*/
+    /*}*/ }
+    .b-portalmenu a:hover {
+      color: white; }
+    .b-portalmenu a.b-auth-link-enter:hover {
+      text-decoration: none; }
+      .b-portalmenu a.b-auth-link-enter:hover span {
+        border-bottom: 1px dashed; }
+  .b-portalmenu .b-portalmenu_links {
+    float: left; }
+    .b-portalmenu .b-portalmenu_links .b-active-section {
+      padding: 5px 10px 6px;
+      border-top: 2px #c8c8c8 solid;
+      color: white; }
+      .b-portalmenu .b-portalmenu_links .b-active-section a {
+        color: white; }
+      .b-portalmenu .b-portalmenu_links .b-active-section:hover {
+        color: white;
+        cursor: default;
+        text-decoration: none; }
+    .b-portalmenu .b-portalmenu_links li {
+      /*&.first {*/
+      /*padding:7px 10px 6px 7px;*/
+      /*}*/
+      /*&.b-portalmenu-links-region {*/
+      /*cursor: default;*/
+      /*}*/ }
+      .b-portalmenu .b-portalmenu_links li.b-dropdown-menu {
+        position: relative;
+        z-index: 3;
+        padding: 0; }
+  .b-portalmenu .b-exit-linck:hover {
+    background-color: #1c1c1c;
+    color: white;
+    text-decoration: underline; }
+  .b-portalmenu .b-gift-linck {
+    color: #f25322;
+    padding: 0 0 0 19px; }
+    .b-portalmenu .b-gift-linck:hover {
+      color: #ff7432; }
+
+.b-portalmenu_links_list_point, .b-right-portalmenu_point {
+  float: left;
+  padding: 7px 10px 6px;
+  background: url(../img/topmenu-spaser.png) 100% 1px no-repeat; }
+
+/*.b-portalmenu_links_list_point__noborder {*/
+/*background: none;*/
+/*}*/
+/* Arrow in menu */
+.b-visible-wnd {
+  position: relative; }
+  .b-visible-wnd .arrow {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/topmenu-arrow.png) -28px -24px no-repeat;
+    display: block;
+    height: 12px;
+    position: absolute;
+    right: 4.5px;
+    top: 8px;
+    width: 14px; }
+  .b-visible-wnd:hover .arrow {
+    background-position: -42px -36px; }
+  .b-visible-wnd:hover .more {
+    color: white;
+    border-bottom: 1px dashed; }
+  .b-visible-wnd:hover .b-planet {
+    background-position: 0 -25px; }
+
+.b-userbox {
+  /*.b-submenu-wrapper{*/
+  /*position:relative;*/
+  /*z-index:2;*/
+  /*margin-top:-1px;*/
+  /*padding:14px 18px;*/
+  /*border:1px solid #2F3239; */
+  /* WTF? */
+  /*overflow: hidden;*/
+  /*}*/ }
+  .b-userbox .b-top-links {
+    text-align: right;
+    color: #606061;
+    /*.b-signup {*/
+    /*@include inline-block;*/
+    /*background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/topmenu-spaser.png") no-repeat scroll 100% 1px;*/
+    /*padding:7px 10px 6px;*/
+    /*}*/ }
+    .b-userbox .b-top-links a {
+      border-bottom: 1px solid #050403;
+      /*&.b-fake-link{*/
+      /*&:hover{*/
+      /*border-bottom: 1px dashed #676E70; */
+      /* WTF? */
+      /*}*/
+      /*}*/ }
+    .b-userbox .b-top-links .b-auth-link {
+      cursor: pointer;
+      display: block;
+      padding: 7px 23px 9px 10px;
+      position: relative;
+      /*&:hover{*/
+      /*a{*/
+      /*color:$link-color_global-menu_hover;*/
+      /*border-bottom:1px dashed;*/
+      /*text-decoration: none;*/
+      /*}*/
+      /*}*/ }
+      .b-userbox .b-top-links .b-auth-link a:hover {
+        border-bottom: 1px dashed;
+        text-decoration: none; }
+  .b-userbox .b-dm_list {
+    right: 0; }
+
+.b-message .b-dm_list {
+  right: 0; }
+
+/* Languages menu */
+.b-lang-menu {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/topmenu-spaser.png") no-repeat 100% 1px;
+  float: left;
+  margin-left: -1px;
+  padding: 0;
+  position: relative; }
+  .b-lang-menu a {
+    color: #8b8c8c; }
+  .b-lang-menu .b-visible-wnd {
+    cursor: pointer;
+    min-height: 20px;
+    padding: 5px 23px 0px 10px;
+    position: relative;
+    white-space: nowrap; }
+    .b-lang-menu .b-visible-wnd span.lang {
+      border-bottom: 1px solid #050403;
+      color: #8b8c8c;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1; }
+    .b-lang-menu .b-visible-wnd:hover span.lang {
+      color: white;
+      border-bottom: 1px dashed; }
+    .b-lang-menu .b-visible-wnd:hover img {
+      border: 1px solid #787a7a;
+      filter: alpha(opacity=100);
+      -khtml-opacity: 1;
+      -moz-opacity: 1;
+      opacity: 1; }
+  .b-lang-menu.opened {
+    position: relative; }
+    .b-lang-menu.opened .b-visible-wnd {
+      padding: 5px 22px 0px 9px !important; }
+  .b-lang-menu img {
+    border: 1px solid #474646;
+    margin-right: 3px;
+    vertical-align: bottom;
+    filter: alpha(opacity=80);
+    -khtml-opacity: 0.8;
+    -moz-opacity: 0.8;
+    opacity: 0.8; }
+
+.b-portalmenu-links-region {
+  float: left;
+  position: relative; }
+  .b-portalmenu-links-region .b-message-info-dropdown {
+    margin: 15px 0 0 0;
+    padding: 14px 0;
+    width: 100%; }
+    .b-portalmenu-links-region .b-message-info-dropdown h2 {
+      padding: 0 16px 0 32px; }
+    .b-portalmenu-links-region .b-message-info-dropdown p {
+      padding: 0 16px; }
+
+.b-region-active {
+  cursor: pointer;
+  position: relative;
+  padding: 1px 23px 1px 5px;
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/topmenu-spaser.png") no-repeat 100% 1px; }
+
+.opened .b-visible-wnd {
+  background: #050403;
+  border: 1px solid #1e1e1e;
+  border-width: 0 1px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 22px;
+  z-index: 3; }
+  .opened .b-visible-wnd .arrow {
+    background-position: 0 0; }
+  .opened .b-visible-wnd:hover .arrow {
+    background-position: -14px -12px; }
+.opened .b-region-active {
+  padding: 1px 22px 1px 4px; }
+.opened .b-top-links .b-auth-link {
+  padding: 7px 22px 9px 9px; }
+.opened .b-top-links__message-new, .opened .b-top-links__message {
+  border: 1px solid rgba(87, 87, 87, 0.35);
+  border-width: 0 1px;
+  margin: 0;
+  z-index: 3; }
+
+.b-dm_list {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 0, 0, 0.45);
+  margin-top: -1px;
+  position: absolute;
+  z-index: 2;
+  min-width: 98%;
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/bg-lang.png) 0 0;
+  border: 1px solid rgba(87, 87, 87, 0.35);
+  zoom: 1; }
+  .b-dm_list li a {
+    padding: 15px 10px 6px 10px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap; }
+    .b-dm_list li a:hover {
+      background-color: #1c1c1c;
+      color: white; }
+      .b-dm_list li a:hover span {
+        text-decoration: underline; }
+      .b-dm_list li a:hover img {
+        filter: alpha(opacity=100);
+        -khtml-opacity: 1;
+        -moz-opacity: 1;
+        opacity: 1; }
+    .b-dm_list li a.disabled {
+      background: none;
+      color: #606061;
+      cursor: default; }
+      .b-dm_list li a.disabled:hover {
+        background: none;
+        color: #606061; }
+    .b-dm_list li a span {
+      vertical-align: middle; }
+  .b-dm_list li.hover a {
+    background-color: #1c1c1c;
+    color: white; }
+    .b-dm_list li.hover a span {
+      text-decoration: underline; }
+    .b-dm_list li.hover a img {
+      filter: alpha(opacity=100);
+      -khtml-opacity: 1;
+      -moz-opacity: 1;
+      opacity: 1; }
+    .b-dm_list li.hover a.disabled {
+      color: #606061;
+      background: none;
+      cursor: default; }
+      .b-dm_list li.hover a.disabled:hover {
+        color: #606061;
+        background: none;
+        cursor: default; }
+    .b-dm_list li.hover a.active span {
+      text-decoration: none; }
+  .b-dm_list .b-dropdown-regionlist li a {
+    padding-left: 30px;
+    padding-top: 5px; }
+    .b-dm_list .b-dropdown-regionlist li a.active {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/arrow-active-linck.png) no-repeat 15px 1px;
+      color: white;
+      cursor: default; }
+      .b-dm_list .b-dropdown-regionlist li a.active:hover span {
+        text-decoration: none; }
+
+.b-language-list_point a {
+  padding: 6px 10px!important; }
+
+/*.b-dropdown-menu .b-dm_list ul.b-account-content li a:hover {*/
+/*text-decoration: none;*/
+/*}*/
+/*.b-dropdown-menu .b-dm_list ul.b-account-content li a.disabled,*/
+/*.b-dropdown-menu .b-dm_list ul.b-account-content li a.disabled:hover {*/
+/*color:#5F6060;*/
+/*cursor:default;*/
+/*text-decoration:none;*/
+/*}*/
+.b-account-content {
+  padding: 13px 0 6px; }
+  .b-account-content .b-hr-message .b-notification-link {
+    padding: 19px 25px 19px !important;
+    z-index: 2; }
+
+.b-planet {
+  display: block;
+  height: 25px;
+  width: 25px;
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/planet.png) no-repeat; }
+
+.b-dropdown-menu-header {
+  color: #babcbf;
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 17px 17px 5px 17px;
+  white-space: nowrap; }
+
+/*.b-more-active {*/
+/*padding: 7px 23px 9px 10px;*/
+/*}*/
+/*.b-portalmenu .b-portalmenu_links .b-portalmenu-more {*/
+/*background: none;*/
+/*margin-left: -1px;*/
+/*}*/
+/*.opened .b-more-active {*/
+/*padding: 7px 22px 9px 9px;*/
+/*}*/
+.b-right-portalmenu {
+  float: right; }
+  .b-right-portalmenu .b-userbox {
+    background: none;
+    padding: 0;
+    margin-left: -1px;
+    z-index: 3;
+    position: relative; }
+  .b-right-portalmenu .b-message {
+    padding: 0;
+    margin-left: -1px;
+    z-index: 3;
+    position: relative; }
+  .b-right-portalmenu .b-portalmenu-pay {
+    padding: 4px 10px 6px 10px; }
+  .b-right-portalmenu .b-account-content li {
+    cursor: pointer;
+    float: none;
+    padding: 0;
+    background: none;
+    position: relative; }
+
+.b-account_list_point a {
+  padding: 5px 25px 6px !important; }
+
+.b-exit-linck {
+  padding: 5px 20px 6px 20px;
+  text-align: right;
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer; }
+
+.b-top-links-indent {
+  padding: 7px 10px 9px 10px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+.b-portalmenu-gift {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/portalmenu/img/gift-menu.png) no-repeat 0 0; }
+
+/*end portalmenu*/
+/*notice*/
+.b-notification-link {
+  position: relative;
+  width: 300px; }
+  .b-notification-link:hover {
+    background: none!important; }
+  .b-notification-link a {
+    color: #f25322 !important;
+    display: inline!important;
+    padding: 0!important; }
+    .b-notification-link a:hover {
+      background: none!important; }
+  .b-notification-link .b-notification-message {
+    color: #979899;
+    margin: 0 0 7px;
+    word-wrap: break-word;
+    white-space: pre-wrap; }
+  .b-notification-link .b-imgblock_statistic_time {
+    color: #606061; }
+
+.js-notification-title {
+  color: #cacbcc;
+  margin: 0 0 7px;
+  font-size: 13px;
+  font-weight: bold; }
+
+.b-unread-container {
+  margin: -14px 0 0 0;
+  padding: 2px 0 0; }
+  .b-unread-container a:hover {
+    color: #ff7432 !important;
+    text-decoration: underline !important; }
+  .b-unread-container .js-notification-title:hover {
+    text-decoration: underline; }
+
+.b-hr-message {
+  background: url("../img/delimeter_2.png") no-repeat center bottom !important; }
+
+.b-message_list_span {
+  padding: 15px 10px 6px 10px;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap; }
+
+.b-message_list {
+  color: #cacbcc;
+  margin: 15px 0 5px; }
+  .b-message_list a {
+    color: #cacbcc; }
+  .b-message_list .b-orange-linck {
+    color: #f25322;
+    text-decoration: none; }
+    .b-message_list .b-orange-linck:hover {
+      color: #ff7432 !important;
+      text-decoration: underline !important; }
+
+.b-account-content .b-message_list a {
+  padding: 5px 25px 6px !important; }
+
+.b-top-links__message-new {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/cover_n.png") no-repeat scroll 6px 0 #050403;
+  cursor: pointer;
+  height: 28px;
+  margin: 0 1px;
+  position: relative;
+  width: 42px;
+  z-index: 3; }
+  .b-top-links__message-new:hover {
+    background-position: 6px -28px; }
+
+.b-top-links__message {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/cover.png") no-repeat 5px 0 #050403;
+  cursor: pointer;
+  height: 28px;
+  margin: 0 1px;
+  position: relative;
+  width: 42px; }
+  .b-top-links__message:hover {
+    background-position: 5px -28px; }
+
+.b-top-links .b-message-link {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/alert-link.png") no-repeat center 0;
+  border: 1px solid #18232e;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(4, 54, 255, 0.8);
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  top: 2px;
+  right: 6px;
+  padding: 0 1px 1px;
+  position: absolute; }
+
+.js-unread-notification .b-notification-link {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/bg_pop-up.png") repeat-y 0 0; }
+.js-unread-notification:hover .b-notification-link {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/bg_pop-up_hover.png") repeat-y 0 0; }
+.js-unread-notification:hover .b-env {
+  background-position: 0 0; }
+.js-unread-notification:hover .b-env_content {
+  background-position: 0 0; }
+.js-unread-notification:hover .b-notifications_back {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/bg_content_hover.png") repeat-y scroll 0 0; }
+.js-unread-notification:hover .b-notifications_border, .js-unread-notification:hover .b-message_border {
+  background-position: 0 -1px !important; }
+.js-unread-notification .b-env {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/env_pop-up.png") no-repeat -32px 0;
+  height: 32px;
+  left: 7px;
+  position: absolute;
+  width: 32px;
+  z-index: 1; }
+.js-unread-notification .js-notification-title {
+  color: #cacbcc; }
+.js-unread-notification .b-notification-message {
+  color: #babcbf; }
+.js-unread-notification .b-imgblock_statistic_time {
+  color: #606061; }
+.js-unread-notification .b-env_content {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/env_content.png") no-repeat scroll -32px 0;
+  height: 32px;
+  left: 12px;
+  position: absolute;
+  top: 0;
+  width: 32px;
+  z-index: 1; }
+.js-unread-notification .b-notifications_back {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/bg_content.png") repeat-y scroll 0 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+.js-unread-notification .b-notifications_border, .js-unread-notification .b-message_border {
+  background: url("../img/delimeter_color.png") no-repeat scroll center 0 !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%; }
+.js-unread-notification .b-message_border {
+  background: url("../img/delimeter_pop_up.png") no-repeat 0 0 !important; }
+
+.b-notifications {
+  background: url("../img/delimeter_long.png") no-repeat scroll center 20px !important;
+  margin: 0 0 0 -25px;
+  padding: 20px 10px 0 0; }
+  .b-notifications .b-notification-link {
+    width: auto; }
+  .b-notifications .b-hr-message {
+    background: url("../img/delimeter_long.png") no-repeat scroll center bottom !important;
+    position: relative; }
+  .b-notifications p {
+    padding: 0 165px 0 0; }
+  .b-notifications .js-unread-notification .b-notification-link {
+    background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/content/notice/img/bg_content.png") repeat-y scroll 0 0; }
+
+.b-message_item {
+  padding: 25px 25px 9px!important;
+  position: relative;
+  z-index: 2; }
+  .b-message_item .b-imgblock_statistic_time {
+    float: right; }
+
+.b-border__top {
+  bottom: 100%!important; }
+
+.b-message_main {
+  color: #606061; }
+
+/*end notice*/
+/*header*/
+.b-header {
+  height: 138px;
+  z-index: 1;
+  position: relative;
+  background: url(../img/head_ru.png) no-repeat 0 100%; }
+  .b-header .b-logo {
+    position: absolute;
+    z-index: 2;
+    background: url(../img/wot-lgo.png) no-repeat 0 0;
+    display: block;
+    width: 310px;
+    height: 138px;
+    bottom: 0;
+    left: 0; }
+
+.reg-CN1 .b-header .b-logo, .reg-CN2 .b-header .b-logo {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/header/img/china_logo.png) no-repeat 0 0; }
+
+.reg-RUS .b-header {
+  background: url(../img/head_ru.png) no-repeat 0 100%; }
+
+.reg-EUR .b-header {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/header/img/header_eu.jpg) no-repeat 0 100%; }
+
+.reg-USA .b-header {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/header/img/header_com.jpg) no-repeat 0 100%; }
+
+/*end header*/
+/*menu*/
+.b-menu {
+  background: url(../img/bg-menu.gif) 0 0 repeat;
+  height: 44px;
+  position: relative;
+  z-index: 600; }
+
+.b-menu_noscript {
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .b-menu_noscript .b-portal-menu_point {
+    visibility: visible; }
+
+.b-portal-menu {
+  float: left;
+  width: 1000px; }
+
+.b-portal-menu_point {
+  background: url(../img/b-portal-menu.png) right -88px no-repeat;
+  float: left;
+  position: relative;
+  visibility: hidden; }
+  .b-portal-menu_point.last {
+    background-position: 3000px 3000px; }
+  .b-portal-menu_point:hover .b-portal-menu_point_linck {
+    background-position: left -176px;
+    color: #d2d9d9; }
+  .b-portal-menu_point:hover .b-portal-menu_point_linck_txt {
+    background-position: left 0; }
+  .b-portal-menu_point.opened .b-portal-menu_point_linck {
+    background-position: left -176px;
+    color: #d2d9d9; }
+  .b-portal-menu_point.opened .b-portal-menu_point_linck_txt {
+    background-position: left 0; }
+
+.b-portal-menu_point_linck {
+  background: url(../img/b-portal-menu.png) left -132px no-repeat;
+  color: #d2d9d9;
+  float: left;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-stretch: condensed;
+  font-size: 16px;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 1px;
+  text-transform: uppercase;
+  text-shadow: black 0 -1px 0; }
+  .b-portal-menu_point_linck:hover {
+    text-decoration: none; }
+
+.last .b-portal-menu_point_linck {
+  padding: 0; }
+.last .b-portal-menu_arrow {
+  right: 0; }
+
+.active .b-portal-menu_point_linck {
+  background-position: left -220px; }
+.active .b-portal-menu_point_linck_txt {
+  background-position: left -44px; }
+.active:hover .b-portal-menu_point_linck {
+  background-position: left -220px; }
+.active:hover .b-portal-menu_point_linck_txt {
+  background-position: left -44px; }
+.active.opened .b-portal-menu_point_linck {
+  background-position: left -220px; }
+.active.opened .b-portal-menu_point_linck_txt {
+  background-position: left -44px; }
+
+.b-portal-menu_point_linck_txt {
+  background: url(../img/b-portal-menu.png) left 3000px repeat-x;
+  cursor: pointer;
+  float: left;
+  padding: 0 5px;
+  white-space: nowrap; }
+
+.b-portal-menu_point_parent .b-portal-menu_point_linck_txt {
+  padding-right: 25px; }
+
+.b-portal-menu_arrow {
+  background: url(../img/b-portal-menu.png) left -264px no-repeat;
+  cursor: pointer;
+  height: 44px;
+  position: absolute;
+  right: 1px;
+  top: 0;
+  width: 20px; }
+  .b-portal-menu_arrow:hover {
+    background-position: left -352px; }
+
+.opened .b-portal-menu_arrow {
+  background-position: left -352px; }
+
+.b-portal-menu_dopmenu {
+  background: url(../img/bg-menu-podmenu.png) left 1px repeat-x #181717;
+  border: 1px solid #000;
+  border-top: none;
+  left: -1px;
+  min-width: 100%;
+  position: absolute;
+  top: 100%;
+  z-index: 610;
+  -khtml-box-shadow: 0px 15px 20px #000;
+  -webkit-box-shadow: 0px 15px 20px #000;
+  -moz-box-shadow: 0px 15px 20px #000;
+  box-shadow: 0px 15px 20px #000; }
+  .b-portal-menu_dopmenu .hover .b-portal-menu_dopmenu_link {
+    color: white;
+    text-decoration: none; }
+
+.b-portal-menu_dopmenu_point {
+  background: url(../img/bg-menu-podmenu-hover.gif) left 3000px no-repeat;
+  border-bottom: 1px solid #0d0d0d;
+  border-left: 1px solid #303030;
+  border-right: 1px solid #303030;
+  border-top: 1px solid #303030; }
+  .b-portal-menu_dopmenu_point:last-child {
+    border-bottom: 1px solid #303030; }
+  .b-portal-menu_dopmenu_point:hover, .b-portal-menu_dopmenu_point.hover {
+    background-position: left top;
+    background-repeat: repeat;
+    border-bottom: 1px solid #74301f;
+    border-left: 1px solid #7f462c;
+    border-right: 1px solid #7f462c;
+    border-top: 1px solid #7f462c; }
+
+.b-portal-menu_dopmenu_link {
+  display: block;
+  color: #919191;
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 0;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%; }
+  .b-portal-menu_dopmenu_link:hover {
+    color: white;
+    text-decoration: none; }
+  .reg-KR .b-portal-menu_dopmenu_link {
+    font-size: 12px; }
+
+.b-portal-menu_dopmenu_link_txt {
+  padding: 0 8px;
+  *zoom: 1; }
+
+a .b-portal-menu_dopmenu_link_txt {
+  cursor: pointer; }
+
+.b-menu .b-tooltip {
+  /* WTF? */
+  display: none; }
+
+/*end menu*/
+/*footer*/
+.b-footer {
+  background: url(../img/footer_bg.jpg) no-repeat 0 0 #28282c;
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  height: 230px;
+  margin: 0 auto;
+  padding: 25px 24px 0;
+  width: 952px;
+  margin-top: -255px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden; }
+
+.reg-RUS .b-footer {
+  margin-top: -185px;
+  height: 160px; }
+
+.reg-KR .b-footer {
+  margin-top: -315px;
+  height: 290px; }
+
+.reg-CN1 .b-footer, .reg-CN2 .b-footer {
+  margin-top: -125px;
+  height: 100px; }
+
+.b-footer-copyr {
+  color: #979899;
+  float: right;
+  font-size: 11px;
+  width: 265px; }
+  .b-footer-copyr a {
+    color: #919191; }
+    .b-footer-copyr a:hover {
+      color: #b4b4b4; }
+  .b-footer-copyr p {
+    margin: 0 0 5px 0; }
+
+.reg-CN1 .b-footer-copyr, .reg-CN2 .b-footer-copyr {
+  float: none;
+  width: auto; }
+
+.b-footer-copyr-item {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+.b-footer-copyr-item em {
+  font-style: normal; }
+
+.b-footer-copyr_wg {
+  margin: -25px 0 0 0;
+  padding: 14px 9px 22px 16px;
+  background: url(../img/logo-wg.png) no-repeat;
+  float: left; }
+  .b-footer-copyr_wg a {
+    display: block;
+    height: 63px;
+    width: 109px; }
+
+.b-footer-copyr_bw {
+  margin: -25px 0 0 0;
+  padding: 43px 29px 28px 9px;
+  background: url(../img/logo-bw.png) no-repeat;
+  float: left; }
+  .b-footer-copyr_bw a {
+    display: block;
+    height: 28px;
+    width: 86px; }
+
+.reg-VN .b-footer-copyr_vtc {
+  margin: -25px 0 0 0;
+  padding: 43px 0 28px 0;
+  background: url(../img/logo-vtc.png) no-repeat 0 40px;
+  float: left; }
+  .reg-VN .b-footer-copyr_vtc span {
+    display: block;
+    height: 29px;
+    width: 106px; }
+.reg-VN .b-footer-copyr {
+  padding: 15px 0 0;
+  width: 326px; }
+.reg-VN .b-footer-copyr_wg {
+  background-position: -4px -4px;
+  margin: -31px 0 0 -5px;
+  padding: 10px 13px 26px 7px; }
+.reg-VN .b-footer-copyr_bw {
+  padding: 43px 0px 28px 9px; }
+.reg-VN .b-footer-copyr-item {
+  margin: -13px 0 0 4px;
+  width: 100%; }
+
+.b-footer-menu {
+  float: left; }
+
+.b-footer-menu-item {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 5px 0 0 24px;
+  width: 130px;
+  /*╨┐╨╛╨┤╤Б╨▓╨╡╤В╨║╨░ ╤Б╤Б╤Л╨╗╨║╨╕ ╨┤╨╗╤П ╨║╨╛╤А╨╡╨╣╤Б╨║╨╛╨│╨╛ ╨┐╨╛╤А╤В╨░╨╗╨░*/ }
+  .b-footer-menu-item span {
+    color: #b4b4b4;
+    cursor: default;
+    font-weight: bold; }
+  .b-footer-menu-item a {
+    color: #919191;
+    text-decoration: none; }
+    .b-footer-menu-item a:hover {
+      color: #b4b4b4;
+      text-decoration: underline; }
+  .b-footer-menu-item ul {
+    margin: 10px 0 0 0; }
+    .b-footer-menu-item ul li {
+      padding: 3px 0; }
+  .b-footer-menu-item .b-policy {
+    color: #4fb0ff; }
+    .b-footer-menu-item .b-policy:hover {
+      color: #8bbbe3; }
+
+.b-footer-menu-item__wot {
+  background: url(../img/ico-footer-wot.png) 0 3px no-repeat; }
+
+.b-footer-menu-item__account {
+  background: url(../img/ico-footer-account.png) 6px 3px no-repeat; }
+
+.b-footer-menu-item__community {
+  background: url(../img/ico-footer-community.png) 0 2px no-repeat; }
+
+.b-footer-menu-item__support {
+  background: url(../img/ico-footer-support.png) 0 3px no-repeat; }
+
+.reg-VN .b-footer-menu-item {
+  width: 117px;
+  *width: 116px; }
+
+.b-ratings {
+  margin-top: 22px; }
+
+.b-ratings_text {
+  color: #606061;
+  float: left;
+  font-size: 10px;
+  width: 310px; }
+  .reg-KR .b-ratings_text {
+    font-size: 11px; }
+
+.b-ratings_items {
+  float: right; }
+  .b-ratings_items .b-footer-copyr-item {
+    vertical-align: top; }
+  .reg-KR .b-ratings_items {
+    margin-top: 15px; }
+
+.b-footer-copyr_esrb {
+  width: 130px; }
+  .b-footer-copyr_esrb a {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/esrb.png) no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 100px;
+    margin: 17px 0 0 4px;
+    width: 126px; }
+
+.b-footer-copyr_pegi1 {
+  vertical-align: top;
+  width: 60px; }
+  .b-footer-copyr_pegi1 a {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/pegi1.png) no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 68px;
+    margin: 21px 0 0 4px;
+    width: 56px; }
+
+.b-footer-copyr_pegi2 {
+  vertical-align: top;
+  width: 60px; }
+  .b-footer-copyr_pegi2 a {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/pegi2.png) no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 56px;
+    margin: 21px 0 0 4px;
+    width: 56px; }
+
+.b-footer-copyr_grb1 a {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/grb1.png) no-repeat 0 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 68px;
+  margin-left: 1px;
+  width: 53px; }
+
+.b-footer-copyr_grb2 a {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/grb2.png) no-repeat 0 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 68px;
+  margin-left: 1px;
+  width: 53px; }
+
+.b-footer-copyr_grb3 a {
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/grb3.png) no-repeat 0 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 66px;
+  margin: 1px 0 0 7px;
+  width: 474px; }
+
+.b-footer-copyr_usk {
+  vertical-align: top;
+  width: 70px; }
+  .b-footer-copyr_usk a {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/usk.png) no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 70px;
+    margin: 21px 0 0 4px;
+    width: 70px; }
+
+.b-footer-copyr_kong {
+  vertical-align: top;
+  width: 129px; }
+  .b-footer-copyr_kong a {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/footer/img/kongzhongypi.png) no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 49px;
+    margin: 15px 0 0 4px;
+    width: 125px; }
+
+.reg-CN1 .b-footer-copyr_kong, .reg-CN2 .b-footer-copyr_kong {
+  margin: 0 30px 0 0; }
+  .reg-CN1 .b-footer-copyr_kong a, .reg-CN2 .b-footer-copyr_kong a {
+    margin-top: 0; }
+
+/*end footer*/
+/*content*/
+h1, .b-header-h1 {
+  font-family: "WarHeliosCondC", "Arial Narrow", Arial, sans-serif;
+  font-size: 32px;
+  color: white;
+  font-weight: normal;
+  text-shadow: #000000 0 1px 0;
+  margin: 4px 0 12px; }
+
+h2, .b-header-h2 {
+  font-family: "WarHeliosCondC", "Arial Narrow", Arial, sans-serif;
+  font-size: 26px;
+  color: white;
+  font-weight: normal;
+  margin: 16px 0 14px;
+  padding: 0; }
+  h2.b-header-h2__encyclopedia-indent, .b-header-h2.b-header-h2__encyclopedia-indent {
+    margin: 0 0 15px 0; }
+  h2.b-header-h2__no-top-indent, .b-header-h2.b-header-h2__no-top-indent {
+    margin-top: 0; }
+  h2 a, .b-header-h2 a {
+    color: #ffa759; }
+    h2 a:hover, .b-header-h2 a:hover {
+      color: #ffa759; }
+
+h3, .b-header-h3 {
+  font-family: "WarHeliosCondC", "Arial Narrow", Arial, sans-serif;
+  font-size: 21px;
+  color: white;
+  font-weight: normal;
+  margin: 24px 0 15px;
+  padding: 0; }
+  h3.b-header-h3__margin16, .b-header-h3.b-header-h3__margin16 {
+    margin: 16px 0; }
+
+h4, .b-header-h4 {
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  font-stretch: condensed;
+  font-size: 17px;
+  color: white;
+  font-weight: normal;
+  margin: 16px 0 8px 0;
+  padding: 0; }
+
+h5, .b-header-h5 {
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  color: white;
+  font-size: 13px;
+  margin: 16px 0 8px 0;
+  padding: 0; }
+
+h6, .b-header-h6 {
+  color: #979899;
+  font-size: 12px;
+  font-family: Arial, "Helvetica CY", Helvetica, sans-serif;
+  font-weight: bold;
+  margin: 10px 0 3px 0;
+  padding: 0; }
+
+.b-header-block {
+  font-family: "WarHeliosCondC", "Arial Narrow", Arial, sans-serif;
+  font-size: 24px;
+  color: white;
+  font-weight: normal;
+  padding: 0;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+  overflow: hidden;
+  word-wrap: break-word;
+  *zoom: 1; }
+  .b-header-block .b-header-block_linck {
+    color: white; }
+    .b-header-block .b-header-block_linck:hover {
+      color: white;
+      text-decoration: none; }
+  .b-header-block.b-header-block__context-menu-indent {
+    margin: 0 0 13px 0;
+    padding: 17px 5px 0 19px; }
+
+.b-header__inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+/*end content*/
+/*form_elements*/
+.js-combobox-selectbox {
+  cursor: pointer;
+  border: 1px solid #000; }
+  .js-combobox-selectbox .jspArrow {
+    border: none; }
+  .js-combobox-selectbox .jspArrowDown {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) 0 0 no-repeat; }
+    .js-combobox-selectbox .jspArrowDown:hover {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) 0 -22px no-repeat; }
+    .js-combobox-selectbox .jspArrowDown:active {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) 0 -44px no-repeat; }
+  .js-combobox-selectbox .js-arrow-active {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) -24px 0 no-repeat; }
+    .js-combobox-selectbox .js-arrow-active:hover {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) -24px -22px no-repeat; }
+    .js-combobox-selectbox .js-arrow-active:active {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow.png) -24px -44px no-repeat; }
+  .js-combobox-selectbox .jspVerticalBar {
+    width: 24px;
+    height: 22px; }
+    .js-combobox-selectbox .jspVerticalBar .jspArrow {
+      height: 22px; }
+
+.js-selectbox-text {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/bg_input.png") repeat-x #b9b9ba;
+  box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  color: #262626;
+  padding: 4px 30px 0 7px;
+  height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+  .js-selectbox-text span {
+    display: block;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    height: 14px;
+    line-height: 14px; }
+
+.js-combobox-active {
+  border-radius: 1px; }
+  .js-combobox-active .js-selectbox-text {
+    background-position: 0 -38px;
+    background-color: #fefefe; }
+
+.js-dropbox-item {
+  overflow: hidden;
+  height: 20px;
+  margin: 3px; }
+  .js-dropbox-item.js-dropbox-item-selected {
+    background-color: #ddddde; }
+    .js-dropbox-item.js-dropbox-item-selected .js-dropbox-item-content {
+      color: #000; }
+  .js-dropbox-item.js-dropbox-item-over {
+    background: #8f9091;
+    cursor: pointer; }
+    .js-dropbox-item.js-dropbox-item-over .js-dropbox-item-content {
+      color: white; }
+    .js-dropbox-item.js-dropbox-item-over.js-dropbox-item-selected .js-dropbox-item-content {
+      color: white; }
+  .js-dropbox-item .js-dropbox-item-content {
+    margin: 3px 7px 1px 7px;
+    color: #404040;
+    font-size: 12px;
+    font-weight: normal;
+    white-space: nowrap;
+    line-height: 14px; }
+
+.js-combobox-dropdown {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/border.png") repeat-x 0 0px white;
+  cursor: default;
+  border: 1px solid #000;
+  border-top: none;
+  margin-top: -1px;
+  padding-top: 1px; }
+
+.b-select__registration .js-combobox-selectbox {
+  border: 1px solid #b4babf; }
+  .b-select__registration .js-combobox-selectbox .jspArrowDown {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+    .b-select__registration .js-combobox-selectbox .jspArrowDown:hover {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+    .b-select__registration .js-combobox-selectbox .jspArrowDown:active {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+  .b-select__registration .js-combobox-selectbox .js-arrow-active {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+    .b-select__registration .js-combobox-selectbox .js-arrow-active:hover {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+    .b-select__registration .js-combobox-selectbox .js-arrow-active:active {
+      background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/arrow-registration.png) 0 50% no-repeat; }
+  .b-select__registration .js-combobox-selectbox .jspVerticalBar {
+    width: 20px;
+    height: 28px; }
+    .b-select__registration .js-combobox-selectbox .jspVerticalBar .jspArrow {
+      height: 28px; }
+.b-select__registration .js-selectbox-text {
+  background: url("/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/.scss/form_elements/combobox/img/bg-input.png") left top repeat-x #f1f1f1;
+  box-shadow: inset 0 2px 3px #2F3031;
+  color: #000;
+  padding: 3px 30px 3px 7px;
+  height: 22px; }
+  .b-select__registration .js-selectbox-text span {
+    font-size: 18px;
+    font-weight: normal;
+    height: 22px;
+    line-height: 22px; }
+.b-select__registration .js-dropbox-item {
+  height: 23px; }
+  .b-select__registration .js-dropbox-item .js-dropbox-item-content {
+    font-size: 16px;
+    line-height: 19px; }
+.b-select__registration select {
+  font-size: 18px; }
+
+.b-select-registration__inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top; }
+
+.js-checkbox {
+  float: left;
+  width: 15px;
+  height: 14px;
+  background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/checkbox.png) 0 0 no-repeat; }
+  .js-checkbox span {
+    display: block;
+    width: 15px;
+    height: 14px; }
+  .js-checkbox.js-checkbox-over, .js-checkbox.js-control-focus {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/checkbox.png) 0 -14px no-repeat; }
+  .js-checkbox.js-checkbox-checked span {
+    background: url(/web/20121212105147im_/http://worldoftanks.ru/static/3.8.1.3/common/css/scss/form_elements/combobox/img/checkbox.png) 0 -28px no-repeat; }
+
+.td-center .js-checkbox,
+.th-center .js-checkbox {
+  margin: 0 auto;
+  float: none;
+  cursor: pointer; }
+
+/*end form_elements*/

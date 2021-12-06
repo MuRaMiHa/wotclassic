@@ -1,0 +1,2073 @@
+@charset "utf-8";
+.b-map-control-panel {
+	padding:9px 0 0 24px ;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	height:160px;
+	}
+.b-map-control-panel .b-fade {
+	position:absolute;
+	right:1px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/fade.png) 0 0 no-repeat;
+	width:33px;	
+	bottom:-1px;
+	height:23px;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-fade {
+	position:absolute;
+	right:-1px;
+	top:1px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/fade.png) 0 0 no-repeat;
+	width:34px;
+	height:21px;
+	}
+.b-map-control-panel .b-province {
+	width:509px;
+	height:148px;
+	border:1px solid #000;
+	float:left;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-province.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-province-horizontal-dilimiter.png) 0 100% no-repeat;
+	height:49px;
+	position:relative;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name {
+	width:342px;
+	height:49px;
+	position:relative;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name h2 {	
+	color:#e5b262;
+	display:block;
+	margin:0 0 0 50px;
+	font-size:14px;
+	overflow:hidden;
+	white-space:nowrap;
+	padding:7px 0 8px;
+	font-weight:700;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	position: relative;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name h2 a {	
+	color:#e5b262;
+	text-decoration:underline;
+	display: block;
+	overflow: hidden;
+	max-width: 282px;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name h2 .b-fade {
+	bottom: 2px;
+}
+.b-map-control-panel .b-province .b-block-top .b-province-name h2 a:hover {
+	text-decoration:none;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name .status {
+	margin:0 0 0 50px;
+	padding:0px 0 0;
+	font-size:10px;
+	color:#b4b4b4;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name i {
+	position:absolute;
+	left:5px;
+	top:6px;
+	width:24px;
+	height:24px;
+	display:block;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name i.b-province-type-1 {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_types.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name i.b-province-type-2 {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_types.png) -24px 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top .b-province-name i.b-province-type-3 {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_types.png) -48px 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top .b-time {
+	height:49px;
+	width:67px;
+	position:absolute;
+	top:0;
+	right:6px;
+	color:#b4b4b4;
+	font-weight:bold;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/vertical-delimiter.png) 0 11px no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top .b-time .wrapper {
+	position:relative;
+	}
+.b-map-control-panel .b-province .b-block-top .b-time .wrapper i {
+	position:absolute;
+	left:6px;
+	top:14px;
+	width:22px;
+	height:22px;
+	display:block;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/currency.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-top .b-time .wrapper div {
+	position:absolute;
+	left:28px;
+	top:18px;
+	}
+.b-map-control-panel .b-province .b-block-top .b-status-icons {
+	position:absolute;
+	width:90px;
+	left:342px;
+	top:14px;
+	height:49px;
+	overflow:hidden;
+	}
+.b-map-control-panel .b-province .b-block-top .b-status-icons .wrapper {
+	position:relative;	
+	}	
+.b-map-control-panel .b-province .b-block-top .b-status-icons i {
+    height:18px;
+	width:18px;
+}
+.info-block-r .ico-province-contrspy,
+.info-block-r .ico-province-spy {
+	position:absolute;
+	top:1px;
+	height:18px;
+	width:18px;
+	}
+.b-status-icons i {
+    float: right;
+}
+/*
+.b-map-control-panel .b-province .b-block-top .b-status-icons i.ico-province-capital {
+	right:0px;
+	}
+.b-map-control-panel .b-province .b-block-top .b-status-icons i.ico-province-attacked {
+	right:22px;
+	}
+.b-map-control-panel .b-province .b-block-top .b-status-icons i.ico-province-combats-running {
+	right:22px;
+	}
+.b-map-control-panel .b-province .b-block-top .b-status-icons i.ico-province-friend {
+	right:46px;
+	}*/
+.b-status-icons .ico-province-spy {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat scroll -22px -24px transparent;
+	}
+.b-status-icons .ico-province-contrspy {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat scroll -2px -24px transparent;
+	}
+.b-status-icons .ico-province-robbery {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat scroll -42px -24px transparent;
+    width: 21px!important;
+	}
+.info-block-r .ico-province-contrspy,
+.info-block-r .ico-province-spy {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat scroll -2px -24px transparent;
+    left: 10px;
+	top: 14px;
+}
+.info-block-r .ico-province-spy {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat scroll -22px -24px transparent;
+}
+
+.b-map-control-panel .b-province .b-block-middle {
+	height:48px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-province-horizontal-dilimiter.png) 0 100% no-repeat;
+	position:relative;
+	color:#b4b4b4;
+	font-weight:700;
+	font-size:12px;
+	}
+.b-map-control-panel .b-province .b-block-middle a {
+	color:#e5b262;
+	font-weight:700;
+	font-size:14px;
+    line-height: 16px;
+	}
+.b-map-control-panel .b-province a.b-province-owner-name {
+	white-space:nowrap;
+	font-size:14px;
+	}
+.b-map-control-panel .b-province .b-block-middle .wrapper {	
+	position:relative;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l {
+	position:absolute;
+	left:0;
+	top:0;
+	width:153px;
+	height:48px;
+	overflow:hidden;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/vertical-delimiter.png) 100% 11px no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l .b-clan-name-sp {
+	max-width:286px;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l img,
+.b-map-control-panel .b-province .b-block-middle .info-block-l .ico-clan-emblem { 
+	position:absolute;
+	top:5px;
+	left:7px;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l .percent {
+	position:absolute;
+	top:5px;
+	left:50px;
+	white-space:nowrap;
+	display:inline-block;
+	max-width:332px;
+	overflow:hidden;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l .percent a {
+	font-size:12px !important
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l .percent i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_economic.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-l .incom {
+	position:absolute;
+	top:24px;
+	left:50px;
+	}
+
+.b-map-control-panel .b-province .b-block-middle .info-block-l .incom .not-connected-to-capital{
+    text-decoration: line-through;  
+    color: #5F6060;                                                                                                 
+    }
+
+.b-map-control-panel .b-province .b-block-middle .info-block-l .incom i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_economic.png) -18px 0 no-repeat;
+	}
+	
+	
+	
+.b-map-control-panel .b-province .b-block-middle .info-block-lc {
+	position:absolute;
+	left:154px;
+	top:0;
+	width:106px;
+	height:48px;
+	overflow:hidden;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/vertical-delimiter.png) 100% 11px no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-lc .percent {
+	position:absolute;
+	top:7px;
+	left:15px;
+	}
+
+.b-map-control-panel .b-province .b-block-middle .info-block-lc .days {
+	position:absolute;
+	top:26px;
+	left:15px;
+	white-space:nowrap;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-lc .days a {
+	font-size:12px !important
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-lc .percent i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_stats.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-lc .days i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/province_stats.png) -18px 0 no-repeat;
+	}	
+	
+	
+	
+.b-map-control-panel .b-province .b-block-middle .info-block-r {
+	
+	right:0;
+	position:absolute;
+	top:0;
+	width:110px;
+	height:48px;
+	overflow:hidden;
+	
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-r .gold {
+	position:absolute;
+	top:13px;
+	left:16px;
+	}	
+.b-map-control-panel .b-province .b-block-middle .info-block-r .gold i {
+	display:inline-block;
+	width:22px;
+	height:22px;
+	vertical-align:middle;
+	}
+.b-map-control-panel .b-province .b-block-middle .info-block-r .gold i.ico-gold {
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/currency-ico.png) -14px -2px no-repeat;
+	width:10px;
+	height:10px;
+	} 
+.b-map-control-panel .b-province .b-block-middle .info-block-rc {
+	position:absolute;
+	left:259px;
+	top:0;
+	width:139px;
+	height:48px;
+	overflow:hidden;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/vertical-delimiter.png) 100% 11px no-repeat;
+	text-align:center;
+	}	
+
+.b-map-control-panel .b-province .b-block-middle .info-block-rc .red {
+	display:inline-block;
+	height:13px;
+	width:20px;
+	padding:0px;
+	margin: 0 4px;
+	position:relative;
+	top:17px;
+	}
+
+.b-map-control-panel .b-province .b-block-middle .info-block-rc .yel {
+	display:inline-block;
+	height:13px;
+	width:20px;
+	padding:0px;
+	margin: 0 4px;
+	position:relative;
+	top:17px;
+	}
+
+.b-map-control-panel .b-province .b-block-middle .info-block-rc .green {
+	display:inline-block;
+	height:13px;
+	width:20px;
+	padding:0px;
+	margin: 0 4px;
+	position:relative;
+	top:17px;
+	}
+
+.b-spy-dialog .b-chips-number-icon {
+	display:inline-block;
+	height:13px;
+	width:20px;
+	padding:0px;
+	margin: 0 4px;
+	position:relative;
+	}
+
+.ico-chips-number-red-0 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) 0px 0px no-repeat; } 
+.ico-chips-number-red-1 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -20px 0px no-repeat; } 
+.ico-chips-number-red-2 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -40px 0px no-repeat; } 
+.ico-chips-number-red-3 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -60px 0px no-repeat; }
+.ico-chips-number-red-4 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -80px 0px no-repeat; } 
+.ico-chips-number-red-5 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -100px 0px no-repeat; } 
+.ico-chips-number-red-6 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -120px 0px no-repeat; } 
+.ico-chips-number-red-7 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -140px 0px no-repeat; } 
+.ico-chips-number-red-8 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -160px 0px no-repeat; } 
+.ico-chips-number-red-9 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -180px 0px no-repeat; } 
+.ico-chips-number-red-10 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -200px 0px no-repeat; } 
+.ico-chips-number-red-11 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -220px 0px no-repeat; } 
+.ico-chips-number-red-12 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -240px 0px no-repeat; } 
+.ico-chips-number-red-13 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -260px 0px no-repeat; } 
+.ico-chips-number-red-14 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -280px 0px no-repeat; } 
+.ico-chips-number-red-15 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_red.png) -300px 0px no-repeat; } 
+
+.ico-chips-number-yellow-0 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) 0px 0px no-repeat; } 
+.ico-chips-number-yellow-1 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -20px 0px no-repeat; } 
+.ico-chips-number-yellow-2 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -40px 0px no-repeat; } 
+.ico-chips-number-yellow-3 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -60px 0px no-repeat; }
+.ico-chips-number-yellow-4 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -80px 0px no-repeat; } 
+.ico-chips-number-yellow-5 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -100px 0px no-repeat; } 
+.ico-chips-number-yellow-6 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -120px 0px no-repeat; } 
+.ico-chips-number-yellow-7 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -140px 0px no-repeat; } 
+.ico-chips-number-yellow-8 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -160px 0px no-repeat; } 
+.ico-chips-number-yellow-9 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -180px 0px no-repeat; } 
+.ico-chips-number-yellow-10 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -200px 0px no-repeat; } 
+.ico-chips-number-yellow-11 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -220px 0px no-repeat; } 
+.ico-chips-number-yellow-12 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -240px 0px no-repeat; } 
+.ico-chips-number-yellow-13 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -260px 0px no-repeat; } 
+.ico-chips-number-yellow-14 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -280px 0px no-repeat; } 
+.ico-chips-number-yellow-15 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_yellow.png) -300px 0px no-repeat; } 
+
+.ico-chips-number-green-0 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) 0px 0px no-repeat; } 
+.ico-chips-number-green-1 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -20px 0px no-repeat; } 
+.ico-chips-number-green-2 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -40px 0px no-repeat; } 
+.ico-chips-number-green-3 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -60px 0px no-repeat; }
+.ico-chips-number-green-4 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -80px 0px no-repeat; } 
+.ico-chips-number-green-5 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -100px 0px no-repeat; } 
+.ico-chips-number-green-6 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -120px 0px no-repeat; } 
+.ico-chips-number-green-7 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -140px 0px no-repeat; } 
+.ico-chips-number-green-8 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -160px 0px no-repeat; } 
+.ico-chips-number-green-9 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -180px 0px no-repeat; } 
+.ico-chips-number-green-10 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -200px 0px no-repeat; } 
+.ico-chips-number-green-11 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -220px 0px no-repeat; } 
+.ico-chips-number-green-12 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -240px 0px no-repeat; } 
+.ico-chips-number-green-13 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -260px 0px no-repeat; } 
+.ico-chips-number-green-14 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -280px 0px no-repeat; } 
+.ico-chips-number-green-15 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric_green.png) -300px 0px no-repeat; } 
+	
+/* CHIPS COUNT */
+/*
+.b-battle-chips-number {
+	  display:inline-block;
+	  height:13px;
+	  width:20px;
+	  padding:0px;
+	  margin: 0 0 0 3px;
+	  position:relative;
+	  top:3px;
+}*/
+	
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block {
+	position:absolute;
+	left:47px;
+	top:24px;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .red i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .yel i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .green i {
+	display:inline-block;
+	width:18px;
+	height:18px;
+	vertical-align:middle;
+	}		
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .wrapper {
+}
+
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .red {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:45px;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .yel {
+	position:absolute;
+	top:0px;
+	left:52px;
+	width:45px;
+	}	
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .green {
+	position:absolute;
+	top:0px;
+	left:90px;
+	width:45px;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .yel span,
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .red span,
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block .green span {
+	display:inline-block;
+	}
+
+
+
+
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-l,
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-lc,
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-rc,
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-r {
+	background:none;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-l {
+	width:390px;
+	}
+.b-map-control-panel .b-province .b-block-middle .b-public .info-block-l .b-free {
+	padding:10px 0 0 10px;
+	display:block;
+	}
+
+.b-map-control-panel .b-province .b-block-bottom {
+	height:53px;
+	position:relative;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-bottom-line {
+	position:absolute;
+	bottom:-1px;
+	left:0;
+	height:1px;
+	width:507px;
+	background:#292A2D;
+	z-index:601;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list {
+	height:53px;	
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list .b-no-battles-message {
+	padding:10px 0 0 10px;
+	display:block;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li {
+	float:left;
+	height:42px;
+	width:157px;
+	margin: 0 10px 0 0;	
+	padding:7px 0 0;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li img {
+	float:left;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li .b-wrap {
+	margin:0 0 0 5px;
+	overflow:hidden;
+	display: inline-block;
+}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li .b-wrap .time {
+	padding:6px 0 2px;
+	display:inline-block;
+	}
+
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li .b-wrap .time.aprox-time {
+    color: #444444;
+}
+
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li .b-wrap .b-type {
+	position:relative;
+	top:4px;
+	}
+.b-map-control-panel .b-province .b-block-bottom .b-clans-list li a {
+	color:#e5b262;
+	font-weight:700;
+	font-size:12px;
+	display:inline-block;
+	}
+.b-clans-list-point-time {
+    width: 125px !important;
+    margin: 0 !important;
+}
+.b-map-control-panel .b-clans-attacker {
+	clear:both; overflow:hidden;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/panel.png) 0 1px no-repeat #000000;
+	padding: 0 0 0 5px;
+	width:502px;
+	margin:0 0 0 1px;
+	}	
+/*clan info*/
+
+.b-map-control-panel .b-clan-info {
+	/*background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-clan-info.jpg) no-repeat scroll 0 0 transparent;*/ /*delete after close WOTP-535*/
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-province.png) 0 0 no-repeat;
+	border:1px solid #000000;
+	float:left;
+	height:148px;
+	width:312px;
+	}	
+.b-map-control-panel .b-clan-info .b-block-top {
+	height:36px;
+	padding:5px 0 0 7px;
+	overflow:hidden;
+	position:relative;
+	}
+.b-map-control-panel .b-clan-info .b-block-top h2 {
+	margin: 0 0 0 45px;
+	width:258px;/*for chrome :-( */
+	line-height:116%;
+	font-size:14px;
+	font-family:Arial,"Helvetica CY", Helvetica,sans-serif;
+	height:33px;
+	overflow:hidden;
+	position:relative;
+	padding:0;
+	}
+.b-map-control-panel .b-clan-info .b-block-top h2 a {
+	display:inline-block;
+	max-width:251px;
+	color:#E5B262;
+	word-wrap:break-word;
+	}
+.b-map-control-panel .b-clan-info .b-block-top img,
+.b-map-control-panel .b-clan-info .b-block-top i {
+	float:left;
+	}
+	
+.b-map-control-panel .b-clan-info .b-clan-statistic {
+	height:81px;
+	position:relative;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .wrapper {	
+	position:relative;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left {
+	position:absolute;
+	left:0;
+	top:0;
+	width:134px;
+	height:99px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-delimiter-vertical-long.png) 100% 11px no-repeat;
+	font-weight:700;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-total {
+	position:absolute;
+	top:13px;
+	left:8px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-total i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) 0 0 no-repeat;
+	}	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-map {
+	position:absolute;
+	top:45px;
+	left:8px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-map i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) -64px 0 no-repeat;
+	}		
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-reserve {
+	position:absolute;
+	top:13px;
+	left:73px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-reserve i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) -32px 0 no-repeat;
+	}	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-desant {
+	position:absolute;
+	top:45px;
+	left:73px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-left .chips-desant i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) -96px 0 no-repeat;
+	}		
+	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center {
+	position:absolute;
+	left:134px;
+	top:0;
+	width:79px;
+	height:99px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-delimiter-vertical-long.png) 100% 11px no-repeat;
+	color:#b4b4b4;
+	font-weight:700;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center a {
+	color:#e5b262;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center .battles-count {
+	position:absolute;
+	top:13px;
+	left:23px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center .battles-count i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) -128px 0 no-repeat;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center .provinces-count {
+	position:absolute;
+	top:45px;
+	left:23px;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-center .provinces-count i {
+	display:inline-block;
+	width:32px;
+	height:32px;
+	top:2px;
+	position:relative;
+	vertical-align:-12px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_stats-32.png) -160px 0 no-repeat;
+	}	
+	
+	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-right {
+	position:absolute;
+	right:0;
+	top:0;
+	width:99px;
+	height:99px;
+	color:#b4b4b4;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-right .gold {
+	top:22px;
+	left:20px;
+	position:absolute;
+	}	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-right .gold i {
+	display:inline-block;
+	width:13px;
+	height:13px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/currency-ico.png) -13px 0 no-repeat;
+	}	
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-right .credits {
+	top:54px;
+	left:20px;
+	position:absolute;
+	}
+.b-map-control-panel .b-clan-info .b-clan-statistic .b-statistic-block-right .credits i {
+	display:inline-block;
+	width:13px;
+	height:13px;
+	vertical-align:middle;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/currency-ico.png) 0px 0 no-repeat;
+	}	
+
+.b-map-control-panel .b-clan-info .b-clan-capital {
+	height: 20px;
+	position:relative;
+}
+
+.b-map-control-panel .b-clan-info .b-clan-capital .wrapper {	
+	position:relative;
+  left: 8px;
+}
+	
+.b-map-control-panel .b-btns {
+	width:116px; 
+	height:148px;
+	margin:1px 4px 0 5px;
+	position:relative;
+	float:left;
+	}
+.b-map-control-panel .b-btns a {
+	/* display:block; */
+	height:26px;
+	width:57px;
+	position:absolute;
+	cursor:pointer;
+	}
+.b-map-control-panel .b-btns a.btn-pos-1{
+	top:0;
+	left:0;
+	}	
+.b-map-control-panel .b-btns a.btn-pos-2 {
+	top:30px;
+	left:0;
+	}
+.b-map-control-panel .b-btns a.btn-pos-3 {
+	top:60px;
+	left:0;
+	}
+.b-map-control-panel .b-btns a.btn-pos-4 {
+	top:90px;
+	left:0;
+	}
+.b-map-control-panel .b-btns a.btn-pos-5 {
+	top:120px;
+	left:0;
+	}
+.b-map-control-panel .b-btns a.btn-pos-6 {
+	top:0;
+	left:59px;
+	}
+    .btn-pos-6_wait {
+        background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png") no-repeat -69px -19px;
+        height: 22px;
+        position: absolute;
+        right: -8px;
+        top: -8px;
+        width: 22px;
+    }
+.b-map-control-panel .b-btns a.btn-pos-7 {
+	top:30px;
+	left:59px;
+	}
+.b-map-control-panel .b-btns a.btn-pos-8 {
+	top:60px;
+	left:59px;
+	}
+.b-map-control-panel .b-btns a.btn-pos-9 {
+	top:90px;
+	left:59px;
+	}
+.b-map-control-panel .b-btns a.btn-pos-10 {
+	top:120px;
+	left:59px;
+	}	
+.b-map-control-panel .b-btns a.btn-province-info {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) 0 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-province-info:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) 0 -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-province-info.disabled,
+.b-map-control-panel .b-btns a.btn-province-info.disabled:hover  {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) 0 -54px no-repeat;
+	cursor:auto;
+	}			
+.b-map-control-panel .b-btns a.btn-landing {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -57px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-landing:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -57px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-landing.disabled,
+.b-map-control-panel .b-btns a.btn-landing.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -57px -54px no-repeat;
+	cursor:auto;
+	}	
+.b-map-control-panel .b-btns a.btn-move-capital {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -114px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-move-capital:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -114px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-move-capital.disabled,
+.b-map-control-panel .b-btns a.btn-move-capital.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -114px -54px no-repeat;
+	cursor:auto;
+	}	
+.b-map-control-panel .b-btns a.btn-chips-to-reserve {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -171px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-chips-to-reserve:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -171px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-chips-to-reserve.disabled,
+.b-map-control-panel .b-btns a.btn-chips-to-reserve.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -171px -54px no-repeat;
+	cursor:auto;
+	}	
+
+.b-map-control-panel .b-btns a.btn-chips-from-reserve {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -513px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-chips-from-reserve:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -513px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-chips-from-reserve.disabled,
+.b-map-control-panel .b-btns a.btn-chips-from-reserve.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -513px -54px no-repeat;
+	cursor:auto;
+	}	
+
+.b-map-control-panel .b-btns a.btn-sabatage {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -228px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-sabatage:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -228px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-sabatage.disabled,
+.b-map-control-panel .b-btns a.btn-sabatage.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -228px -54px no-repeat;
+	cursor:auto;
+	}	
+.b-map-control-panel .b-btns a.btn-rent {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -285px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-rent:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -285px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-rent.disabled,
+.b-map-control-panel .b-btns a.btn-rent.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -285px -54px no-repeat;
+	cursor:auto;
+	}
+.b-map-control-panel .b-btns a.btn-diplomacy {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -342px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-diplomacy:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -342px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-diplomacy.disabled,
+.b-map-control-panel .b-btns a.btn-diplomacy.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -342px -54px no-repeat;
+	cursor:auto;
+	}
+.b-map-control-panel .b-btns a.btn-spy {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -399px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-spy:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -399px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-spy.disabled,
+.b-map-control-panel .b-btns a.btn-spy.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -399px -54px no-repeat;
+	cursor:auto;
+	}
+.b-map-control-panel .b-btns a.btn-contrspy {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -456px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-contrspy:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -456px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-contrspy.disabled,
+.b-map-control-panel .b-btns a.btn-contrspy.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -456px -54px no-repeat;
+	cursor:auto;
+	}
+.b-map-control-panel .b-btns a.btn-store {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -570px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-store:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -570px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-store.disabled,
+.b-map-control-panel .b-btns a.btn-store.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -570px -54px no-repeat;
+	cursor:auto;
+	}
+.b-map-control-panel .b-btns a.btn-robbery {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -627px 0 no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-robbery:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -627px -27px no-repeat;
+	}
+.b-map-control-panel .b-btns a.btn-robbery.disabled,
+.b-map-control-panel .b-btns a.btn-robbery.disabled:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_buttons.png) -627px -54px no-repeat;
+	cursor:auto;
+	}
+
+
+
+.b-top-time {
+	/*overflow:hidden;*/
+	color:#b4b4b4;
+	float:right;
+	position:relative;
+	top:-2px;
+	}
+.b-top-time li {
+	float:left;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-vertical-delimiter-top.png) 0 center no-repeat;
+	padding:0 4px 3px 12px;
+	font-size:12px;
+	font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+	overflow:visible;
+	height:30px;
+	}
+.b-top-time li.step span {
+	display:inline-block;
+	padding:12px 0 0;
+	}
+.b-top-time li .time {
+	font-size:18px;
+	position:relative;
+	top:2px;
+	color:#fff;
+}
+
+.b-top-time li .timer-alert {
+  color: red;
+}
+
+.b-top-time li .timer-alert .time{
+  color: red;
+	font-size:18px;
+}
+
+.b-top-time li i {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	vertical-align:top;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_stats.png) -72px 0 no-repeat;
+	position:relative;
+	top:5px;
+	}	
+.b-top-time li .accept {
+	height:24px;
+	width:25px;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) 0 0 no-repeat;	
+	display:inline-block;
+	vertical-align:bottom;
+	margin:0 3px 0 0;
+	position:relative;
+	cursor:pointer;
+	top:5px;
+	}
+.b-top-time li .accept:hover {
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) 0 -24px no-repeat;	
+	}
+.b-top-time li .accept.disabled,
+.b-top-time li .accept.disabled:hover {
+ 	cursor:auto;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) 0 -48px no-repeat !important;
+	}
+.b-top-time li .reject {
+	height:24px;
+	width:25px;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) -24px 0 no-repeat;
+	display:inline-block;
+	vertical-align:bottom;
+	margin:0 3px 0 0;
+	position:relative;
+	cursor:pointer;
+	top:5px;
+	}
+.b-top-time li .reject:hover {
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) -24px -24px no-repeat;
+	}
+.b-top-time li .reject.disabled,
+.b-top-time li .reject.disabled:hover {
+ 	cursor:auto;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_actions.png) -24px -48px no-repeat !important;
+	}
+.b-top-time li.date {
+	/*height:19px;*/
+	min-height:30px;
+	padding:0px 0 3px 12px;
+	}
+.b-top-time li.date span {
+	padding:12px 0 0;
+	display:inline-block;
+	}
+.b-top-time .b-step-calculation	 {
+	display:inline-block;
+	position:relative;
+	top:-6px;
+	}
+.b-top-time .b-commands-buttons {
+	display:inline-block;
+	position:relative;
+	top:0px;
+	vertical-align:top;
+	}
+	
+.ico-province-type-gold {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_types.png) 0 0 no-repeat;
+}
+.ico-province-type-start {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_types.png) -24px 0 no-repeat;
+}
+.ico-province-type-normal {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_types.png) -48px 0 no-repeat;
+}
+
+.ico-province-friend {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_intercourses.png) 0 0 no-repeat;
+}
+
+.ico-province-peace {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_intercourses.png) -18px 0 no-repeat;
+}
+.ico-province-attacked {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png) -36px 0 no-repeat;
+}
+.ico-province-combats-running {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png) 0 0 no-repeat;
+}
+.ico-province-capital {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/province_states.png) -57px 0 no-repeat;
+}
+.ico-province-locked {
+ 	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/clan_intercourses.png) -72px 0 no-repeat;
+}
+
+.ico-gold {
+	  background:url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/currency-ico.png") no-repeat scroll -13px 0px transparent;
+	  display:inline-block;
+	  height:10px;
+	  width:13px;
+	  padding:0px 0 0;
+}
+
+.ico-credits {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/currency-ico.png) 0 0 no-repeat	;
+	  display:inline-block;
+	  height:13px;
+	  width:13px;
+	  padding:3px 0 0;
+}
+
+.ico-clan-emblem {
+	display:inline-block;
+	height:32px;
+	width:32px;
+	padding: 0px;    
+    border-style: solid;
+    border-width: 2px;
+	overflow:hidden;
+	background:none;
+	float:left;
+}
+.b-minimap {
+	position:absolute;
+	top:2px;
+	right:4px;
+	}
+	.b-minimap-frame {
+		border:1px solid #000000;
+		}
+	
+	.b-minimap-show-button { 
+		display: block;
+		background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bnt-minimap.png) -20px 0px;
+		width: 20px;
+		height: 19px;
+		position: absolute;
+		right: -2px;
+		top: 0px;
+		}
+		.b-minimap-show-button:hover {
+			background-position: -20px -19px; 
+			}
+		.b-minimap-show-button:active {
+			background-position: -20px -38px; 
+			}
+	.b-minimap-show-button.map-shown { 
+		display: block;
+		background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bnt-minimap.png) 0px 0px;
+		width: 20px;
+		height: 19px;
+		position: absolute;
+		right: -2px;
+		top: 0px;
+		}
+		.b-minimap-show-button.map-shown:hover {
+			background-position: 0 -19px; 
+			}
+		.b-minimap-show-button.map-shown:active {
+			background-position: 0 -38px; 
+			}
+
+
+
+#top-panel td {
+	vertical-align:top;
+	}
+
+.b-clan-for-anonymous {
+	position:relative;
+	width:439px;
+	height:80px;
+	float:left;
+}
+.b-clan-for-anonymous .b-b4r, .b-clan-for-recruits .b-b4r {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.b-clan-for-recruits {
+	position:relative;
+	width:439px;
+	height:80px;
+	float:left;
+}
+
+.b-reserve {
+	padding:3px 24px 0 24px;
+	}
+.b-reserve .green {
+	color:#38c517;
+	}
+.b-reserve .numbers{
+	display:inline-block;
+	vertical-align:middle;
+	}
+.b-reserve .b-btn {
+	display:inline-block;
+	vertical-align:middle;
+	}
+.b-reserve td {
+	vertical-align:top;
+	}
+	
+.b-reserve td.last {
+	margin:3px 24px 0 0;
+	overflow:hidden
+	}
+.b-reserve td.last div.b-queue {
+	margin:3px 0 0;
+ 	position:relative;
+	}
+
+.b-reserve .b-numbers-wrapper {
+    position: relative;
+    width: 100%;
+	text-align:center;
+}
+	
+.b-reserve .numbers {
+	padding:6px 0 0;
+	}	
+
+.b-reserve .b-desant-allowed {
+	height:26px; 
+	width: 43px; 
+	position: absolute;
+}
+
+.b-reserve .b-desant-allowed .desant-one-chip {
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_button.png) -86px 0px no-repeat;
+	width:43px; 
+	height:26px;
+	position: absolute; bottom: 0px;
+    cursor: pointer;
+}
+.b-reserve .b-desant-allowed .desant-one-chip-disable,
+.b-reserve .b-desant-allowed .desant-one-chip-disable:hover {
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_button.png) -86px -52px no-repeat;
+	cursor:auto;
+	}
+.b-reserve .b-desant-allowed .desant-one-chip:hover {
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_button.png) -86px -26px no-repeat;
+	}
+
+.b-reserve .b-desant-blocked {
+	overflow:hidden; 
+	width:43px; 
+	height:26px; 
+	position: absolute;
+}
+
+.b-reserve .b-desant-blocked span {
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_button.png) 0 0 repeat;
+	  width:43px; 
+	  height:26px;
+	  display:block;
+	}
+
+.b-reserve .b-desant-disabled {
+	overflow:hidden; 
+	width:43px; 
+	height:26px; 
+	position: absolute;
+	}
+
+.b-reserve .b-desant-disabled span {
+   background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_button.png) -43px 0 repeat;
+   width:43px; 
+   height:26px;
+   display:block;
+	}	
+	
+/* RESERVE */
+
+.b-reserve-chip {
+	  display:inline-block;
+	  height:24px;
+	  width:22px;
+	  padding:0px;
+}
+
+.ico-reserve-ready { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) 0px 0px no-repeat;}
+.ico-reserve-moved { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -572px 0px no-repeat;}
+.ico-reserve-wait-1 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -22px 0px no-repeat;}
+.ico-reserve-wait-2 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -44px 0px no-repeat;}
+.ico-reserve-wait-3 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -66px 0px no-repeat;}
+.ico-reserve-wait-4 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -88px 0px no-repeat;}
+.ico-reserve-wait-5 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -110px 0px no-repeat;}
+.ico-reserve-wait-6 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -132px 0px no-repeat;}
+.ico-reserve-wait-7 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -154px 0px no-repeat;}
+.ico-reserve-wait-8 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -176px 0px no-repeat;}
+.ico-reserve-wait-9 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -198px 0px no-repeat;}
+.ico-reserve-wait-10 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -220px 0px no-repeat;}
+.ico-reserve-wait-11 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -242px 0px no-repeat;}
+.ico-reserve-wait-12 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -264px 0px no-repeat;}
+.ico-reserve-wait-13 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -286px 0px no-repeat;}
+.ico-reserve-wait-14 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -308px 0px no-repeat;}
+.ico-reserve-wait-15 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -330px 0px no-repeat;}
+.ico-reserve-wait-16 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -352px 0px no-repeat;}
+.ico-reserve-wait-17 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -374px 0px no-repeat;}
+.ico-reserve-wait-18 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -396px 0px no-repeat;}
+.ico-reserve-wait-19 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -418px 0px no-repeat;}
+.ico-reserve-wait-20 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -440px 0px no-repeat;}
+.ico-reserve-wait-21{ background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -462px 0px no-repeat;}
+.ico-reserve-wait-22{ background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -484px 0px no-repeat;}
+.ico-reserve-wait-23 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -506px 0px no-repeat;}
+.ico-reserve-wait-24 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -528px 0px no-repeat;}
+.ico-reserve-wait-tail { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/reserve_chips.png) -550px 0px no-repeat;}
+
+/* CHIPS COUNT */
+
+.b-battle-chips-number {
+	  display:inline-block;
+	  height:13px;
+	  width:20px;
+	  padding:0px;
+	  margin: 0 0 0 3px;
+	  position:relative;
+	  top:3px;
+}
+
+.ico-chips-number-0 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) 0px 0px no-repeat; } 
+.ico-chips-number-1 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -20px 0px no-repeat; } 
+.ico-chips-number-2 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -40px 0px no-repeat; } 
+.ico-chips-number-3 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -60px 0px no-repeat; }
+.ico-chips-number-4 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -80px 0px no-repeat; } 
+.ico-chips-number-5 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -100px 0px no-repeat; } 
+.ico-chips-number-6 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -120px 0px no-repeat; } 
+.ico-chips-number-7 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -140px 0px no-repeat; } 
+.ico-chips-number-8 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -160px 0px no-repeat; } 
+.ico-chips-number-9 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -180px 0px no-repeat; } 
+.ico-chips-number-10 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -200px 0px no-repeat; } 
+.ico-chips-number-11 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -220px 0px no-repeat; } 
+.ico-chips-number-12 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -240px 0px no-repeat; } 
+.ico-chips-number-13 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -260px 0px no-repeat; } 
+.ico-chips-number-14 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -280px 0px no-repeat; } 
+.ico-chips-number-15 { background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/chips_numeric.png) -300px 0px no-repeat; } 
+
+
+.b-expand-window {
+	height:26px;
+	}
+.b-expand-window span {
+	height:52px;
+	}
+
+.b-expand-window input {
+	letter-spacing:-99999px;
+	}
+.b-start-province-info i {
+	width:24px;
+	height:24px;
+	display:inline-block;
+	vertical-align:middle;
+	float:left;
+	margin: 0 0 0 10px;
+	}
+.b-start-province-info .b-computation-time {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/start_province_times.png) -24px 0 no-repeat;
+	}
+.b-start-province-info .b-starting-time {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/start_province_times.png) -48px 0 no-repeat;
+	}
+.b-start-province-info .b-attaking-time {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico/start_province_times.png) -72px 0 no-repeat;
+	}
+/* duplication */
+/* .b-expand-window { */
+/* 	height:52px; */
+/* 	margin:-1px 0 0; */
+/* 	} */
+.b_gm-topbar {
+	padding:6px 10px;
+	position:relative;
+	}
+.b_gm-topbar .b-content-topbar {
+	position:absolute; left:1020px; padding:0 15px 15px; background: #111;
+	}
+
+.ico-battle-meeting {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/battle_types.png) 0px 0px no-repeat;
+	  display:inline-block;
+	  height:16px;
+	  width:16px;
+	  padding:0px;
+}
+
+.ico-battle-rebellion {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/battle_types.png) -16px 0px no-repeat;
+	  display:inline-block;
+	  height:16px;
+	  width:16px;
+	  padding:0px;
+}
+
+.ico-battle-normal {
+	  background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/battle_types.png) -32px 0px no-repeat;
+	  display:inline-block;
+	  height:16px;
+	  width:16px;
+	  padding:0px;
+}
+
+/* max scaler styles*/
+
+.b-map-scaler { 
+    position:absolute;
+    height:1px;
+    margin:0 1px;
+    padding:0;
+    z-index: 555;
+    left: 10px; 
+    top: 10px; 
+    height: 176px; 
+    float:left;
+}
+
+.b-map-navigation-content { 
+    position:absolute;
+    top:30px;
+    left: 0px;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) 0 0 no-repeat;
+    width: 56px;
+    height: 56px;
+}
+.b-map-navigation-top {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 19px;
+    background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) no-repeat -20px -192px;
+}
+.b-map-navigation-top:hover {
+    background-position: -20px -211px;
+}
+.b-map-navigation-top:active {
+    background-position: -20px -230px;
+}
+.b-map-navigation-top.disabled {
+    background-position: -20px -249px;
+    cursor: default;
+}
+.b-map-navigation-bottom {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 19px;
+    background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) no-repeat -59px -192px;
+}
+.b-map-navigation-bottom:hover {
+    background-position: -59px -211px;
+}
+.b-map-navigation-bottom:active {
+    background-position: -59px -230px;
+}
+.b-map-navigation-bottom.disabled {
+    background-position: -59px -249px;
+    cursor: default;
+}
+.b-map-navigation-left {
+    display: block;
+    position: absolute;
+    width: 19px;
+    height: 20px;
+    background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) no-repeat -40px -192px;
+}
+.b-map-navigation-left:hover {
+    background-position: -40px -212px;
+}
+.b-map-navigation-left:active {
+    background-position: -40px -232px;
+}
+.b-map-navigation-left.disabled {
+    background-position: -40px -252px;
+    cursor: default;
+}
+.b-map-navigation-right {
+    display: block;
+    position: absolute;
+    width: 19px;
+    height: 20px;
+    background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) no-repeat -79px -192px;
+}
+.b-map-navigation-right:hover {
+    background-position: -79px -212px;
+}
+.b-map-navigation-right:active {
+    background-position: -79px -232px;
+}
+.b-map-navigation-right.disabled {
+    background-position: -79px -252px;
+    cursor: default;
+}
+.b-map-navigation-left.disabled, .b-map-navigation-top.disabled, .b-map-navigation-right.disabled, .b-map-navigation-bottom.disabled {
+	cursor: default;
+}
+.b-map-navigation-top {   
+    left: 18px;
+    top: 0px;
+}
+
+.b-map-navigation-left {   
+    left: 0px;
+    top: 18px;
+}
+
+.b-map-navigation-right {   
+    right: 0px;
+    top: 18px;
+}
+
+.b-map-navigation-bottom {   
+    left: 18px;
+    bottom: 0;
+}
+.b-navigation-wrapper {
+	position:absolute;
+    top: 92px;
+    left: 18px;
+}
+.b-map-scaler-content { 
+	width:20px;
+	}
+.b-map-scaller-visibility-content {
+    margin-top:3px;
+}
+
+.b-map-scaler-grab { 
+    position:relative;
+    z-index:1;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) -20px -159px no-repeat ;
+    width: 20px;
+    height: 7px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+	}
+
+
+.b-map-scaler-grab:hover, .b-map-scaler-grab.sliding-mode { 
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) -20px -166px no-repeat;
+}
+/*
+.b-expand-row .b-map-scaler-grab { 
+    position:relative;
+    z-index:1;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) -40px -161px no-repeat ;
+    width: 20px;
+    height: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+	}
+.b-expand-row .b-map-scaler-grab:hover, .b-expand-row .b-map-scaler-grab.sliding-mode { 
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) -40px -168px no-repeat;
+	}
+
+*/
+
+.b-map-scaler-ruler {
+    width: 20px;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) 0px -104px no-repeat;
+}
+.b-expand-row .b-map-scaler-ruler {
+    width: 20px;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) -100px -104px no-repeat;
+	}
+.b-map-scaler-minus, .b-map-scaler-plus {
+    position: relative;
+    height: 19px;
+    display: block;
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/navigation.png) no-repeat;
+}
+
+.b-map-scaler-minus { background-position:-20px -102px; top: 1px;}
+.b-map-scaler-minus:hover { background-position:-20px -121px; }
+.b-map-scaler-minus:active { background-position:-20px -140px; }
+.b-map-scaler-minus.disabled, .b-map-scaler-minus.disabled:hover { background-position:-20px -173px; cursor:default; }
+
+.b-map-scaler-plus { background-position:-40px -102px; bottom: 2px;}
+.b-map-scaler-plus:hover { background-position:-40px -121px; }
+.b-map-scaler-plus:active {background-position:-40px -140px;}
+.b-map-scaler-plus.disabled, .b-map-scaler-plus.disabled:hover { background-position:-40px -173px; cursor:default; }
+
+.b-expand-row .b-map-scaler-plus { background-position:-80px -102px; bottom: 2px;}
+.b-expand-row .b-map-scaler-plus:hover { background-position:-80px -121px; }
+.b-expand-row .b-map-scaler-plus:active {background-position:-59px -230px;}
+.b-expand-row .b-map-scaler-plus.disabled, .b-expand-row .b-map-scaler-plus.disabled:hover { background-position:-80px -140px; }
+
+.b-expand-row .b-map-scaler-minus { background-position:-60px -102px; top: 1px;}
+.b-expand-row .b-map-scaler-minus:hover { background-position:-60px -121px; }
+.b-expand-row .b-map-scaler-minus:active { background-position:-20px -230px }
+.b-expand-row .b-map-scaler-minus.disabled, .b-expand-row .b-map-scaler-minus.disabled:hover { background-position:-60px -140px; }
+
+
+
+
+/* global map home page  .b-gmi_ =  .b-globalmap-index_ */
+.b-carousel {
+	margin:0 0 20px;
+	}
+
+.b-gmi_statistic {
+	margin:35px 0;
+	}
+	.b-gmi_statistic .province {
+		float:left;
+		width:45%;
+		overflow:hidden;
+		}
+	.b-gmi_statistic .win {
+		float: right;
+		/*width:40%;*/
+		max-width:365px;
+		}
+.b-clan-name-restriction {
+	/*max-width:145px;*/
+	overflow:hidden;
+	white-space:nowrap;
+	height:16px;
+	position:relative;
+	}
+.b-user .b-clan-name-restriction{
+	max-width:160px;}
+.b-clan-name-restriction a {
+	
+	}
+.b-user .b-clan-name-restriction a{
+	width:160px;}
+.td-clan-name {
+	overflow:hidden !important;
+	}
+.b-clan-name-fade {
+	position:absolute;
+	top:0;
+	right:0;
+	height:15px;
+	width:15px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/txt-fade.png) 0 0 no-repeat;
+	}
+.b-gmi_statistic .t-table-dotted {
+	width:284px;
+	}
+
+/* VISIBILITY WIDGET */
+	
+.b-visibility-window {
+	background:#191a1c url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-view-modes-repeat.png) 0 0 repeat-y; 
+	width: 136px;
+	margin:0 0 0 0px;
+	position:absolute !important; 
+	left: 47px; 
+	top: -55px;
+}
+.b-visibility-window .b-visibility-window-bg_top {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-view-modes-top.png) 0 0 no-repeat; 
+	}
+
+.b-visibility-window .b-visibility-window-bg_bottom {
+	padding:11px 0 0 13px;
+	height: 189px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-view-modes-bottom.png) 0 100% no-repeat; 
+	}
+.b-visibility-window .b-visibility-icon-emblems {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico-emblems.png) 0 -36px;
+	display:block;
+	height:36px;
+	width:32px;
+	margin:0 0 8px;
+	}
+
+.b-visibility-window .b-visibility-icon-chips {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico-chips.png) 0 -36px;
+	display:block;
+	height:36px;
+	width:32px;
+	margin:0 0 8px;
+	}
+
+.b-visibility-window .b-visibility-icon-other {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/ico-other.png) 0 -36px;
+	display:block;
+	height:36px;
+	width:32px;
+	margin:0 0 8px;
+	}
+
+.b-visibility-window .disabled .b-visibility-icon-emblems,
+.b-visibility-window .disabled .b-visibility-icon-chips,
+.b-visibility-window .disabled .b-visibility-icon-other {
+	background-position: 0 0;
+}
+
+.b-visibility-window .b-expand-row {
+    float: left;
+    margin:0 5px 0 0; 
+ }
+.b-visibility-window .js-checkbox {
+    float: none;
+    margin: 5px auto 0 auto;
+}
+.b-visibility-window .b-map-scaler-minus,
+.b-visibility-window .b-map-scaler-plus {
+    width: 20px;
+    margin-left: 6px; 
+}
+
+.b-visibility-window .b-map-scaler-ruler { 
+    margin-left: 6px; 
+}
+
+.b-visibility-window .b-icons-visibility-checkbox { 
+    margin-left: 9px;  
+}
+
+.b-visibility-window .b-delta-ruler { 
+    background: green;
+    width: 20px;
+    position: relative;
+    opacity: 0.3;
+	filter: alpha(opacity=30);/*for IE5-7*/
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";/*ie8*/
+	}
+.b-visibility-window .b-expand-row.disabled .b-delta-ruler { 
+	background: 006400;
+	opacity: 0.2;
+	filter: alpha(opacity=20);/*for IE5-7*/
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";/*ie8*/
+	}
+.b-visibility-button { 
+    display: block;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/visibility_button.png) 0 0;
+    width: 24px;
+    height: 23px;
+    position: relative;
+    left: -2px;
+}
+.b-visibility-button:hover { 
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/visibility_button.png) -24px 0px;
+}
+.b-visibility-button:active { 
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/visibility_button.png) -48px 0px;
+}
+/* GLOBALMAP WIDGET */
+.b-globalmap-button { 
+    display: block;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/visibility_button.png) -24px 0px;
+    width: 24px;
+    height: 23px;
+
+    position: relative;
+    left: -2px;
+}
+.b-globalmap-button:hover { 
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/visibility_button.png) 0px 0px;
+}
+
+.b-clans-attacker .b-size-fix {
+	height:20px;
+	}
+.b-border-wrap {
+	border:1px solid #292a2d;
+	}
+.b-clan-info .b-border-wrap {
+	height:146px;
+	}
+	
+.b-visibility-window .b-visibility-close-button, .b-regionmap-close-button {
+	position:absolute;
+	width:8px;
+	height:6px;
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/btn-close-vis.png) 0 0 no-repeat;
+	right:5px;
+	top:5px;
+	letter-spacing:-9999px;
+	text-indent: -5000px;
+	}
+
+.b-visibility-window .b-visibility-close-button:hover, .b-regionmap-close-button:hover {
+	background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/btn-close-vis.png) 0 -6px no-repeat;
+	}
+/*REGION MAP*/
+.b-regionmap-button {
+	display:block;
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/region_button.png) 0px 0px no-repeat;
+	width: 56px;
+	height: 23px;
+	float: left;
+}
+.b-regionmap-button:hover {
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/region_button.png) 0px -23px no-repeat;
+}
+.b-regionmap-button:active {
+	background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/region_button.png) left bottom no-repeat;
+}
+.b-regionmap-content {
+    border: 1px #000000 solid;
+    margin-left: 65px;
+	overflow: inherit !important;
+}
+.b-regionmap-background {
+    border: 1px #292a2d solid;
+    overflow: hidden;
+    background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-regionmap.gif) left top repeat-x #0c0d11;
+    padding: 0 17px 0 0;
+}
+.b-regionmap-content-left {
+    margin: 9px 0;
+	display:block;
+	float: left;
+}
+.b-regionmap-content-right {
+    margin: 9px 0 9px 5px;
+	display:block;
+	float: left;
+}
+.b-region-link {
+	display: block;
+	font-size: 11px;
+	color: #bac4cc;
+	text-decoration: none;
+	padding: 5px 0;
+}
+.b-region-link:hover {
+	color: #ffffff;
+	text-decoration: underline;
+	/*background: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/hover-region.png) 0 0 no-repeat;*/
+}
+.b-region-current {
+    background:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/regionmap-current.png) 3px 1px no-repeat;
+}
+.b-region-current .b-region-link {
+	 font-weight: bold;
+	 color: #ffffff;
+ }
+.li-region-paddign-left {
+    padding: 0 0 0 17px;
+}
+
+
+#canvas {
+    overflow: hidden;
+    cursor: pointer; 
+    position:absolute; 
+    left:0; 
+      top:30;
+}
+#l-provinces {
+    position: absolute;
+        left: 0px;
+        top: 0px;
+}
+#l-icons {
+    position: absolute;
+}
+.b-gm_statisics-block li {
+    position:relative;
+    display:inline-block;
+    margin:5px 16px 8px 26px;
+    vertical-align:middle;
+    line-height:20px;
+    }
+.b-gm_statisics-block i {
+    position:absolute;
+    width:24px;
+    height:24px;
+    margin-left:-26px;
+    background-repeat:no-repeat;
+    background-image: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/map_stats.png);
+    }
+.b-gm_statisics-block li span {
+    color:#b4b4b4;
+    font-weight:bold;
+    background-position:0 50%;
+    background-repeat: no-repeat;
+    }
+.b-gm_statisics-block .b-gm__clans-count i{
+    background-position:0 50%;
+    }
+.b-gm_statisics-block .b-gm__battles-count i{
+    background-position:-24px 50%;
+        }
+.b-gm_statisics-block .b-gm__desant-count i{
+    background-position:-48px 50%;
+    }
+.b-content .tournament-head-table td {
+    padding:2px;
+}
+.b-content .tournament-content-table td {
+    padding:2px;
+    line-height:120%;
+}
+.b-landing-dialog {
+    }
+    .b-landing-dialog h4 {
+        padding:0;
+        margin:0 0 5px;
+        font-size:17px;
+        font-family:"Arial Narrow", Arial, "Helvetica CY", Helvetica, sans-serif;
+		font-stretch:condensed;
+        font-weight:normal;
+        color:#fff;
+        }
+        .b-landing-dialog h4.desant-date {
+            margin:0 0 20px;
+            font-size:17px;
+            color:#ffa759;
+            }
+            .b-landing-dialog h4.desant-date .close {
+                color:#ff0000;                
+                }
+            .b-landing-dialog h4.desant-date .running {
+                color:#73ae4e;
+                }
+    .b-landing-dialog .t-table th {
+        padding:8px 14px 10px;
+        font-size:13px;
+        font-family:Arial, "Helvetica CY", Helvetica, sans-serif;
+        font-weight:bold;
+        color:#7e7f80;
+        border-bottom:none;
+        background-image: url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-head.png);
+        }
+        .b-landing-dialog .t-table th.current-round {
+            color:#73ae4e;
+            background-image:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-top-currient.png)
+            }
+    .b-landing-dialog .t-table td {
+        padding-top:8px;
+        padding-bottom:4px;
+        }
+        .b-landing-dialog .t-table td.math-winner {
+            color:#ffc364;
+            background-image:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-bg-dash-gold.png)
+            }
+        .b-landing-dialog .t-table td.math-looser {
+            background-image:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-bg-dash.png)
+            }
+        .b-landing-dialog .t-table td.math-draw {
+            background-image:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-bg-dash.png)
+            }
+        .b-landing-dialog .t-table td.math-technical-draw {
+            background-image:url(/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/challenge/clanwars/landing/desant-bg-dash-red.png)
+            }
+        .b-tooltip .landing-hint-msg {
+            margin-top: 10px;
+            font-style: italic;
+        }
+/*popup province*/
+.b-name-map {
+    color: #BABFBA;
+    font-weight: 400;
+}
+.b-province-content {
+    width: 500px;
+    min-height: 150px;
+}
+.b-img-map {
+    width:150px;
+    height:150px;
+    float:left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+.b-head-province-linck {
+    padding:0;
+    margin: 0 0 5px 0;
+	font-size: 1.1em;
+	font-size: inherit;
+}
+/*------------------*/
+.b-store {
+    padding: 16px 19px 18px!important;
+}
+.b-store .b-store-spy-wrap .b-title {
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 0!important;
+}
+.b-store-spy-wrap {
+    font-size: 11px;
+    width: 303px;
+}
+.b-store-spy-item {
+    display: inline-block;
+    padding: 0 17px;
+    height: 106px;
+    text-align: center;
+    vertical-align: top;
+    width: 67px;
+}
+.b-store-spy-item.active {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-spy-training-tab.png") no-repeat 0 0;
+}
+    .b-store-spy-item_img {
+        background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-spy-item.png") repeat 0 0;
+        border: 1px solid rgba(65, 65, 65, 0.2);
+        box-shadow: 0 0 30px 0px rgba(255, 255, 255, 0.03), inset 0 0 20px 0 rgba(0,0,0,0.2), inset 0 0 5px 0 rgba(0,0,0,0.5);
+        height: 64px;
+        margin: 9px 0 7px;
+        position: relative;
+        width: 65px;
+    }
+    .b-store-spy-item .b-icon {
+        background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/spy-icon.png") no-repeat 0 0;
+        bottom: -12px;
+        height: 34px;
+        position: absolute;
+        right: -12px;
+        width: 34px
+    }
+        .b-store-spy-item .b-icon__time {
+            background-position: 0 -34px;
+        }
+        .b-store-spy-item .b-icon__gold {
+            background-position: 0 -68px;
+        }
+        .b-store-spy-item .b-dased-link {
+            border-bottom: 1px dashed #fe4800;
+            color: #fe4800;
+        }
+        .b-store-spy-item .b-dased-link:hover {
+            color: #FF7432;
+        }
+        .b-store-spy-item .time {
+            color: #606161;
+        }
+.b-spy-training {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-spy-training.png") repeat 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.45);
+    font-size: 12px;
+    margin: -1px 0 18px;
+    padding: 16px;
+}
+.b-spy-training .b-dased-link {
+    border-bottom: 1px dashed #919191;
+    color: #919191;
+}
+.b-store .b-hr {
+    background: url("/web/20121212105202im_/http://worldoftanks.ru/static/3.8.1.3/common/css/block/b-globalmap/img/bg-hr.png") no-repeat 0 0;
+    margin: 5px 0 18px;
+}
+
+.b-popup-spy {
+    padding: 15px 13px;
+    width: 420px;
+}
+    .ui-dialog .ui-dialog-content .b-popup-spy p {
+        margin: 0 !important;
+    }
+/*
+     FILE ARCHIVED ON 10:52:02 Dec 12, 2012 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:01:11 Oct 27, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  PetaboxLoader3.datanode: 213.646 (4)
+  LoadShardBlock: 252.434 (3)
+  load_resource: 165.369
+  captures_list: 435.018
+  CDXLines.iter: 18.249 (3)
+  exclusion.robots: 0.239
+  esindex: 0.019
+  PetaboxLoader3.resolve: 139.353
+  exclusion.robots.policy: 0.221
+  cdx.remote: 0.118
+*/
