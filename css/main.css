@@ -9241,6 +9241,8 @@
 		background-color: transparent;
 		color: #aaaaab;
 		font: 14px/66px "robotocondensedbold", "Arial Narrow", Arial, sans-serif;
+		font-family: Roboto Condensed;
+		font-weight: bold;
 		padding: 0
 	}
 }
