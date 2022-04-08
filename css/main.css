@@ -2296,12 +2296,12 @@
 @media all and (min-width:720px) {
 	.social-big_info {
 		font: 13px/17px "robotocondensedbold", "Arial Narrow", Arial, sans-serif;
+		font-family: Roboto Condensed;
+    	font-weight: bold;
 		display: inline-block;
 		vertical-align: middle;
 		padding: 0 0 0 3px;
 		color: #fff
-		font-family: Roboto Condensed;
-    	font-weight: bold;
 	}
 }
 
@@ -13065,6 +13065,7 @@ body {
 	background: #1c1c1e;
 	color: #b8b8a2;
 	font: 12px/20px "robotoregular", "Arial Narrow", Arial, sans-serif;
+	font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
 	height: 100%;
 	position: relative;
 	-webkit-text-size-adjust: 100%;
