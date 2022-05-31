@@ -1670,7 +1670,7 @@
 }
 
 .social-ico__facebook {
-	background: url(../img/ds.svg) no-repeat;
+	background: url(../img/gd.png) no-repeat;
 	background-size: contain;
 	width: 30px;
 	height: 25px
@@ -2391,12 +2391,12 @@
 }
 
 .social-big_link__facebook {
-	background: #5865F2;
+	background: #F5C400;
 	transition: background .15s ease-out
 }
 
 .social-big_link__facebook:hover {
-	background: #7289DA;
+	background: #FFFF00;
 }
 
 .social-big_link__twitter {
