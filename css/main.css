@@ -2391,12 +2391,12 @@
 }
 
 .social-big_link__facebook {
-	background: #F5C400;
+	background: #000000;
 	transition: background .15s ease-out
 }
 
 .social-big_link__facebook:hover {
-	background: #FFFF00;
+	background: #111820;
 }
 
 .social-big_link__twitter {
@@ -2567,12 +2567,12 @@
 }
 
 .social-vertical_link__facebook {
-	background: #415d9c;
+	background: #00000;
 	transition: background .15s ease-out
 }
 
 .social-vertical_link__facebook:hover {
-	background: #5072bf
+	background: #111820
 }
 
 .social-vertical_link__twitter {
