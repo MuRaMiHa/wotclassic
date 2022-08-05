@@ -10063,21 +10063,36 @@
 		max-width: 1328px;
 		overflow-y: visible;
 		margin-left: 28px;
-		margin-right: 28px
+		padding: 0 25px 0 28px;
+		background: 0 0;
+		height: 66px;
+		margin: 0 auto;
+		overflow-y: visible;
+		width: 1000px;
+		max-width: 1000px;
+		margin-right: 28px;
 	}
 }
 
 @media all and (min-width:1100px) {
 	.nav-submenu {
 		margin-left: 150px;
-		margin-right: 56px
+		background: 0 0;
+		height: 66px;
+		overflow-y: visible;
+		margin-right: 56px;
 	}
 }
 
 @media all and (min-width:1440px) {
 	.nav-submenu {
-		margin-left: auto;
-		margin-right: auto
+		width: 1000px;
+		max-width: 1000px;
+		padding: 0 25px 0 28px;
+		background: 0 0;
+		height: 66px;
+		margin: 0 auto;
+		overflow-y: visible;
 	}
 }
 
