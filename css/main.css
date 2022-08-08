@@ -2248,10 +2248,10 @@
 
 @media all and (min-width:1100px) {
 	.social-big {
-		max-width: 1328px;
+		max-width: 950px;
 		margin: 0 auto;
-		padding-left: 150px;
-		padding-right: 150px
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 }
 
@@ -6603,7 +6603,10 @@
 @media all and (min-width:1440px) {
 	.footer_holder {
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
+		max-width: 1000px;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 }
 
@@ -6668,8 +6671,11 @@
 
 @media all and (min-width:1100px) {
 	.footer_bottom {
-		margin-left: 150px;
-		margin-right: 150px
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1000px;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 }
 
@@ -13075,17 +13081,11 @@ td {
 }
 
 body {
-	vertical-align: baseline;
-	line-height: 1;
-	background: #1c1c1e;
 	color: #b8b8a2;
-	font: 12px/20px "robotoregular", "Arial Narrow", Arial, sans-serif;
-	font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
-	height: 100%;
-	position: relative;
-	-webkit-text-size-adjust: 100%;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale
+    font: 12px/20px "robotoregular", "Arial Narrow", Arial, sans-serif;
+    font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
+    background: url(../img/back.png) top no-repeat, url(../img/sparkles.png) 50% 0;
+    background-color: #1c1c1e;
 }
 
 td {
