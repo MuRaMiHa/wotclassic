@@ -1,0 +1,258 @@
+/* style.css */
+.l-page {
+	background: url(../img/back.jpg) no-repeat 50% 0;
+}
+
+.b-nav__section {
+	width:134px;
+	height:15px;
+	display:block;
+	padding:6px 13px;
+	text-decoration:none;
+	color:#22211f;
+	font:bold 15px/15px arial,sans-serif;
+	text-shadow:0px 1px 0 rgba(255,255,255,.25);
+	position:relative;
+	text-transform:uppercase;
+	white-space:nowrap;
+	background:url(../img/nav-items.png) no-repeat 0 0;
+}
+
+.b-login INPUT.bt-login {
+	float:right;
+	background:url(../img/bt-login.png) no-repeat 0 0;
+	width:55px;
+	height:54px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+.b-feed_news .b-feed__more A {
+	background:url(../img/bt-more-news.png) no-repeat 0 0;
+	width:101px;
+	height:26px;
+	margin:0 0 0 -1px;
+}
+
+.b-feed_forum .b-feed__more A {
+	background:url(../img/bt-more-forum.png) no-repeat 0 0;
+	width:50px;
+	height:26px;
+	margin:0 0 0 -1px;
+}
+
+.b-scribe__i .ctrls INPUT.bt-send {
+	float:right;
+	background:url(../img/bt-scribe.png) no-repeat 0 0;
+	width:68px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+.b-poll__i .ctrls .bt-poll-archive {
+	float:right;
+	background:url(../img/bt-poll-more.png) no-repeat 0 0;
+	width:90px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+.b-poll__i .ctrls .bt-poll {
+	float:left;
+	background:url(../img/bt-poll.png) no-repeat 0 0;
+	width:64px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+.b-form__ctrls .bt-reg {
+	background:url(../img/bt-reg.png) no-repeat 0 0;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+}
+
+.b-form__ctrls .bt-send-form {
+	background:url(../img/bt-send.png) no-repeat 0 0;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+}
+
+.b-form__ctrls .bt-send-form:hover {
+	background:url(../img/bt-send.png) no-repeat 0 -54px;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+	cursor:pointer;
+}
+
+.b-form__ctrls .bt-send-form-disabled {
+	background:url(../img/bt-send.png) no-repeat 0 -108px;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+}
+
+.b-form__ctrls .bt-pay {
+	background:url(../img/bt_payment_pay.png) no-repeat 0 0;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+	cursor:pointer;
+}
+
+.b-form__ctrls .bt-pay:hover {
+	background:url(../img/bt_payment_pay.png) no-repeat;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+	background-position:0 -54px;
+	cursor:pointer;
+}
+
+.b-form__ctrls .bt-pay-disabled {
+	background:url(../img/bt_payment_pay.png) no-repeat;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+	background-position:0 -108px;
+	cursor:default;
+}
+
+.b-form__ctrls .bt-goto_payment {
+	background:url(../img/bt_goto_payment.png) no-repeat 0 0;
+	width:317px;
+	height:35px;
+	border:none 0;
+	padding:0;
+}
+
+.b-form__ctrls .bt-goto_payment2 {
+	background:url(../img/bt_goto_payment2.png) no-repeat 0 0;
+	width:185px;
+	height:35px;
+	border:none 0;
+	padding:0;
+}
+
+A .bt-add-comment {
+	background:url(../img/bt-add-comment.png) no-repeat 0 0;
+	width:140px;
+	height:26px;
+	border:none 0;
+	padding:0;
+	display:block;
+}
+
+/* submit.css */
+input.bt-send {
+	background:url("../img/bt-scribe.png") no-repeat scroll 0 0 transparent;
+	border:0 none;
+	cursor:pointer;
+	/*float:right;*/
+	margin:0 0 0 18px;
+	height:25px;
+	padding:0;
+	width:68px;
+}
+
+input.bt-send:hover {
+	background: url("../img/bt-scribe.png") no-repeat scroll 0 -25px transparent;
+}
+
+div.bt-ok {
+	float:right;
+	background:url(../img/bt_ok.png) no-repeat 0 0;
+	width:91px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+	margin: -18px 0 0 0;
+}
+
+div.bt-ok2 {
+	float:right;
+	background:url(../img/bt_ok.png) no-repeat 0 0;
+	width:91px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+	margin: -34px 0 0 0;
+}
+
+/* gallery.css */
+.btn-see-more {
+	display:block;
+	background:url(../img/bt-see-more.png) no-repeat 0 0;
+	width:100px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+.btn-watch-more {
+	display:block;
+	background:url(../img/bt-watch-more.png) no-repeat 0 0;
+	width:100px;
+	height:25px;
+	padding:0;
+	border:none 0;
+	cursor:pointer;
+}
+
+/* userprofile.css */
+.b-form_login__ctrls .bt-login-form {
+	background:url(../img/btn-form-login.png) no-repeat 0 0;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+	/*float:left;*/
+}
+
+.b-form_change-pwd .bt-save-form {
+	background:url(../img/btn-form-save.png) no-repeat 0 0;
+	width:180px;
+	height:54px;
+	border:none 0;
+	padding:0;
+}
+/*
+     FILE ARCHIVED ON 12:41:52 Jan 16, 2013 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 15:54:20 Sep 30, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots.policy: 0.13
+  PetaboxLoader3.datanode: 476.762 (4)
+  captures_list: 168.113
+  esindex: 0.013
+  LoadShardBlock: 131.175 (3)
+  CDXLines.iter: 25.479 (3)
+  exclusion.robots: 0.14
+  load_resource: 438.483
+  cdx.remote: 0.175
+  PetaboxLoader3.resolve: 74.793
+*/
