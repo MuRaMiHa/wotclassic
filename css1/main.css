@@ -1156,7 +1156,7 @@ a:hover {
 }
 
 .social-ico__wg {
-    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjYgMzYiPjxzdHlsZT4uc3Qwe2ZpbGw6I2ZmZn08L3N0eWxlPjxwYXRoIGlkPSJYTUxJRF81XyIgY2xhc3M9InN0MCIgZD0iTTE4LjEgMjAuMWwtMi4zIDIuMyAzLjQgMy41IDMuOS0zLjlWOS45aC01eiIvPjxwYXRoIGlkPSJYTUxJRF80XyIgY2xhc3M9InN0MCIgZD0iTTcuOSA5LjlIMi44VjIybDMuOSAzLjkgMy42LTMuNS0yLjQtMi4zeiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xOS4yIDBIN0wwIDYuOXYxNi4zTDEyLjkgMzYgMjYgMjMuMlY2LjdMMTkuMiAwem01LjQgMjIuNkwxMyAzNCAxLjQgMjIuNlY3LjRsNi4zLTYuMmgxMC45bDYuMSA2LS4xIDE1LjR6Ii8+PHBhdGggaWQ9IlhNTElEXzFfIiBjbGFzcz0ic3QwIiBkPSJNOC4yIDIuM0wyLjkgNy44aDcuNXYyMS43bDIuNiAyLjYgMi42LTIuNlY3LjhoNy41bC01LjMtNS41eiIvPjwvc3ZnPg==) no-repeat;
+    background: urL(../img/logo_mini_white.png) no-repeat;
     background-size: contain;
     width: 22px;
     height: 28px
@@ -4589,10 +4589,11 @@ a:hover {
     text-shadow: none;
     color: transparent;
     display: block;
-    background: url(../img/footer-logo.png);
-	background-size: 100% 100%;
+    background: url(../img/lesta_logo.png);
+    background-size: 100% 100%;
     width: 132px;
-    height: 70px
+    height: 70px;
+    margin-top: -10px;
 }
 
 .footer-ratings {
@@ -6736,13 +6737,13 @@ a:hover {
     color: transparent;
     height: 66px;
     display: inline-block;
-    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAyMSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIxIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2FhYWFhYiIgZD0iTTUuMyAxLjRMMS45IDQuNWw0LjYuMS0uMyAxMi42IDEuNiAxLjYgMS42LTEuNS4zLTEyLjcgNC42LjEtMy4xLTMuMi01LjktLjF6TTUgNS43bC0uMSA2TDYuMyAxMyA0IDE1bC0yLjMtMi4zLjItNy4xIDMuMS4xem0xMC44IDhMNy43IDIxIDAgMTMuNGwuMi05LjVMNC41IDBsNy41LjEgNC4xIDQtLjMgOS42em0tMTUtLjZMMSA0LjIgNC45LjdsNi42LjEgMy42IDMuNi0uMSA4LjktNy4yIDYuNS03LTYuN3pNMTEgMTEuOGwuMS02IDMuMS4xLS4xIDcuMS0yLjQgMi4yLTIuMS0yLjEgMS40LTEuM3oiLz48L3N2Zz4=) 0 50% no-repeat;
+    background: url(../img/logo_mini.png) no-repeat 0 50%;
     background-size: 16px 21px;
     width: 16px
 }
 
 .nav-submenu_item__wot .nav-submenu_link:hover,.nav-submenu_item__wot.nav-submenu_item__active .nav-submenu_link {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAyMSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjIxIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2ZmZiIgZD0iTTUuMyAxLjRMMS45IDQuNWw0LjYuMS0uMyAxMi42IDEuNiAxLjYgMS42LTEuNS4zLTEyLjcgNC42LjEtMy4xLTMuMi01LjktLjF6TTUgNS43bC0uMSA2TDYuMyAxMyA0IDE1bC0yLjMtMi4zLjItNy4xIDMuMS4xem0xMC44IDhMNy43IDIxIDAgMTMuNGwuMi05LjVMNC41IDBsNy41LjEgNC4xIDQtLjMgOS42em0tMTUtLjZMMSA0LjIgNC45LjdsNi42LjEgMy42IDMuNi0uMSA4LjktNy4yIDYuNS03LTYuN3pNMTEgMTEuOGwuMS02IDMuMS4xLS4xIDcuMS0yLjQgMi4yLTIuMS0yLjEgMS40LTEuM3oiLz48L3N2Zz4=)
+    background-image: url(../img/logo_mini_white.png);
 }
 
 .nav-submenu_link:after {
