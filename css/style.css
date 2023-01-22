@@ -13498,7 +13498,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-filter-type__waiting {
-    background: url("./css/scss/content/filter/img/waiting-grey.gif") no-repeat 100% 6px;
+    background: url("../img/waiting-grey.gif") no-repeat 100% 6px;
     padding-right: 17px
 }
 
@@ -13552,7 +13552,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-filter-type_link:after {
-    background: url("./css/scss/content/filter/img/filter_div.png") no-repeat 0 4px;
+    background: url("../img/filter_div.png") no-repeat 0 4px;
     content: "";
     position: absolute;
     width: 2px;
@@ -13604,7 +13604,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-main-divider {
-    background: url(./css/scss/content/filter/img/divider.png) no-repeat 0 0;
+    background: url(../img/divider.png) no-repeat 0 0;
     height: 26px;
     left: -25px;
     position: absolute;
@@ -13614,7 +13614,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-main-divider__long {
-    background: url(./css/scss/content/filter/img/divider-long.png) no-repeat;
+    background: url(../img/divider-long.png) no-repeat;
     width: 1000px
 }
 
@@ -13634,7 +13634,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-tabs-list_item {
-    background: url(./css/scss/content/filter/img/tab.png) no-repeat 0 -38px;
+    background: url(../img/tab.png) no-repeat 0 -38px;
     float: left;
     height: 34px;
     margin-right: 50px;
@@ -13651,7 +13651,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-tabs-list_item.js-tabs__active {
-    background: url(./css/scss/content/filter/img/tab.png) no-repeat 0 0;
+    background: url(../img/tab.png) no-repeat 0 0;
     height: 37px;
     top: -1px;
     z-index: 10
@@ -13669,7 +13669,7 @@ h3.b-encyclopedia-type {
 }
 
 .b-tabs-list_link {
-    background: url(./css/scss/content/filter/img/tab.png) no-repeat right -110px;
+    background: url(../img/tab.png) no-repeat right -110px;
     color: #909091;
     font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
     font-size: 16px;
@@ -16296,7 +16296,7 @@ input[type="text"]:focus,input[type="password"]:focus {
 .b-button {
     display: inline-block;
     *display: inline;
-    *zoom:1;background: url(./css/scss/form_elements/buttons/img/btn-bg.png) 0 -60px no-repeat;
+    *zoom:1;background: url(../img/btn-bg.png) 0 -60px no-repeat;
     height: 30px;
     margin-right: 35px;
     position: relative;
@@ -16372,7 +16372,7 @@ input[type="text"]:focus,input[type="password"]:focus {
     display: inline-block;
     *display: inline;
     *zoom:1;border: medium none;
-    background: url(./css/scss/form_elements/buttons/img/btn-bg.png) no-repeat 100% -60px;
+    background: url(../img/btn-bg.png) no-repeat 100% -60px;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
@@ -16472,7 +16472,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-button-registration {
-    background: url(./css/scss/form_elements/buttons/img/btm-register.png) no-repeat 0 0;
+    background: url(../img/btm-register.png) no-repeat 0 0;
     width: 249px;
     height: 46px;
     text-align: center;
@@ -16486,14 +16486,14 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-button-registration:hover {
-    background: url(./css/scss/form_elements/buttons/img/btm-register.png) no-repeat 0 -46px;
+    background: url(../img/btm-register.png) no-repeat 0 -46px;
     cursor: pointer;
     box-shadow: 0 0 30px rgba(255,18,0,0.68);
     color: #fff
 }
 
 .b-button-small {
-    background: url(./css/scss/form_elements/buttons/img/btm-register-small.png) no-repeat 0 0;
+    background: url(../img/btm-register-small.png) no-repeat 0 0;
     width: 182px;
     height: 46px;
     text-align: center;
@@ -16508,7 +16508,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-button-small:hover {
-    background: url(./css/scss/form_elements/buttons/img/btm-register-small.png) no-repeat 0 -46px;
+    background: url(../img/btm-register-small.png) no-repeat 0 -46px;
     cursor: pointer;
     box-shadow: 0 0 30px rgba(255,18,0,0.68);
     color: #fff
@@ -16587,7 +16587,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-big-orange-button {
-    background: url(./css/scss/form_elements/buttons/img/big-orange-button.png) no-repeat;
+    background: url(../img/big-orange-button.png) no-repeat;
     border-radius: 3px;
     float: left;
     height: 46px;
@@ -16597,11 +16597,11 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-big-orange-button__download {
-    background: url(./css/scss/form_elements/buttons/img/big-orange-button-download.png) no-repeat
+    background: url(../img/big-orange-button-download.png) no-repeat
 }
 
 .b-big-orange-button_right {
-    background: url(./css/scss/form_elements/buttons/img/big-orange-button.png) no-repeat 100% 0;
+    background: url(../img/big-orange-button.png) no-repeat 100% 0;
     border: medium none;
     color: #fff;
     cursor: pointer;
@@ -16629,7 +16629,7 @@ input.b-button_right,button.b-button_right {
 .b-big-orange-button_right__dropdown:after,.b-big-orange-button_right__dropdown-open:after {
     width: 14px;
     height: 10px;
-    background: url("./css/scss/form_elements/buttons/img/big-button-arrow.png") no-repeat;
+    background: url("../img/big-button-arrow.png") no-repeat;
     display: inline-block;
     content: "";
     margin: 0 0 3px 7px
@@ -16640,7 +16640,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-big-orange-button_right__download {
-    background: url("./css/scss/form_elements/buttons/img/big-orange-button-download.png") no-repeat 100% 0;
+    background: url("../img/big-orange-button-download.png") no-repeat 100% 0;
     padding: 0 44px 0 61px
 }
 
@@ -16670,7 +16670,7 @@ input.b-button_right,button.b-button_right {
     top: 13px;
     width: 16px;
     height: 19px;
-    background: url(./css/scss/form_elements/buttons/img/play-icon.png) no-repeat 0 0
+    background: url(../img/play-icon.png) no-repeat 0 0
 }
 
 .b-big-orange-buttonarea:hover .b-big-orange-button_video {
@@ -16778,7 +16778,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-cancel a.b-cansel_cross {
-    background: url(./css/scss/form_elements/buttons/img/cansel-cross.png) no-repeat 0 0;
+    background: url(../img/cansel-cross.png) no-repeat 0 0;
     padding-left: 15px
 }
 
@@ -16805,7 +16805,7 @@ input.b-button_right,button.b-button_right {
     color: transparent;
     -webkit-transition: background-position 0.15s ease-out 0.3s,box-shadow 0.15s ease-out 0.3s;
     transition: background-position 0.15s ease-out 0.3s,box-shadow 0.15s ease-out 0.3s;
-    background: url(./css/scss/form_elements/buttons/img/leaderboards-button.png) no-repeat 21px 0;
+    background: url(../img/leaderboards-button.png) no-repeat 21px 0;
     border-radius: 3px 0 0 3px;
     cursor: pointer;
     display: block;
@@ -16855,7 +16855,7 @@ input.b-button_right,button.b-button_right {
 }
 
 .b-button_ico-plus {
-    background: url(./css/scss/form_elements/buttons/img/button-plus.png) 0 0 no-repeat;
+    background: url(../img/button-plus.png) 0 0 no-repeat;
     cursor: pointer;
     display: block;
     height: 24px;
@@ -16869,7 +16869,7 @@ input.b-button_right,button.b-button_right {
     text-align: left;
     border: none;
     padding: 9px 13px 9px 12px;
-    background: url(./css/scss/form_elements/buttons/img/bg-popup-bottom.png) 50% 0 no-repeat #252526;
+    background: url(../img/bg-popup-bottom.png) 50% 0 no-repeat #252526;
     border: 1px solid rgba(255,255,255,0.07);
     border-top: 1px solid #404040
 }
@@ -18099,67 +18099,4 @@ input[type="file"] {
     margin: 0 120px 0 0;
     height: 59px;
 }
-
-h1, .b-header-h1 {
-    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
-    font-stretch: normal;
-    font-size: 32px;
-    color: #fff;
-    font-weight: normal;
-    text-shadow: #000 0 1px 0;
-    margin: 4px 0 18px;
-}
-
-h2, .b-header-h2 {
-    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
-    font-stretch: normal;
-    font-size: 26px;
-    color: #fff;
-    font-weight: normal;
-    margin: 16px 0 14px;
-    padding: 0;
-}
-
-h3, .b-header-h3 {
-    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
-    font-stretch: normal;
-    font-size: 21px;
-    color: #fff;
-    font-weight: normal;
-    margin: 24px 0 15px;
-    padding: 0;
-}
-
-h4, .b-header-h4 {
-    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
-    font-stretch: condensed;
-    font-size: 18px;
-    color: #fff;
-    font-weight: normal;
-    margin: 16px 0 8px;
-    padding: 0;
-}
-
-h5, .b-header-h5 {
-    font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
-    font-stretch: normal;
-    color: #fff;
-    font-size: 13px;
-    font-weight: bold;
-    margin: 16px 0 8px;
-    padding: 0;
-}
-
-h6, .b-header-h6 {
-    color: #979899;
-    font-size: 12px;
-    font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
-    font-stretch: normal;
-    font-weight: bold;
-    margin: 10px 0 3px 0;
-    padding: 0;
-}
-
-
-
 </style>
