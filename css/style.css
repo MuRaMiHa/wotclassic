@@ -18100,4 +18100,66 @@ input[type="file"] {
     height: 59px;
 }
 
+h1, .b-header-h1 {
+    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
+    font-stretch: normal;
+    font-size: 32px;
+    color: #fff;
+    font-weight: normal;
+    text-shadow: #000 0 1px 0;
+    margin: 4px 0 18px;
+}
+
+h2, .b-header-h2 {
+    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
+    font-stretch: normal;
+    font-size: 26px;
+    color: #fff;
+    font-weight: normal;
+    margin: 16px 0 14px;
+    padding: 0;
+}
+
+h3, .b-header-h3 {
+    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
+    font-stretch: normal;
+    font-size: 21px;
+    color: #fff;
+    font-weight: normal;
+    margin: 24px 0 15px;
+    padding: 0;
+}
+
+h4, .b-header-h4 {
+    font-family: "WarHeliosCondC","Arial Narrow",Arial,sans-serif;
+    font-stretch: condensed;
+    font-size: 18px;
+    color: #fff;
+    font-weight: normal;
+    margin: 16px 0 8px;
+    padding: 0;
+}
+
+h5, .b-header-h5 {
+    font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
+    font-stretch: normal;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 16px 0 8px;
+    padding: 0;
+}
+
+h6, .b-header-h6 {
+    color: #979899;
+    font-size: 12px;
+    font-family: Arial,"Helvetica CY",Helvetica,sans-serif;
+    font-stretch: normal;
+    font-weight: bold;
+    margin: 10px 0 3px 0;
+    padding: 0;
+}
+
+
+
 </style>
