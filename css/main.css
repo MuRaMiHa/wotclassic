@@ -10267,14 +10267,14 @@
 	color: transparent;
 	height: 66px;
 	display: inline-block;
-	background: url(../img/logo_mini.png) no-repeat 0 50%;
+	background: url(../img/logos/mini_wot.svg) no-repeat 0 50%;
 	background-size: 16px 21px;
 	width: 16px
 }
 
 .nav-submenu_item__wot .nav-submenu_link:hover,
 .nav-submenu_item__wot.nav-submenu_item__active .nav-submenu_link {
-	background-image: url(../img/logo_mini_white.png)
+	background-image: url(../img/logos/mini_wot_white.svg)
 }
 
 .nav-submenu_link:after {
